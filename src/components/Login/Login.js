@@ -1,9 +1,8 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+
 import '../../../node_modules/font-awesome/css/font-awesome.min.css';
 import '../Login/Login.css'
-import logo1 from '../Images/login.svg'
-import Header from '../Header/Header';
+
 
 
 
@@ -11,22 +10,23 @@ import Header from '../Header/Header';
 const Login = () => {
     return (
         <>
-        <Header/>
-            <div className="container">
+        
+            <div className="container" style={{marginBottom:"140px"}}>
                 <input type="checkbox" id="flip" />
                 <div className="cover">
                     <div className="front">
-                      <img src="https://cdn.pixabay.com/photo/2015/04/20/13/17/work-731198__340.jpg" alt=""/>
+                      <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt=""/>
                         <div className="text">
-                            <span className="text-1">Every new friend is a <br /> new adventure</span>
-                            <span className="text-2">Let's get connected</span>
+                            <span className="text-1" style={{fontSize:"20px"}}>The best way to predict your future is to  <br /> create it </span>
+                            <span className="text-2" style={{fontSize:"25px"}}>Let's get started</span>
                         </div>
                     </div>
                     <div className="back">
-                        <img className="backImg" src="https://cdn.pixabay.com/photo/2016/03/26/13/09/cup-of-coffee-1280537__340.jpg" alt=""/>
+                        <img className="backImg" src="https://images.unsplash.com/photo-1551818255-e6e10975bc17?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1373&q=80" alt=""/>
+                        
                         <div className="text">
-                            <span className="text-1">Complete miles of journey <br /> with one step</span>
-                            <span className="text-2">Let's get started</span>
+                            <span className="text-1" style={{fontSize:"30px", color:"white"}}>The place where<br/> talent<br/> meets<br /> opportunity</span>
+                            {/* <span className="text-2" style={{fontSize:"25px", color:"#fff"}}>Let's get started</span> */}
                         </div>
                     </div>
                 </div>
@@ -44,7 +44,7 @@ const Login = () => {
                                         <i className="fa fa-lock"></i>
                                         <input type="password" placeholder="Enter your password" required />
                                     </div>
-                                    <div className="text"><a href="#">Forgot password?</a></div>
+                                    <div className="text"><a href="/">Forgot password?</a></div>
                                     <div className="button input-box">
                                         <input type="submit" value="Submit" />
                                     </div>
