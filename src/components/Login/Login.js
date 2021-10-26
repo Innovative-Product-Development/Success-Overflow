@@ -11,7 +11,7 @@ import Header from '../Header/Header';
 const Login = () => {
     return (
         <>
-        <Header/>
+       
             <div className="container">
                 <input type="checkbox" id="flip" />
                 <div className="cover">
