@@ -6,6 +6,8 @@ import {Route,Switch} from 'react-router-dom';
 import Login from './components/Login/Login';
 import Register from './components/Register/Register'
 import Footer from './components/Footer/Footer';
+import Courses from './components/Courses/Courses';
+
 
 
 function App() {
@@ -20,8 +22,8 @@ function App() {
      <Route path='/login'  >
      <Login />
      </Route>
-     <Route path='/register' >
-     <Register/>
+     <Route path='/courses' >
+     <Courses/>
      </Route>
      </Switch>
      <Footer/>
