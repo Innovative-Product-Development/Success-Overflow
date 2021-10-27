@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import "./HomePage.css"
+import {Helmet} from "react-helmet";
 import OwlCarousel from 'react-owl-carousel';  
 import 'owl.carousel/dist/assets/owl.carousel.css';  
 import 'owl.carousel/dist/assets/owl.theme.default.css';  
 import {AiFillStar,AiOutlineStar} from 'react-icons/ai';
+import { Card } from 'react-bootstrap';
 import {FaMapMarkerAlt} from 'react-icons/fa';
 import dm from "../../assets/img/path-img1.jpg"
 import ui from "../../assets/img/path-img2.jpg"
 import it from "../../assets/img/path-img3.jpg"
 import fd from "../../assets/img/path-img4.jpg"
+import LineTo from 'react-lineto';
+
+import course from "../../assets/img/courses.svg"
+import studentsInteraction from "../../assets/img/studentsInteraction.svg"
+import yoga from "../../assets/img/yoga.svg"
+import meditation from "../../assets/img/meditation.svg"
+import teacher from "../../assets/img/teacher.svg"
+import profile from "../../assets/img/profile.svg"
+import success from "../../assets/img/success.svg"
 
 import wd  from "../../assets/img/path-img5.jpg"
 import ad  from "../../assets/img/path-img6.jpg"
@@ -31,9 +42,99 @@ import u12 from "../../assets/img/user/user12.jpg"
 import u13 from "../../assets/img/user/user13.jpg"
 import u14 from "../../assets/img/user/user14.jpg"
 import u15 from "../../assets/img/user/user15.jpg"
+import LeaderLine from "leader-line-new"
+
+
+
+
 
 
 const HomePage = () => {
+
+
+    useEffect(()=>{
+        window.location.href === "http://localhost:3000/" && window.addEventListener('load', function() { // NOT `DOMContentLoaded`
+            // Do something about HTML document
+            new LeaderLine(
+                document.getElementById('end'),
+                document.getElementById('start'),
+                
+                {
+                    path: 'straight',
+                    dash: {animation: true},
+                    color: '#a662ff',
+                    size:25,
+                    startSocket: 'auto', endSocket: 'auto',
+                    endPlug:"arrow1",
+                    size: 2
+                }
+              );
+        
+        
+              new LeaderLine({
+                    start: document.getElementById('end'), end: document.getElementById('teachers'),
+                    path: 'straight',
+                    dash: {animation: true},
+                    color: '#a662ff',
+                    startSocket: 'auto', endSocket: 'auto',
+                    endPlug:"arrow1",
+                    size: 2
+                }
+              );
+        
+        
+              new LeaderLine({
+                start: document.getElementById('end'), end: document.getElementById('yoga'),
+                path: 'straight',
+                dash: {animation: true},
+                color: '#a662ff',
+                startSocket: 'auto', endSocket: 'auto',
+                endPlug:"arrow1",
+                size: 2
+            }
+          );
+        
+          new LeaderLine({
+            start: document.getElementById('end'), end: document.getElementById('profile'),
+            path: 'straight',
+            dash: {animation: true},
+            color: '#a662ff',
+            startSocket: 'auto', endSocket: 'auto',
+            endPlug:"arrow1",
+            size: 2
+        }
+        );
+        
+        new LeaderLine({
+            start: document.getElementById('end'), end: document.getElementById('students'),
+            path: 'straight',
+            dash: {animation: true},
+            color: '#a662ff',
+            startSocket: 'auto', endSocket: 'auto',
+            endPlug:"arrow1",
+            size: 2
+        }
+        );
+        
+        new LeaderLine({
+            start: document.getElementById('end'), end: document.getElementById('motivation'),
+            path: 'straight',
+            dash: {animation: true},
+            color: '#a662ff',
+            startSocket: 'auto', endSocket: 'auto',
+            endPlug:"arrow1",
+            size: 2
+        }
+        );
+          });
+        
+        
+        
+    },[])
+
+
+
+
     return (
         <div>
            
@@ -52,6 +153,83 @@ const HomePage = () => {
 					</div>
 				</div>
 			</section>
+
+            {/* ---------------------------------------------------------------------------- */}
+
+            <div className="container-fluid">
+
+         
+                <div className="row text-center">
+                    <div  className="col-6 A ">
+                        <Card id="start" style={{ width: '22rem', left:"110px", borderRadius:"50%", height:"15rem",margin:"auto",boxShadow:"1px 1px 8px 0px rgb(0 0 0 / 20%), 0px 0px 0px 0 rgb(0 0 0 / 19%)", display:"flex",alignItems:"center",justifyContent:"center"}}>
+                            <Card.Img class="image" variant="top" style={{background:"transparent",marginTop:"10px"}} src={course} />
+                            <div class="overlay">
+                                <div class="text1">Learn New Skills.?</div>
+                            </div>
+                        </Card>
+                        
+                       
+                   
+                    </div>
+                    
+                    <div className="col-6 C">
+                        <Card id="students" style={{ width: '22rem', right:"110px",borderRadius:"50%", height:"15rem",margin:"auto",boxShadow:"1px 1px 8px 0px rgb(0 0 0 / 20%), 0px 0px 0px 0 rgb(0 0 0 / 19%)", display:"flex",alignItems:"center",justifyContent:"center"}}>
+                            <Card.Img class="image" variant="top" style={{background:"transparent",marginTop:"10px"}} src={studentsInteraction} />
+                            <div class="overlay">
+                                <div class="text1">Get connected with student community.?</div>
+                            </div>
+                        </Card>
+                        
+                    </div>
+                </div>
+                <div className="row text-center">
+                <div className="col-4 D">
+                        <Card id="teachers" style={{ width: '22rem', borderRadius:"50%", height:"15rem",margin:"auto",boxShadow:"1px 1px 8px 0px rgb(0 0 0 / 20%), 0px 0px 0px 0 rgb(0 0 0 / 19%)", display:"flex",alignItems:"center",justifyContent:"center"}}>
+                            <Card.Img class="image" variant="top" style={{background:"transparent",marginTop:"10px"}} src={teacher} />
+                            <div class="overlay">
+                                <div class="text1">Need Advice from Mentors.?</div>
+                            </div>
+                        </Card>
+                    </div>
+                    <div   className="col-4 B J ">
+                        <Card  style={{ width: '22rem', borderRadius:"50%", height:"15rem",margin:"auto",boxShadow:"1px 1px 8px 0px rgb(0 0 0 / 20%), 0px 0px 0px 0 rgb(0 0 0 / 19%)", display:"flex",alignItems:"center",justifyContent:"center"}}>
+                            <Card.Img id="end" class="image" variant="top" style={{background:"transparent",marginTop:"10px"}} src={success} />
+                            <div class="overlay">
+                                <div class="text1">SuccessOverFLOW</div>
+                            </div>
+                        </Card>
+                        
+                    </div>
+                    <div className="col-4 E">
+                        <Card id="motivation" style={{ width: '22rem', borderRadius:"50%", height:"15rem",margin:"auto",boxShadow:"1px 1px 8px 0px rgb(0 0 0 / 20%), 0px 0px 0px 0 rgb(0 0 0 / 19%)", display:"flex",alignItems:"center",justifyContent:"center"}}>
+                            <Card.Img class="image" variant="top" style={{background:"transparent",marginTop:"10px"}} src={meditation} />
+                            <div class="overlay">
+                                <div class="text1">Need Motivation.?</div>
+                            </div>
+                        </Card>
+                    </div>
+                </div>
+                <div className="row text-center">
+                <div className="col-6 F">
+                        <Card id="yoga" style={{ width: '22rem', left:"110px",borderRadius:"50%", height:"15rem",margin:"auto",boxShadow:"1px 1px 8px 0px rgb(0 0 0 / 20%), 0px 0px 0px 0 rgb(0 0 0 / 19%)", display:"flex",alignItems:"center",justifyContent:"center"}}>
+                            <Card.Img class="image" variant="top" style={{background:"transparent",marginTop:"10px"}} src={yoga} />
+                            <div class="overlay">
+                                <div class="text1">Health Issues.?</div>
+                            </div>
+                        </Card>
+                    </div>
+                    <div className="col-6 G">
+                        <Card id="profile" style={{ width: '22rem', right:"110px",borderRadius:"50%", height:"15rem",margin:"auto",boxShadow:"1px 1px 8px 0px rgb(0 0 0 / 20%), 0px 0px 0px 0 rgb(0 0 0 / 19%)", display:"flex",alignItems:"center",justifyContent:"center"}}>
+                            <Card.Img class="image" variant="top" style={{background:"transparent",marginTop:"10px"}} src={profile} />
+                            <div class="overlay">
+                                <div class="text1">Update Profile to showcase your skills.?</div>
+                            </div>
+                        </Card>
+                        
+                    </div>
+                </div>
+                
+            </div>
 
 
             {/* ------------------------------------------------------------------------  */}

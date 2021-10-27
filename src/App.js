@@ -17,12 +17,12 @@ function App() {
      <Header/>
      <Switch>
      <Route path='/' exact>
-     <HomePage  />
+        <HomePage  />
      </Route>
-     <Route path='/login'  >
-     <Login />
+     <Route path='/login' exact >
+        <Login />
      </Route>
-     <Route path='/courses' >
+     <Route path='/courses' exact >
      <Courses/>
      </Route>
      </Switch>

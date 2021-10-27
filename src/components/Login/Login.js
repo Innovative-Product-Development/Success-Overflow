@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import '../../../node_modules/font-awesome/css/font-awesome.min.css';
 import '../Login/Login.css'
@@ -8,9 +8,13 @@ import '../Login/Login.css'
 
 
 const Login = () => {
+    
+  
+        
+    
     return (
         <>
-        
+       
             <div className="container" style={{marginBottom:"140px"}}>
                 <input type="checkbox" id="flip" />
                 <div className="cover">

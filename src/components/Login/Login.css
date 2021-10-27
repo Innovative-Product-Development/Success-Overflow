@@ -218,3 +218,7 @@ body{
   }
 }
 
+.navbar {
+  position: relative;
+}
+
