@@ -1,0 +1,123 @@
+/* .section-course { 
+	background: #f8f8f8;
+    min-height: 450px;
+    background-size: cover !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    background-blend-mode: Darken;
+    padding: 110px 0;
+}
+.section-search:before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgb(0,0,0,0.56);
+}
+
+.banner-wrapper {
+    max-width: 962px;
+    width: 100%;
+    position: relative;
+}
+.banner-wrapper .banner-header {
+	margin-bottom: 30px;
+}
+.banner-wrapper .banner-header h1 {
+    margin-bottom: 15px;
+	font-size: 50px;
+	font-weight: bold;
+	color: #ffffff;
+}
+.banner-wrapper .banner-header h1 span {
+	color: #a662ff;
+}
+.banner-wrapper .banner-header p {
+	font-size: 24px;
+	margin-bottom: 0;
+	color: #fff;
+} */
+
+.top-banner{
+    padding-top: 4rem;
+    display: flex;
+    justify-content: space-between;
+    min-height: 450px;
+    
+}
+.text{
+    text-align: center;
+    padding-top: 10rem;
+    padding-left: 5rem;
+    width:800px;
+}
+span{
+    color:#a662ff;
+}
+.course-title{
+    font-weight: 600;
+    width: 400px;
+}
+.course-image{
+    /* height:200px;
+    width:100%; */
+    padding-left: 10rem;
+    padding-top: 3rem;
+}
+.course-image img{
+    height:400px;
+    width:900px;
+
+}
+.course-para{
+    padding:1rem 0;
+    font-size: 20px;
+    font-weight: 300px;
+}
+.actionbtn{
+    padding:10px;
+    width:200px;
+    background-color:#a662ff ;
+    color:white;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    font-size: 18px;
+}
+.actionbtn:hover{
+    color: black;
+}
+.main{
+    padding-left: 5rem;
+    padding-bottom: 10rem;
+   
+}
+.course-section{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    
+}
+.card{
+    width:400px;
+    margin-bottom: 5rem;
+}
+.part-1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.fa{
+    font-size: 20px;
+}
+.courselink{
+    text-align: center;
+    padding-left: 8rem;
+    color:#a662ff;
+    font-weight: 600;
+}
+.courselink:hover{
+    text-decoration: underline;
+}
