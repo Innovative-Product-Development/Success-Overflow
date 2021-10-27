@@ -7,7 +7,7 @@ import Login from './components/Login/Login';
 import Register from './components/Register/Register'
 import Footer from './components/Footer/Footer';
 import Courses from './components/Courses/Courses';
-
+import Web_dev from './components/Courses/Web_dev/Web_dev'
 
 
 function App() {
@@ -22,8 +22,11 @@ function App() {
      <Route path='/login'  >
      <Login />
      </Route>
-     <Route path='/courses' >
+     <Route path='/courses' exact >
      <Courses/>
+     </Route>
+     <Route path='/courses/web_dev' >
+     <Web_dev/>
      </Route>
      </Switch>
      <Footer/>
