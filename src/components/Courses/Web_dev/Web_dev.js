@@ -140,7 +140,7 @@ const Web_dev = () => {
 				</div>
 			</section> */}
             <div className="top-banner" >
-                <div className="text">
+                <div className="text12">
                     <h1 className="course-title"><span>Web</span> Development</h1>
                     <p className="course-para">Design Code And Beautify</p>
                     <button className="actionbtn">Get Started</button>
@@ -152,7 +152,7 @@ const Web_dev = () => {
 
 
             <div className='main'>
-            <div className="course-section">
+            <div className="course-section1">
                 {course_details.map(course => {
                     return (
                         <div className="card" style={{ width: "400px" }}>
