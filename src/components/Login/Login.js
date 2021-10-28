@@ -41,7 +41,7 @@ const Login = () => {
                             <form action="#">
                                 <div className="input-boxes">
                                     <div className="input-box">
-                                        <i className="fa fa-envelope"></i>
+                                        <i className="fa fa-envelope-o"></i>
                                         <input type="text" placeholder="Enter your email" required />
                                     </div>
                                     <div className="input-box">
@@ -65,7 +65,7 @@ const Login = () => {
                                         <input type="text" placeholder="Enter your name" required />
                                     </div>
                                     <div className="input-box">
-                                        <i className="fa fa-envelope"></i>
+                                        <i className="fa fa-envelope-o"></i>
                                         <input type="text" placeholder="Enter your email" required />
                                     </div>
                                     <div className="input-box">
