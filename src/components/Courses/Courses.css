@@ -46,3 +46,49 @@
 .slider-2,.slider-3{
     padding-top: 50px;
 }
+
+.card123 {
+    position: relative;
+    width: 50%;
+    border-radius: 20px !important;
+    cursor: pointer ;
+  }
+
+
+.image1 {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+
+  .overlay12 {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+    transition: .5s ease;
+    background-color: rgba(0,0,0,0.46);
+  }
+  
+
+  
+  .text123 {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  .carousel-indicators [data-bs-target] {
+      display: none;
+  }

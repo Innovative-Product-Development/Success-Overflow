@@ -22,7 +22,8 @@ const Web_dev = () => {
                 ""
             ],
             "comments": "100",
-            "teacher_description": "PHD"
+            "teacher_description": "PHD",
+            "isrecommended": true
         },
         {
             "course_id": "2",
@@ -38,7 +39,8 @@ const Web_dev = () => {
                 ""
             ],
             "comments": "2000",
-            "teacher_description": "ABC"
+            "teacher_description": "ABC",
+            "isrecommended": true
         },
         {
             "course_id": "3",
@@ -54,7 +56,8 @@ const Web_dev = () => {
                 ""
             ],
             "comments": "200",
-            "teacher_description": "DEF"
+            "teacher_description": "DEF",
+            "istoprating":true
         },
         {
             "course_id": "4",
@@ -187,10 +190,20 @@ const Web_dev = () => {
                 <div className="course-section1">
                     {course_details.map(course => {
                         return (
-                            <div className="card">
+                            <div className="card card12">
                                 <img src={course.course_thumbnail} className="card-img-top" alt="..." />
                                 <div className="card-body">
                                     <h5 className="card-title">{course.course_name}</h5>
+                                    { (course.isrecommended && course.isrecommended === true) && 
+                                    <div className="recommendDiv">
+                                        <button className="recommend">Recommended</button>
+                                    </div>
+                                    }
+                                    { (course.istoprating && course.istoprating === true) && 
+                                    <div className="recommendDiv">
+                                        <button className="recommend">Best Seller</button>
+                                    </div>
+                                    }
                                     <p className="card-text">{course.course_description}</p>
                                     <div className="part-1">
                                         <p className="teacher">Teacher(<i className="fa fa-user" />) : {course.teacher_name}</p>

@@ -59,7 +59,7 @@ span{
     grid-template-columns: 1fr 1fr 1fr;
     
 }
-.card {
+.card12 {
     width:400px !important;
     margin-bottom: 5rem;
 }
@@ -79,4 +79,20 @@ span{
 }
 .courselink:hover{
     text-decoration: underline;
+}
+.recommendDiv{
+    margin: auto;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.recommend{
+    margin: auto;
+    border: 1px solid #a662ff;
+    outline: none;
+    border-radius: 20px;
+    padding: 1px 20px;
+    color: #a662ff;
+    font-weight: 500;
+    background-color: #f4eaff;
 }
