@@ -31,6 +31,7 @@ span{
 
 }
 .course-para{
+    
     padding:1rem 0;
     font-size: 20px;
     font-weight: 300px;
@@ -59,7 +60,7 @@ span{
     
 }
 .card {
-    
+    width:400px !important;
     margin-bottom: 5rem;
 }
 .part-1{

@@ -92,6 +92,7 @@ export default class CustomArrows extends Component {
                 <div className="course-section">
                     <div className="slider-1">
                         <h2 className="course-heading">Web Development</h2>
+                        
                         <Slider {...settings}>
                             <div>
                                 <div class="card" style={{ width: "28rem" }}>
@@ -178,7 +179,9 @@ export default class CustomArrows extends Component {
                                 </div>
                             </div>
                         </Slider>
+                        
                     </div>
+                    
 
 
                     <div className="slider-2">

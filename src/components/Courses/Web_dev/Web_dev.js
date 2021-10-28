@@ -119,6 +119,38 @@ const Web_dev = () => {
             ],
             "comments": "110",
             "teacher_description": "PQR"
+        },
+        {
+            "course_id": "8",
+            "course_name": "Node Js Tutorial in Hindi ",
+            "course_description": "This node js tutorial in Hindi will cover everything you will ever need to learn about Node. We will see topics like node js fs module, os module, Common JS vs ES6 modules, ",
+            "course_thumbnail": "https://media.istockphoto.com/photos/nodejs-inscription-against-laptop-and-code-background-picture-id1347542592?b=1&k=20&m=1347542592&s=170667a&w=0&h=L7Vdq9Ae4cAlL-xZ_EqZog1wixnNUGOJHmEjhW868Xg=",
+            "teacher_name": "Harry Genova",
+            "likes": "54k",
+            "students_enrolled": "23k",
+            "no_of_videos": "1",
+            "video_links": [
+                "https://www.youtube.com/embed/BLl32FvcdVM",
+                ""
+            ],
+            "comments": "99",
+            "teacher_description": "STQ"
+        },
+        {
+            "course_id": "9",
+            "course_name": "MongoDB Crash Course",
+            "course_description": "MongoDB is a complex NoSQL database with a ton of commands and intricacies. In this video I will be breaking down all the most important commands and showing you that MongoDB is actually a lot simpler to get started with than it looks.",
+            "course_thumbnail": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bW9uZ29kYnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+            "teacher_name": "ABC",
+            "likes": "12k",
+            "students_enrolled": "2k",
+            "no_of_videos": "1",
+            "video_links": [
+                "https://www.youtube.com/embed/ofme2o29ngU",
+                ""
+            ],
+            "comments": "10",
+            "teacher_description": "UVW"
         }
     ]
 
@@ -152,30 +184,31 @@ const Web_dev = () => {
 
 
             <div className='main'>
-            <div className="course-section1">
-                {course_details.map(course => {
-                    return (
-                        <div className="card" style={{ width: "400px" }}>
-                            <img src={course.course_thumbnail} className="card-img-top" alt="..." />
-                            <div className="card-body">
-                                <h5 className="card-title">{course.course_name}</h5>
-                                <p className="card-text">{course.course_description}</p>
-                                <div className="part-1">
-                                    <p className="teacher">Teacher(<i className="fa fa-user" />) : {course.teacher_name}</p>
-                                    <p className="likes" style={{ paddingRight: '1rem' }}>Likes(<i className="	fa fa-thumbs-up" />): {course.likes}</p>
+                <div className="course-section1">
+                    {course_details.map(course => {
+                        return (
+                            <div className="card">
+                                <img src={course.course_thumbnail} className="card-img-top" alt="..." />
+                                <div className="card-body">
+                                    <h5 className="card-title">{course.course_name}</h5>
+                                    <p className="card-text">{course.course_description}</p>
+                                    <div className="part-1">
+                                        <p className="teacher">Teacher(<i className="fa fa-user" />) : {course.teacher_name}</p>
+                                        <p className="likes" style={{ paddingRight: '1rem' }}>Likes(<i className="	fa fa-thumbs-up" />): {course.likes}</p>
+                                    </div>
+                                    <div className="part-1">
+                                        <p className="enrolled">Enrolled(<i className="fa fa-user-circle-o" />) : {course.students_enrolled}</p>
+                                        <p className="videos" style={{ paddingRight: '1rem' }}>Videos(<i className="fa fa-code" />) : {course.no_of_videos} </p>
+                                    </div>
+                                    <NavLink to='#' className="courselink">Go to course</NavLink>
                                 </div>
-                                <div className="part-1">
-                                    <p className="enrolled">Enrolled(<i className="fa fa-user-circle-o" />) : {course.students_enrolled}</p>
-                                    <p className="videos" style={{ paddingRight: '1rem' }}>Videos(<i className="fa fa-code" />) : {course.no_of_videos} </p>
-                                </div>
-                                <NavLink to='#' className="courselink">Go to course</NavLink>
                             </div>
-                        </div>
 
-                    )
-                }, [])
-                }
+                        )
+                    }, [])
+                    }
                 </div>
+                
             </div>
             {/* <div className="row row-cols-1 row-cols-md-3 mt-5 g-4" key={course.course_id}>
                         <div className="col" >

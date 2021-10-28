@@ -23,7 +23,7 @@
     height:200px;
 }
 .course-heading{
-    padding-bottom: 2%;
+    padding-bottom: 10px;
 }
 .card-title{
     text-align: center;
@@ -44,5 +44,5 @@
    color:rgb(144, 144, 212);
 }
 .slider-2,.slider-3{
-    padding-top: 6%;
+    padding-top: 50px;
 }
