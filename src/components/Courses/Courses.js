@@ -111,79 +111,79 @@ export default class CustomArrows extends Component {
                                 </div>
                                 <div className="col-3 mb-5">
                                     <div class="card card123" style={{ width: "20rem" }}>
-                                        <img className="image1" src="https://cdn.pixabay.com/photo/2015/04/20/13/17/work-731198__340.jpg" className="card-img-top" alt="..." />
+                                        <img className="image1" src="https://cdn.pixabay.com/photo/2018/05/08/08/44/artificial-intelligence-3382507__480.jpg" className="card-img-top" alt="..." />
                                         <div class="overlay12">
-                                            <div class="text123">Web Development</div>
+                                            <div class="text123">Artificial Intelligence</div>
                                         </div>
                                     </div>
                                 </div> <div className="col-3 mb-5">
                                     <div class="card card123" style={{ width: "20rem" }}>
-                                        <img className="image1" src="https://cdn.pixabay.com/photo/2015/04/20/13/17/work-731198__340.jpg" className="card-img-top" alt="..." />
+                                        <img className="image1" src="https://cdn.pixabay.com/photo/2018/03/10/12/00/teamwork-3213924__480.jpg" className="card-img-top" alt="..." />
                                         <div class="overlay12">
-                                            <div class="text123">Web Development</div>
+                                            <div class="text123">Business Management</div>
                                         </div>
                                     </div>
                                 </div> <div className="col-3 mb-5">
                                     <div class="card card123" style={{ width: "20rem" }}>
-                                        <img className="image1" src="https://cdn.pixabay.com/photo/2015/04/20/13/17/work-731198__340.jpg" className="card-img-top" alt="..." />
+                                        <img className="image1" src="https://images.unsplash.com/photo-1635222654435-788144127d80?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y29yZSUyMGVuZ2luZWVyaW5nfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" className="card-img-top" alt="..." />
                                         <div class="overlay12">
-                                            <div class="text123">Web Development</div>
+                                            <div class="text123">Core Engineering</div>
                                         </div>
                                     </div>
                                 </div> <div className="col-3 mb-5">
                                     <div class="card card123" style={{ width: "20rem" }}>
-                                        <img className="image1" src="https://cdn.pixabay.com/photo/2015/04/20/13/17/work-731198__340.jpg" className="card-img-top" alt="..." />
+                                        <img className="image1" src="https://cdn.pixabay.com/photo/2014/08/22/15/27/facebook-424521__340.jpg" className="card-img-top" alt="..." />
                                         <div class="overlay12">
-                                            <div class="text123">Web Development</div>
+                                            <div class="text123">Social Media Marketing</div>
                                         </div>
                                     </div>
                                 </div> <div className="col-3 mb-5">
                                     <div class="card card123" style={{ width: "20rem" }}>
-                                        <img className="image1" src="https://cdn.pixabay.com/photo/2015/04/20/13/17/work-731198__340.jpg" className="card-img-top" alt="..." />
+                                        <img className="image1" src="https://cdn.pixabay.com/photo/2015/06/08/15/11/typewriter-801921__480.jpg" className="card-img-top" alt="..." />
                                         <div class="overlay12">
-                                            <div class="text123">Web Development</div>
+                                            <div class="text123">Jounalism</div>
                                         </div>
                                     </div>
                                 </div> <div className="col-3 mb-5">
                                     <div class="card card123" style={{ width: "20rem" }}>
-                                        <img className="image1" src="https://cdn.pixabay.com/photo/2015/04/20/13/17/work-731198__340.jpg" className="card-img-top" alt="..." />
+                                        <img className="image1" src="https://cdn.pixabay.com/photo/2020/04/24/10/56/music-5086395__340.png" className="card-img-top" alt="..." />
                                         <div class="overlay12">
-                                            <div class="text123">Web Development</div>
+                                            <div class="text123">Music</div>
                                         </div>
                                     </div>
                                 </div> <div className="col-3 mb-5">
                                     <div class="card card123" style={{ width: "20rem" }}>
-                                        <img className="image1" src="https://cdn.pixabay.com/photo/2015/04/20/13/17/work-731198__340.jpg" className="card-img-top" alt="..." />
+                                        <img className="image1" src="https://cdn.pixabay.com/photo/2016/08/03/14/52/dance-1566852__340.jpg" className="card-img-top" alt="..." />
                                         <div class="overlay12">
-                                            <div class="text123">Web Development</div>
+                                            <div class="text123">Dance</div>
                                         </div>
                                     </div>
                                 </div> <div className="col-3 mb-5">
                                     <div class="card card123" style={{ width: "20rem" }}>
-                                        <img className="image1" src="https://cdn.pixabay.com/photo/2015/04/20/13/17/work-731198__340.jpg" className="card-img-top" alt="..." />
+                                        <img className="image1" src="https://cdn.pixabay.com/photo/2016/11/23/00/37/art-1851483__340.jpg" className="card-img-top" alt="..." />
                                         <div class="overlay12">
-                                            <div class="text123">Web Development</div>
+                                            <div class="text123">Creative Arts</div>
                                         </div>
                                     </div>
                                 </div> <div className="col-3 mb-5">
                                     <div class="card card123" style={{ width: "20rem" }}>
-                                        <img className="image1" src="https://cdn.pixabay.com/photo/2015/04/20/13/17/work-731198__340.jpg" className="card-img-top" alt="..." />
+                                        <img className="image1" src="https://cdn.pixabay.com/photo/2015/05/28/14/53/ux-788002__340.jpg" className="card-img-top" alt="..." />
                                         <div class="overlay12">
-                                            <div class="text123">Web Development</div>
+                                            <div class="text123">Design</div>
                                         </div>
                                     </div>
                                 </div> <div className="col-3 mb-5">
                                     <div class="card card123" style={{ width: "20rem" }}>
-                                        <img className="image1" src="https://cdn.pixabay.com/photo/2015/04/20/13/17/work-731198__340.jpg" className="card-img-top" alt="..." />
+                                        <img className="image1" src="https://cdn.pixabay.com/photo/2018/03/14/12/41/paper-3225109__340.jpg" className="card-img-top" alt="..." />
                                         <div class="overlay12">
-                                            <div class="text123">Web Development</div>
+                                            <div class="text123">Architecture</div>
                                         </div>
                                     </div>
                                 </div> <div className="col-3 mb-5">
                                     <div class="card card123" style={{ width: "20rem" }}>
-                                        <img className="image1" src="https://cdn.pixabay.com/photo/2015/04/20/13/17/work-731198__340.jpg" className="card-img-top" alt="..." />
+                                        <img className="image1" src="https://cdn.pixabay.com/photo/2017/07/10/23/49/club-2492011__340.jpg" className="card-img-top" alt="..." />
                                         <div class="overlay12">
-                                            <div class="text123">Web Development</div>
+                                            <div class="text123">Law</div>
                                         </div>
                                     </div>
                                 </div>
