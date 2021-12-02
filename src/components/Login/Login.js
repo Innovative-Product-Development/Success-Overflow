@@ -1,15 +1,113 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import '../../../node_modules/font-awesome/css/font-awesome.min.css';
 import '../Login/Login.css'
+import { postEndPoint } from "../../request/request"
+import { useHistory } from 'react-router';
 
 
 
 
 
 const Login = () => {
+
+    const [name, setName] = useState("");
+    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
+    const [isStudent, setIsStudent] = useState(true)
+    const history = useHistory();
+
+    const submitLogin = async () => {
+        console.log(email,password)
+         if(email == ""){
+              alert("Please fill name")
+              return
+          }
+          else if(password == ""){
+              alert("Please fill name")
+              return
+          }
+          else if(password.length < 6){
+              alert("Password has to be greater than 7")
+              return
+          }
+      try {
+          const response2 = await postEndPoint('/user/login', { email, password}, null);
+          if (response2) {
+              if (response2.status === 200 && response2.data.token) {
+                  console.log(response2)
+                  localStorage.setItem('token', response2.data.token);
+              }
+          }
+          else {
+              
+              // setIsLoading(false);
+              // setErrMsg("OOPS AN ERROR OCCURED TRY AGAIN LATER!!");
+              // setShowError(true);
+          }
+      }
+      catch (err) {
+          alert(err.response.data.message)
+          // setIsLoading(false);
+          // if (typeof (err.response) !== 'undefined' && typeof (err.response.data) !== 'undefined' && typeof (err.response.data.msg) !== 'undefined') {
+          //     setErrMsg(err.response.data.msg);
+          //     setShowError(true);
+          // }
+          // else {
+          //     setErrMsg("OOPS AN ERROR OCCURED TRY AGAIN LATER!!");
+          //     setShowError(true);
+          // }
+      }
+    }
+          
     
-  
+const submitRegister = async () => {
+      console.log(name,email,password, isStudent)
+        if(name == ""){
+            alert("Please fill name")
+            return
+        }
+        else if(email == ""){
+            alert("Please fill name")
+            return
+        }
+        else if(password == ""){
+            alert("Please fill name")
+            return
+        }
+        else if(password.length < 6){
+            alert("Password has to be greater than 7")
+            return
+        }
+    try {
+        const response2 = await postEndPoint('/user/signup', { name, email, password, isStudent}, null);
+        if (response2) {
+            if (response2.status === 200 && response2.data.token) {
+                console.log(response2)
+                localStorage.setItem('token', response2.data.token);
+                history.push('/details')
+            }
+        }
+        else {
+            
+            // setIsLoading(false);
+            // setErrMsg("OOPS AN ERROR OCCURED TRY AGAIN LATER!!");
+            // setShowError(true);
+        }
+    }
+    catch (err) {
+        alert(err.response.data.message)
+        // setIsLoading(false);
+        // if (typeof (err.response) !== 'undefined' && typeof (err.response.data) !== 'undefined' && typeof (err.response.data.msg) !== 'undefined') {
+        //     setErrMsg(err.response.data.msg);
+        //     setShowError(true);
+        // }
+        // else {
+        //     setErrMsg("OOPS AN ERROR OCCURED TRY AGAIN LATER!!");
+        //     setShowError(true);
+        // }
+    }
+  }
         
     
     return (
@@ -42,15 +140,15 @@ const Login = () => {
                                 <div className="input-boxes">
                                     <div className="input-box">
                                         <i className="fa fa-envelope-o"></i>
-                                        <input type="text" placeholder="Enter your email" required />
+                                        <input type="text"  onInput={(event) => { setEmail(event.target.value); }}  placeholder="Enter your email" required />
                                     </div>
                                     <div className="input-box">
                                         <i className="fa fa-lock"></i>
-                                        <input type="password" placeholder="Enter your password" required />
+                                        <input type="password" value={password} onInput={(event) => { setPassword(event.target.value); }}  placeholder="Enter your password" required />
                                     </div>
                                     <div className="text"><a href="/">Forgot password?</a></div>
                                     <div className="button input-box">
-                                        <input type="submit" value="Submit" />
+                                        <input  onClick={() => { submitLogin() }}  type="submit" value="Submit" />
                                     </div>
                                     <div className="text sign-up-text">Don't have an account? <label for="flip">Sigup now</label></div>
                                 </div>
@@ -62,18 +160,22 @@ const Login = () => {
                                 <div className="input-boxes">
                                     <div className="input-box">
                                         <i className="fa fa-user"></i>
-                                        <input type="text" placeholder="Enter your name" required />
+                                        <input type="text" onInput={(event) => { setName(event.target.value); }}  placeholder="Enter your name"  required/>
                                     </div>
                                     <div className="input-box">
                                         <i className="fa fa-envelope-o"></i>
-                                        <input type="text" placeholder="Enter your email" required />
+                                        <input type="email" onInput={(event) => { setEmail(event.target.value); }} placeholder="Enter your email" required />
                                     </div>
                                     <div className="input-box">
                                         <i className="fa fa-lock"></i>
-                                        <input type="password" placeholder="Enter your password" required />
+                                        <input type="password" value={password} onInput={(event) => { setPassword(event.target.value); }} placeholder="Enter your password" required />
+                                    </div>
+                                    <div className="registrationButtons">
+                                        <div style={{ cursor:"pointer", textAlign:"center" ,backgroundColor : isStudent ? '#7d2ae8' :'rgb(239, 239, 239)' ,marginTop: "2%", border: "none", outline: "none", borderRadius: "5px", fontWeight: "bolder", width: "14rem" }} onClick={() => { setIsStudent(true)}}  ><span className="bn31span" style={{ color: isStudent ? "#fff" : "#7d2ae8",borderRadius: "5px" }}>Student</span></div>
+                                        <div style={{ cursor:"pointer", textAlign:"center" , backgroundColor : !isStudent ? '#7d2ae8' :'rgb(239, 239, 239)',marginTop: "2%", border: "none", outline: "none", borderRadius: "5px", fontWeight: "bolder", width: "18rem"}}  onClick={() => { setIsStudent(false)}} ><span className="bn31span" style={{ color: !isStudent ? "#fff" : "#7d2ae8",borderRadius: "5px" }}>Teacher</span></div>
                                     </div>
                                     <div className="button input-box">
-                                        <input type="submit" value="Submit" />
+                                        <input  onClick={() => { submitRegister() }} type="submit" value="Submit" />
                                     </div>
                                     <div className="text sign-up-text">Already have an account? <label for="flip">Login now</label></div>
                                 </div>

@@ -8,6 +8,7 @@ import Register from './components/Register/Register'
 import Footer from './components/Footer/Footer';
 import Courses from './components/Courses/Courses';
 import Web_dev from './components/Courses/Web_dev/Web_dev'
+import Register2 from './components/Register2/Register2';
 
 
 function App() {
@@ -22,6 +23,10 @@ function App() {
      <Route path='/login' exact >
         <Login />
      </Route>
+     <Route path='/details' exact >
+        <Register2 />
+     </Route>
+     
      <Route path='/courses' exact >
      <Courses/>
      </Route>

@@ -290,7 +290,7 @@ class HomePage extends React.Component {
                  <div id="courses" className="container maincontainer" style={{padding:"30px 110px",display:"block",maxWidth:"95%", width:"100%",backgroundColor:"floralwhite",marginTop:"0px",textAlign:"center"}}>
                      <h2 style={{fontWeight:"700"}}>Want to learn something new.?</h2>
                      <br></br>
-                     <h3 style={{color:"#a662ff"}}>Upgrade you skills with our new and exciting courses</h3>
+                     <h3 style={{color:"#a662ff"}}>Upgrade your skills with our new and exciting courses</h3>
                      
                      <h5 style={{marginTop:"25px",color:"#691ac0"}}>SuccessOverFLOW provides number of courses for wide range of domains like Web Development, Artificial Intelligence, Music, Journalism, Blockchain, etc.</h5>
                      <button className="startButton" onClick={()=>this.coursesPage()}>Lets Get Started.!!</button>
