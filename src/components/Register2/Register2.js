@@ -1,6 +1,7 @@
 import React,{useEffect, useState} from 'react';
 import { useHistory } from 'react-router';
 import { postEndPoint } from "../../request/request"
+import '../../../node_modules/font-awesome/css/font-awesome.min.css';
 
 
 function Register2(props) {
@@ -17,7 +18,7 @@ function Register2(props) {
 
     //student
     const [domain,setDomain] = useState([])   //web development dance music 
-    const [sub_domain, setSub_tech] = useState([])  // () 
+    const [sub_domain, setSub_domain] = useState([])  // () 
     
     //teacher
     const [experience, setExperience] = useState("")
@@ -72,11 +73,34 @@ const submit = async () => {
     return (
         <div>
             <form>
-
+                {/* <div className="input-box">
+                    <i className="fa fa-edit"></i>
+                    <input type="text" className="desc" id="desc">Describe Yourself</input>
+                </div>
+                <div className="input-box">
+                    <i className="fa fa-globe"></i>
+                    <input type="text" className="city" id="city">City</input>
+                </div>
+                <div className="input-box">
+                    <i className="fa fa-globe"></i>
+                    <input type="text" className="state" id="state">State</input>
+                </div>
+                <div className="input-box">
+                    <i className="fa fa-globe"></i>
+                    <label for="exp">Experience</label>
+                    <select name="exp" id="exp" required>
+                        <option value="0-2">0-2 yrs</option>
+                        <option value="2-5">2-5 yrs</option>
+                        <option value="5-10">5-10 yrs</option>
+                        <option value="10-15">10-15 yrs</option>
+                        <option value="more15">more than 15 yrs</option>
+                    </select>
+                </div> */}
+                
             </form>
-            {/* hello from register 2
-            <h1>{isStudent ? "student" : "teacher"}</h1>
-
+            {/* hello from register 2 */}
+            {/* <h1>{isStudent ? "student" : "teacher"}</h1> */}
+{/* 
             {
                 !isStudent && <div>
                     //experience
