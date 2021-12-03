@@ -37,6 +37,7 @@ const Login = () => {
               if (response2.status === 200 && response2.data.token) {
                   console.log(response2)
                   localStorage.setItem('token', response2.data.token);
+                  history.push('/')
               }
           }
           else {
@@ -140,7 +141,7 @@ const submitRegister = async () => {
                                 <div className="input-boxes">
                                     <div className="input-box">
                                         <i className="fa fa-envelope-o"></i>
-                                        <input type="text"  onInput={(event) => { setEmail(event.target.value); }}  placeholder="Enter your email" required />
+                                        <input type="text" value={email}   onInput={(event) => { setEmail(event.target.value); }}  placeholder="Enter your email" required />
                                     </div>
                                     <div className="input-box">
                                         <i className="fa fa-lock"></i>
@@ -160,11 +161,11 @@ const submitRegister = async () => {
                                 <div className="input-boxes">
                                     <div className="input-box">
                                         <i className="fa fa-user"></i>
-                                        <input type="text" onInput={(event) => { setName(event.target.value); }}  placeholder="Enter your name"  required/>
+                                        <input type="text" value={name} onInput={(event) => { setName(event.target.value); }}  placeholder="Enter your name"  required/>
                                     </div>
                                     <div className="input-box">
                                         <i className="fa fa-envelope-o"></i>
-                                        <input type="email" onInput={(event) => { setEmail(event.target.value); }} placeholder="Enter your email" required />
+                                        <input type="email" value={email} onInput={(event) => { setEmail(event.target.value); }} placeholder="Enter your email" required />
                                     </div>
                                     <div className="input-box">
                                         <i className="fa fa-lock"></i>

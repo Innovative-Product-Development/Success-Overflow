@@ -1,0 +1,44 @@
+.inputLabel{
+    font-size: 20px;
+    font-weight: 600;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: rgb(166, 98, 255);
+    margin-top: 14px;
+    text-transform: uppercase;
+}
+.headingsVideonumber{
+    color: rgb(107 27 212);
+}
+
+.mainContainer{
+    border: 1px solid rgb(166, 98, 255);
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.mainBox{
+    text-align: start;
+}
+
+.BoldTextHeading{
+    font-size: 19px;
+    font-weight: 300;
+    font-family:monospace;
+    color: rgb(166, 98, 255);
+    margin-top: 14px;
+}
+.thumbnailButton{
+    display: flex;
+    align-items: center;
+}
+
+.deleteButton {
+    display: flex;
+    justify-content: center;
+}
+
+.documentDivThumbnail{
+    text-align: start;
+    margin-top: 1%;
+
+}
