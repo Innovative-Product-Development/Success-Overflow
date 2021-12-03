@@ -37,6 +37,7 @@ const Login = () => {
               if (response2.status === 200 && response2.data.token) {
                   console.log(response2)
                   localStorage.setItem('token', response2.data.token);
+                  history.push('/')
               }
           }
           else {
@@ -140,7 +141,11 @@ const submitRegister = async () => {
                                 <div className="input-boxes">
                                     <div className="input-box">
                                         <i className="fa fa-envelope-o"></i>
+<<<<<<< HEAD
                                         <input type="text" value={email} onInput={(event) => { setEmail(event.target.value); }}  placeholder="Enter your email" required />
+=======
+                                        <input type="text" value={email}   onInput={(event) => { setEmail(event.target.value); }}  placeholder="Enter your email" required />
+>>>>>>> 5954474cb32e3151820fa8718a0153051a9c468d
                                     </div>
                                     <div className="input-box">
                                         <i className="fa fa-lock"></i>

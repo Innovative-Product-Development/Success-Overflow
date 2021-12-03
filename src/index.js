@@ -6,6 +6,10 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
 import axios from 'axios';
 
+<<<<<<< HEAD
+=======
+// https://successoverflow.herokuapp.com/
+>>>>>>> 5954474cb32e3151820fa8718a0153051a9c468d
 axios.defaults.baseURL = 'https://successoverflow.herokuapp.com/';
 
 // Add a request interceptor

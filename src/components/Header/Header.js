@@ -3,6 +3,10 @@ import { NavLink } from 'react-router-dom'
 import '../Header/Header.css'
 
 const Header = () => {
+
+  function logout() {
+    localStorage.removeItem('token')
+  }
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -26,8 +30,23 @@ const Header = () => {
                 <NavLink className="nav-link" to="/contact">Contact</NavLink>
               </li>
               <li className="nav-item">
+                <NavLink className="nav-link" to="/uploadcourse">Upload Course</NavLink>
+              </li>
+
+              {
+                  ( localStorage.getItem('token') && localStorage.getItem('token')!=null ) ? 
+                  <li className="nav-item">
+                      <NavLink className="nav-link" onClick={()=>{logout()}} to="/">Logout</NavLink>
+                  </li> : <li className="nav-item">
+                <NavLink className="nav-link" to="/login">login</NavLink>
+              </li>
+              }
+              {/* <li className="nav-item">
                 <NavLink className="nav-link" to="/login">Login</NavLink>
               </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/">logout</NavLink>
+              </li> */}
 
 
             </ul>

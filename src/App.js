@@ -9,6 +9,7 @@ import Footer from './components/Footer/Footer';
 import Courses from './components/Courses/Courses';
 import Web_dev from './components/Courses/Web_dev/Web_dev'
 import Register2 from './components/Register2/Register2';
+import UploadCourse from './components/UploadCourse/UploadCourse';
 
 
 function App() {
@@ -25,6 +26,9 @@ function App() {
      </Route>
      <Route path='/details' exact >
         <Register2 />
+     </Route>
+     <Route path='/uploadcourse' exact >
+         <UploadCourse/>
      </Route>
      
      <Route path='/courses' exact >
