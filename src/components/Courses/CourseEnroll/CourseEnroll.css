@@ -1,0 +1,55 @@
+.upper-banner{
+    background-image: linear-gradient(90deg , #7d2ae8,#a17fce);
+    text-align: left;
+    position: relative;
+    color: white;
+}
+.inner-banner{
+    height: 100%;
+    min-height: 250px;
+    padding: 3rem 2rem;
+    margin : 0 auto;
+}
+.inner-content{
+    display: flex;
+    flex-wrap: wrap;
+    margin:0 -12px;
+}
+.content-left{
+    position: relative;
+    min-height: 1px;
+    padding: 0 12px;
+}
+.content-left-para{
+    padding-bottom: 1rem;
+    font-size: 20px;
+}
+.content-left-title{
+    padding-bottom: 1rem;
+}
+.content-left-rating{
+    padding-bottom: 2rem;
+}
+.fas,.fa{
+    color:goldenrod;
+    font-size: 18px;
+}
+.teacher-img{
+    padding-bottom: 1rem;
+}
+.teacher-img img{
+    max-width: 46px;
+    font-size: 18px;
+    height: 46px;
+    width: 46px;
+    margin-right: 8px;
+    border-radius: 50%;
+    background-color: #7d2ae8;
+}
+.enrollbtn{
+    background-color: goldenrod;
+    color:white;
+}
+.enrollbtn:hover{
+    background-color: rgb(206, 179, 111);
+}
