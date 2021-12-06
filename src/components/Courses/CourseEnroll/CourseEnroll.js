@@ -4,7 +4,7 @@ import './CourseEnroll.css';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import logo2 from '../../Images/HTML_Flatline.svg'
 import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import { ProgressBar } from 'react-bootstrap';
+
 
 
 const CourseEnroll = () => {
@@ -12,9 +12,10 @@ const CourseEnroll = () => {
     // const {course_name} = useParams();
 
     const date = new Date();
-    var month = date.getMonth().toString + 1;
-    var day = date.getDate();
-    var newdate = month + day;
+    
+    function getEnrolled(){
+        window.location.href = '/singlecourse';
+    }
 
     return (
         <>
@@ -43,7 +44,7 @@ const CourseEnroll = () => {
                                     </div>
                                 </div>
                                 <div className="enrollbutton" style={{ paddingBottom: '1rem' }}>
-                                    <button target="_blank" type="submit" className="enrollbtn">
+                                    <button target="_blank" type="submit" className="enrollbtn" onClick={()=>getEnrolled()}>
                                         <div style={{ padding: '0.2rem' }}>
                                             <div style={{ paddingBottom: '0.2rem', fontWeight: '600', color: 'white' }}>Enroll For Free</div>
                                             <div style={{ color: 'white' }}>Starts <span style={{ fontWeight: '800', color: 'white' }}>{date.toDateString()}</span></div>
