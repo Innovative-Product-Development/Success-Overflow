@@ -213,7 +213,7 @@ const Web_dev = () => {
                                         <p className="enrolled">Enrolled(<i className="fa fa-user-circle-o" />) : {course.students_enrolled}</p>
                                         <p className="videos" style={{ paddingRight: '1rem' }}>Videos(<i className="fa fa-code" />) : {course.no_of_videos} </p>
                                     </div>
-                                    <NavLink to='#' className="courselink">Go to course</NavLink>
+                                    <NavLink to='/courseenroll' className="courselink">Go to course</NavLink>
                                 </div>
                             </div>
 

@@ -10,7 +10,8 @@ import Courses from './components/Courses/Courses';
 import Web_dev from './components/Courses/Web_dev/Web_dev'
 import Register2 from './components/Register2/Register2';
 import UploadCourse from './components/UploadCourse/UploadCourse';
-
+import CourseEnroll from './components/Courses/CourseEnroll/CourseEnroll';
+import SingleCourse from './components/Courses/SingleCourse/SingleCourse';
 
 function App() {
   return (
@@ -32,11 +33,18 @@ function App() {
      </Route>
      
      <Route path='/courses' exact >
-     <Courses/>
+         <Courses/>
      </Route>
      <Route path='/courses/web_dev' >
-     <Web_dev/>
+         <Web_dev/>
      </Route>
+     <Route path='/courseenroll'>
+        <CourseEnroll/>
+     </Route>
+     <Route path='/singlecourse'>
+        <SingleCourse/>
+     </Route>
+
      </Switch>
      <Footer/>
      

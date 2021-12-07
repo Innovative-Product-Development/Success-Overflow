@@ -1,0 +1,235 @@
+.upper-banner{
+    background-color: #cdbce4;
+    text-align: left;
+    position: relative;
+    color: black;
+}
+.inner-banner{
+    height: 100%;
+    min-height: 250px;
+    padding: 3rem 2rem;
+    margin : 0 auto;
+}
+.inner-content{
+    display: flex;
+    flex-wrap: wrap;
+    margin:0 -12px;
+}
+.content-left{
+    position: relative;
+    min-height: 1px;
+    padding: 0 12px;
+}
+.content-left-para{
+    padding-bottom: 1rem;
+    font-size: 20px;
+}
+.content-left-title{
+    padding-bottom: 1rem;
+}
+.content-left-rating{
+    padding-bottom: 2rem;
+}
+.fas,.fa{
+    color:rgb(241, 176, 10);
+    font-size: 18px;
+    font-weight: 600;
+}
+.teacher-img{
+    padding-bottom: 1rem;
+}
+.teacher-img img{
+    max-width: 46px;
+    font-size: 18px;
+    height: 46px;
+    width: 46px;
+    margin-right: 8px;
+    border-radius: 50%;
+    background-color: #7d2ae8;
+}
+.enrollbtn{
+    width:250px;
+    background-color:rgb(107 27 212);
+    color:black;
+}
+.enrollbtn:hover{
+    background-color: blue;
+}
+.nav-section{
+    border-bottom: 1px solid rgb(209, 198, 198);
+    
+}
+.nav-section .nav{
+    padding-left: 1rem;
+    background-color: white;
+}
+.nav-section .nav-item{
+    font-size: 18px;
+    padding:0.5rem;
+}
+.nav-section .nav-item a{
+    color:black;
+}
+.nav-section .nav-item:hover{
+    text-decoration: underline;
+}
+.nav-section .nav-item a:hover{
+    color:blue;
+    
+}
+.about-section{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    padding-top: 3rem;
+    background-color: white;
+}
+.about-content{
+    padding-left: 3rem;
+}
+.about-para{
+    padding-top: 1rem;
+    font-size: 14px;
+}
+.skillset{
+    padding:2rem 0;
+    border: 1px solid rgb(209,198,198);
+    margin-bottom: 2rem;
+}
+.skillset h5{
+    padding-left: 2rem;
+}
+.skillset span{
+    padding:1rem;
+    font-size: 14px;
+    margin:0 1rem;
+}
+.about-right-content{
+    padding-left: 4rem;
+}
+.course-perks{
+    display: flex;
+    padding-bottom: 2rem;
+}
+.course-perks img{
+    height:70px;
+    width:70px;
+}
+.perk{
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
+}
+.perk h5{
+    font-weight: 600;
+}
+.perk p{
+    font-size: 14px;
+}
+.instructor-section{
+    background-color: white;
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+}
+.instructor-part{
+    display: flex;
+    flex-direction: column;
+    padding-left: 3rem;
+}
+.instructor-content img{
+    height:20px;
+    width:20px;
+}
+.instructor-info{
+    display: flex;
+}
+.instructor-info img{
+    width:150px;
+    height: 150px;
+}
+.more-info{
+    display: flex;
+    flex-direction: column;
+}
+.side-info{
+    display: flex;
+
+}
+.side-info img{
+    height:20px;
+    width:20px;
+}
+.side-info p{
+    padding-left: 1rem;
+    margin-bottom: 0;
+}
+.review-section{
+    background-color: white;
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+}
+.review-part{
+    display: grid;
+    grid-template-columns: 1.5fr 3.5fr;
+    padding-left: 3rem;
+}
+.review-content h3{
+    padding-bottom: 2rem;
+}
+.review-part1{
+    display: flex;
+}
+.review-part1-content{
+    padding-left: 1rem;
+}
+.progress-content{
+    display: flex;
+}
+.progress{
+    width:300px;
+    margin:0 1rem;
+    margin-top: 0.3rem;
+    
+}
+.inner-progress{
+    width:75%;
+    background-color: gold;
+}
+.inner-progress-1{
+    width:25%;
+    background-color: gold;
+}
+.inner-progress-2{
+    width:4%;
+    background-color: gold;
+}
+.inner-progress-3{
+    width:2%;
+    background-color: gold;
+}
+.inner-progress-4{
+    width:1%;
+    background-color: gold;
+}
+.review-right-content{
+    padding-top: 4rem;
+    padding-left: 5rem;
+    padding-right: 2rem;
+}
+.review-right-content h6{
+    color:grey;
+    padding-bottom: 2rem;
+}
+.faq-section{
+    background-color: white;
+    padding-top: 5rem;
+    padding-bottom: 2rem;
+}
+.faq-content h3{
+    padding-bottom: 3rem;
+    text-align: center;
+}
+.container-part{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
