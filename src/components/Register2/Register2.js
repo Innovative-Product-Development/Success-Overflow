@@ -1,22 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router';
 import { postEndPoint } from "../../request/request"
 import '../../../node_modules/font-awesome/css/font-awesome.min.css';
 import './Register2.css';
 import { Col, Row, Button, Form, Container, Spinner, Toast, OverlayTrigger, Tooltip, ButtonGroup } from "react-bootstrap";
 import { MultiSelect } from "react-multi-select-component";
+import { useDispatch, useSelector } from 'react-redux';
+import { setAuth, setToken } from "../../store/authSlice"
+import { useHistory } from 'react-router';
 
 function Register2(props) {
 
     const history = useHistory();
+    const dispatch = useDispatch()
+    const { isAuth, user, isStudent } = useSelector((state)=>state.auth)
 
     // to check if user is a student or a teacher
-    const [isStudent, setIsStudent] = useState(false)
+
     const [description, setDescription] = useState("")
     const [city, setCity] = useState("")
     const [state, setState] = useState("")
     const [profilePic, setProfilePic] = useState("")
     const [selected, setSelected] = useState([]);
+    const [selectedDomains, setSelectedDomains] = useState([]);
     const [options,setOptions] = useState([]);
 
     //student
@@ -29,35 +34,30 @@ function Register2(props) {
 
 
     useEffect(() => {
-        var tok = localStorage.getItem('token');
-        if (tok) {
-            checkIsStudent();
-        }
-        else {
+        if (!isAuth){
             history.push('/login');
         }
     }, [])
 
-    async function checkIsStudent() {
-        try {
-            const res = await postEndPoint('/user/isStudent', null);
-            setIsStudent(res.data.isStudent)
-        }
-        catch (err) {
-            console.log(err);
-            // logOut();
-        }
-    }
+   
 
 
     const submit = async () => {
 
         try {
-            const response2 = await postEndPoint('/user/details', { isStudent, domain, sub_domain, description, city, state, experience, profilePic }, null);
+            // const response2 = await postEndPoint('/user/details', { isStudent, domain, sub_domain, description, city, state, experience, profilePic }, null);
+
+            
+            console.log(isStudent, domain, selected , description, city, state, experience )
+
+            const response2 = await postEndPoint('/user/details', { email:user.email,isStudent, domain, sub_domain:selected, description, city, state, experience }, null);
             if (response2) {
-                if (response2.status === 200 && response2.data.token) {
-                    console.log(response2)
-                    history.push('/details')
+                if (response2.status === 200) {
+                    if(response2.data.message === 'nice work'){
+                        dispatch(setAuth({ user: response2.data.user}))
+                        history.push('/')
+                    }
+                    // history.push('/details')
                 }
             }
             else {
@@ -71,33 +71,85 @@ function Register2(props) {
             alert(err.response.data.message)
         }
     }
-    function dropdownChange(event){
-        setDomain(event.target.value)
-        setSelected([])
+    const optionsDomain = [
+        { label: "Web Development", value: "Web Development" },
+        { label: "Music", value: "Music" },
+        { label: "Dance", value: "Dance"},
+    ]
 
-        if(event.target.value === "Web Developement"){
-            setOptions(
-                [  
-                    { label: "React", value: "React" },
-                    { label: "Node JS", value: "Node JS" },
-                    { label: "PHP", value: "PHP"},
-                    { label: "Angular", value: "Angular" },
-                    { label: "Vue JS", value: "Vue JS" },
-                    { label: "Spring", value: "Spring" },
-                    { label: "Flask", value: "Flask" },
-                    { label: "Laravel", value: "Laravel" },
-                    { label: "Express JS", value: "Express JS" }
-                ]
-            )
-        }else if(event.target.value === "Dance"){
-            setOptions(
-                [  
-                    { label: "Hip Hop", value: "Hip Hop" },
-                    { label: "Jazz", value: "Jazz" },
-                    { label: "Folk Dance", value: "Folk Dance"}
-                ]
-            )
-        }
+    useEffect(()=>{
+        setOptions([])
+        setSelected([])
+        const d=[]
+        selectedDomains.map((dom)=>{
+            d.push(dom.label)
+
+            if(dom.label === "Web Development"){
+                        setOptions((option)=>{
+                            
+                            return [  ...option,
+                                    { domain: "Web Development", label: "React", value: "React" },
+                                    { domain: "Web Development", label: "Node JS", value: "Node JS" },
+                                    { domain: "Web Development", label: "PHP", value: "PHP"},
+                                    { domain: "Web Development", label: "Angular", value: "Angular" },
+                                    { domain: "Web Development", label: "Vue JS", value: "Vue JS" },
+                                    { domain: "Web Development", label: "Spring", value: "Spring" },
+                                    { domain: "Web Development", label: "Flask", value: "Flask" },
+                                    { domain: "Web Development", label: "Laravel", value: "Laravel" },
+                                    { domain: "Web Development", label: "Express JS", value: "Express JS" }
+                                ]
+                        })
+            }
+
+            if(dom.label === "Dance"){
+                setOptions((option)=>{
+                    
+                        return [  ...option,
+                            { domain: "Dance", label: "Hip Hop", value: "Hip Hop" },
+                            { domain: "Dance", label: "Jazz", value: "Jazz" },
+                            { domain: "Dance", label: "Folk Dance", value: "Folk Dance"}
+                        ]
+                })
+    }
+
+
+        })
+        setDomain(d)
+
+        
+        
+
+
+
+    },[selectedDomains])
+    function dropdownChange(){
+        
+        setSelected([])
+        console.log(domain)
+
+        // if(domain.){
+        //     setOptions(
+        //         [  
+        //             { label: "React", value: "React" },
+        //             { label: "Node JS", value: "Node JS" },
+        //             { label: "PHP", value: "PHP"},
+        //             { label: "Angular", value: "Angular" },
+        //             { label: "Vue JS", value: "Vue JS" },
+        //             { label: "Spring", value: "Spring" },
+        //             { label: "Flask", value: "Flask" },
+        //             { label: "Laravel", value: "Laravel" },
+        //             { label: "Express JS", value: "Express JS" }
+        //         ]
+        //     )
+        // }else if(event.target.value === "Dance"){
+        //     setOptions(
+        //         [  
+        //             { label: "Hip Hop", value: "Hip Hop" },
+        //             { label: "Jazz", value: "Jazz" },
+        //             { label: "Folk Dance", value: "Folk Dance"}
+        //         ]
+        //     )
+        // }
     }
 
 
@@ -152,7 +204,7 @@ function Register2(props) {
                         <br></br>
                         
 
-                        <Form.Group className="inputDiv" style={{textAlign:"start"}}>
+                        {/* <Form.Group className="inputDiv" style={{textAlign:"start"}}>
                             <Form.Label className="customBoldFont inputLabel" for="selectDropdown">Domain: </Form.Label>
                                 <Form.Select id="selectDropdown" onChange={(event)=>{dropdownChange(event)}} aria-label="Default select example" required>
                                 
@@ -161,6 +213,16 @@ function Register2(props) {
                                     <option value="Music">Music</option>
                                     <option value="Dance">Dance</option>
                                 </Form.Select>
+                        </Form.Group> */}
+                        <Form.Group className="inputDiv" style={{textAlign:"start"}}>
+                        <Form.Label className="customBoldFont inputLabel" for="selectSubDropdown">Domain: </Form.Label>
+                            <MultiSelect
+                                id="selectSubDropdown"
+                                options={optionsDomain}
+                                value={selectedDomains}
+                                onChange={setSelectedDomains}
+                                labelledBy="Select"
+                            />
                         </Form.Group>
                         <br/>
                         <Form.Group className="inputDiv" style={{textAlign:"start"}}>
@@ -176,7 +238,7 @@ function Register2(props) {
                         <br/>
                         {!isStudent && <Form.Group className="inputDiv" style={{textAlign:"start"}}>
                             <Form.Label className="customBoldFont inputLabel" for="selectDropdown">Experience: </Form.Label>
-                                <Form.Select id="selectDropdown" onChange={(event)=>{dropdownChange(event)}} aria-label="Default select example" required>
+                                <Form.Select id="selectDropdown" onChange={(event)=>{setExperience(event.target.value)}} aria-label="Default select example" required>
                                 
                                     <option style={{color:"lightgray"}}>Select Experience</option>
                                     <option value="0-2">0-2 years</option>
@@ -193,16 +255,7 @@ function Register2(props) {
                 </div>
                 <br />
             </Container>
-            {/* hello from register 2 */}
-            {/* <h1>{isStudent ? "student" : "teacher"}</h1> */}
-            {/* 
-            {
-                !isStudent && <div>
-                    //experience
-                </div>
-            }
-
-            <h1></h1> */}
+           
         </div>
     );
 }

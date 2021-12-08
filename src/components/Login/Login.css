@@ -17,6 +17,7 @@ body{
   display: flex;
   justify-content: space-evenly;
   transition: all 12s ease;
+  margin-top: 17px;
 }
 .container{
   display: flex;
@@ -141,7 +142,7 @@ body{
   margin: 10px 0;
   position: relative;
 }
-.form-content .input-box input{
+.form-content .input-box div{
   height: 100%;
   width: 100%;
   outline: none;
@@ -149,7 +150,10 @@ body{
   padding: 0 30px;
   font-size: 16px;
   font-weight: 500;
-  border-bottom: 2px solid rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* border-bottom: 2px solid rgba(0,0,0,0.2); */
   transition: all 0.3s ease;
 }
 .form-content .input-box input:focus,
@@ -174,9 +178,9 @@ body{
 }
 .forms .form-content .button{
   color: #fff;
-  margin-top: 40px;
+  margin-top: 30px;
 }
-.forms .form-content .button input{
+.forms .form-content .button div{
   color: #fff;
   background: #7d2ae8;
   border-radius: 6px;

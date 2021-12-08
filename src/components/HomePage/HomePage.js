@@ -287,7 +287,7 @@ class HomePage extends React.Component {
                          <p className="sub-title">Are you looking for an overall development? Now it's very simple, Sign up with successoverflow</p>
                      </div>
                  </div>
-                 <div id="courses" className="container maincontainer" style={{padding:"30px 110px",display:"block",maxWidth:"95%", width:"100%",backgroundColor:"floralwhite",marginTop:"0px",textAlign:"center"}}>
+                 <div id="courses" className="maincontainer container" style={{padding:"30px 110px",display:"block",backgroundColor:"floralwhite",marginTop:"0px",textAlign:"center"}}>
                      <h2 style={{fontWeight:"700"}}>Want to learn something new.?</h2>
                      <br></br>
                      <h3 style={{color:"#a662ff"}}>Upgrade your skills with our new and exciting courses</h3>

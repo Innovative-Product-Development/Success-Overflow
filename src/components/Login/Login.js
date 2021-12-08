@@ -4,20 +4,23 @@ import '../../../node_modules/font-awesome/css/font-awesome.min.css';
 import '../Login/Login.css'
 import { postEndPoint } from "../../request/request"
 import { useHistory } from 'react-router';
+import { useDispatch } from 'react-redux'
+import { setToken, setAuth } from '../../store/authSlice'
 
 
 
 
 
-const Login = () => {
+function Login(){
 
+    const dispatch = useDispatch();
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
     const [isStudent, setIsStudent] = useState(true)
     const history = useHistory();
 
-    const submitLogin = async () => {
+    async function submitLogin(){
         console.log(email,password)
          if(email == ""){
               alert("Please fill name")
@@ -36,8 +39,11 @@ const Login = () => {
           if (response2) {
               if (response2.status === 200 && response2.data.token) {
                   console.log(response2)
-                  localStorage.setItem('token', response2.data.token);
-                  history.push('/')
+                  
+                dispatch(setToken({token: response2.data.token}))
+                dispatch(setAuth({ user: response2.data.user}))
+                localStorage.setItem('token', response2.data.token);
+                history.push('/')
               }
           }
           else {
@@ -48,7 +54,7 @@ const Login = () => {
           }
       }
       catch (err) {
-          alert(err.response.data.message)
+          alert(err.response)
           // setIsLoading(false);
           // if (typeof (err.response) !== 'undefined' && typeof (err.response.data) !== 'undefined' && typeof (err.response.data.msg) !== 'undefined') {
           //     setErrMsg(err.response.data.msg);
@@ -62,7 +68,7 @@ const Login = () => {
     }
           
     
-const submitRegister = async () => {
+async function submitRegister(){
       console.log(name,email,password, isStudent)
         if(name == ""){
             alert("Please fill name")
@@ -85,6 +91,8 @@ const submitRegister = async () => {
         if (response2) {
             if (response2.status === 200 && response2.data.token) {
                 console.log(response2)
+                dispatch(setToken({token: response2.data.token}))
+                dispatch(setAuth({ user: response2.data.user}))
                 localStorage.setItem('token', response2.data.token);
                 history.push('/details')
             }
@@ -97,7 +105,7 @@ const submitRegister = async () => {
         }
     }
     catch (err) {
-        alert(err.response.data.message)
+        alert(err.response)
         // setIsLoading(false);
         // if (typeof (err.response) !== 'undefined' && typeof (err.response.data) !== 'undefined' && typeof (err.response.data.msg) !== 'undefined') {
         //     setErrMsg(err.response.data.msg);
@@ -114,7 +122,7 @@ const submitRegister = async () => {
     return (
         <>
        
-            <div className="container" style={{marginBottom:"140px"}}>
+            <div className="container" style={{marginBottom:"140px",maxWidth: "850px"}}>
                 <input type="checkbox" id="flip" />
                 <div className="cover">
                     <div className="front">
@@ -149,7 +157,8 @@ const submitRegister = async () => {
                                     </div>
                                     <div className="text"><a href="/">Forgot password?</a></div>
                                     <div className="button input-box">
-                                        <input  onClick={() => { submitLogin() }}  type="submit" value="Submit" />
+                                        <div  onClick={() => { submitLogin() }}>Submit</div>
+                                        
                                     </div>
                                     <div className="text sign-up-text">Don't have an account? <label for="flip">Sigup now</label></div>
                                 </div>
@@ -176,7 +185,7 @@ const submitRegister = async () => {
                                         <div style={{ cursor:"pointer", textAlign:"center" , backgroundColor : !isStudent ? '#7d2ae8' :'rgb(239, 239, 239)',marginTop: "2%", border: "none", outline: "none", borderRadius: "5px", fontWeight: "bolder", width: "18rem"}}  onClick={() => { setIsStudent(false)}} ><span className="bn31span" style={{ color: !isStudent ? "#fff" : "#7d2ae8",borderRadius: "5px" }}>Teacher</span></div>
                                     </div>
                                     <div className="button input-box">
-                                        <input  onClick={() => { submitRegister() }} type="submit" value="Submit" />
+                                        <div  onClick={() => { submitRegister() }}>Submit</div>
                                     </div>
                                     <div className="text sign-up-text">Already have an account? <label for="flip">Login now</label></div>
                                 </div>

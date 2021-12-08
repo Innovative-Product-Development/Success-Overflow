@@ -6,13 +6,17 @@ import { MultiSelect } from "react-multi-select-component";
 import "../UploadCourse/UploadCourse.css"
 import uuid from 'react-uuid'
 import { AiFillDelete, BsEye, GrAddCircle } from 'react-icons/all';
+import { useSelector, useDispatch } from "react-redux"
 
 
 function UploadCourse(props) {
 
     const history = useHistory();
 
-    const [isStudent, setIsStudent] = useState(false)
+    const dispatch = useDispatch()
+
+    const { isAuth, isStudent } = useSelector((state)=>state.auth)
+
     const [course_name,setCourseName] = useState("")
     const [course_description,setCourseDescription]  = useState("")
     const [course_domain, setCourseDomain] = useState("")
@@ -27,25 +31,16 @@ function UploadCourse(props) {
 
 
     useEffect(()=>{
-        var tok = localStorage.getItem('token');
-        if (tok) {
-            checkIsStudent();
-        }
-        else {
+        
+        if (!isAuth){
             history.push('/login');
+        }
+        else if(isStudent){
+            history.push('/');
         }
     },[])
    
-    async function checkIsStudent() {
-        try {
-            const res = await postEndPoint('/user/isStudent', null);
-            setIsStudent(res.data.isStudent)
-        }
-        catch (err) {
-            console.log(err);
-            // logOut();
-        }
-    }
+
 
     async function submit(){
         // console.log(course_name, course_description, course_domain, selected)
@@ -54,10 +49,12 @@ function UploadCourse(props) {
         try {
             const response2 = await postEndPoint('/course', { course_name, course_description, course_domain, selected, course_videos:video, course_thumbnail }, null);
             if (response2) {
-                if (response2.status === 200 && response2.data.token) {
-                    console.log(response2)
-                    localStorage.setItem('token', response2.data.token);
-                    history.push('/')
+                if (response2.status === 200) {
+                    if( response2.data.message === "success"){
+                        alert("course uploaded successfully")
+                        history.push('/')
+                    }
+                    
                 }
             }
             else {

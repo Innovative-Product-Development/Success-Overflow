@@ -1,11 +1,21 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import '../Header/Header.css'
+import { useDispatch, useSelector } from 'react-redux';
+import { setAuth, setToken } from "../../store/authSlice"
+import { useHistory } from 'react-router';
 
 const Header = () => {
 
+  const history = useHistory();
+  const dispatch = useDispatch()
+  const { isAuth, user, isStudent } = useSelector((state)=>state.auth)
+
   function logout() {
-    localStorage.removeItem('token')
+    dispatch(setToken({token:''}))
+    dispatch(setAuth({user:null}))
+    localStorage.removeItem("token")
+    history.push("/")
   }
   return (
     <>
@@ -20,25 +30,28 @@ const Header = () => {
               <li className="nav-item">
                 <NavLink className="nav-link active" aria-current="page" to="/">Home</NavLink>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <NavLink className="nav-link" to="/about">About</NavLink>
-              </li>
+              </li> */}
               <li className="nav-item">
                 <NavLink className="nav-link" to="/courses">Courses</NavLink>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <NavLink className="nav-link" to="/contact">Contact</NavLink>
-              </li>
-              <li className="nav-item">
+              </li> */}
+              {
+                !isStudent && 
+                <li className="nav-item">
                 <NavLink className="nav-link" to="/uploadcourse">Upload Course</NavLink>
               </li>
+              }
 
               {
-                  ( localStorage.getItem('token') && localStorage.getItem('token')!=null ) ? 
+                  ( isAuth ) ? 
                   <li className="nav-item">
                       <NavLink className="nav-link" onClick={()=>{logout()}} to="/">Logout</NavLink>
                   </li> : <li className="nav-item">
-                <NavLink className="nav-link" to="/login">login</NavLink>
+                <NavLink className="nav-link" to="/login">Sign Up</NavLink>
               </li>
               }
               {/* <li className="nav-item">
