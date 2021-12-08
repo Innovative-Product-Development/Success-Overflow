@@ -23,7 +23,7 @@ body{
   display: flex;
   margin-top:5%;
   position: relative;
-  max-width: 850px;
+  max-width: 850px !important;
   width: 100%;
   background: #fff;
   padding: 40px 30px;
