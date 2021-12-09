@@ -45,6 +45,7 @@ function UploadCourse(props) {
     async function submit(){
         // console.log(course_name, course_description, course_domain, selected)
         console.log(video, course_thumbnail)
+        console.log({ course_name, course_description, course_domain, selected, course_videos:video, course_thumbnail })
 
         try {
             const response2 = await postEndPoint('/course', { course_name, course_description, course_domain, selected, course_videos:video, course_thumbnail }, null);
@@ -143,6 +144,18 @@ function ValidationOnChange(event) {
             }
             setVideo(temp4);
             break;
+        case "videoLink":
+                let temp5 = Array.from(video);
+    
+                let t3 = event.target.id.toString().split(",")[1];
+                for (let index2 = 0; index2 < temp5.length; index2++) {
+                    if (temp5[index2].key === t3) {
+                        temp5[index2].video_link = event.target.value;
+                        break;
+                    }
+                }
+                setVideo(temp5);
+                break;
         default:
             break;
     }
@@ -353,7 +366,9 @@ function uploadFiles(type, id, index) {
                                                                 <Form.Label className="BoldTextHeading" >Video Link</Form.Label>
                                                                 </Col>
                                                                 <Col sm={6} md={6} lg={6} >
-                                                                <Button onClick={() => { uploadFiles(2, value.key, index); }} style={{ border: "none", outline: "none", background: "rgb(166, 98, 255)", fontWeight: "500", paddingLeft: "20px", paddingRight: "20px", marginTop: "0.5%" }} >Upload Video Lecture</Button>
+                                                                <Form.Control name="videoLink" className="customInputField" id={"videolink," + value.key} type="text" rows={5} defaultValue={value.video_link && value.video_link.length > 0 ? value.video_link : ""} onInput={(event) => { ValidationOnChange(event); }} />
+                                                            
+                                                                {/* <Button onClick={() => { uploadFiles(2, value.key, index); }} style={{ border: "none", outline: "none", background: "rgb(166, 98, 255)", fontWeight: "500", paddingLeft: "20px", paddingRight: "20px", marginTop: "0.5%" }} >Upload Video Lecture</Button> */}
                                                                 </Col>
                                                                 </Row>
                                                                 {/* onClick={() => { uploadFiles(2, value.key, index); }} */}
