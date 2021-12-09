@@ -1,5 +1,5 @@
 import React from 'react';
-import {FaQuora, FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram, FaMediumM, FaMapMarkerAlt} from 'react-icons/fa'
+import {FaQuora, FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram, FaMediumM} from 'react-icons/fa'
 import "./Footer.css"
 
 const Footer = () => {
@@ -60,11 +60,11 @@ const Footer = () => {
                         <div class="footer-widget footer-menu">
                             <h2 class="footer-title">For Mentee</h2>
                             <ul>
-                                <li><a href="#">Search Mentors</a></li>
-                                <li><a href="#">Login</a></li>
+                                <li><a href="/">Search Mentors</a></li>
+                                <li><a href="/login">Login</a></li>
                                 {/* <li><a onClick={this.handleSignup} href="#">Register</a></li> */}
-                                <li><a href="#">Booking</a></li>
-                                <li><a href="#">Mentee Dashboard</a></li>
+                                <li><a href="/">Booking</a></li>
+                                <li><a href="/">Mentee Dashboard</a></li>
                             </ul>
                         </div>
                         {/* <!-- /Footer Widget --> */}
@@ -77,11 +77,11 @@ const Footer = () => {
                         <div class="footer-widget footer-menu">
                             <h2 class="footer-title">For Mentors</h2>
                             <ul>
-                                <li><a href="#">Appointments</a></li>
-                                <li><a href="#">Chat</a></li>
-                                <li><a href="#">Login</a></li>
-                                <li><a href="#">Register</a></li>
-                                <li><a href="#">Mentor Dashboard</a></li>
+                                <li><a href="/">Appointments</a></li>
+                                <li><a href="/">Chat</a></li>
+                                <li><a href="/">Login</a></li>
+                                <li><a href="/">Register</a></li>
+                                <li><a href="/">Mentor Dashboard</a></li>
                             </ul>
                         </div>
                         {/* <!-- /Footer Widget --> */}

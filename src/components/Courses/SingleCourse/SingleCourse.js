@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { useHistory, useParams } from 'react-router-dom';
+// import { useHistory, useParams } from 'react-router-dom';
 import './SingleCourse.css';
 import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../../../../node_modules/font-awesome/css/font-awesome.min.css';
 import "../../../../node_modules/video-react/dist/video-react.css";
-import { Player } from 'video-react';
-import poster from '../../../../src/assets/images/avatar.png';
+// import { Player } from 'video-react';
+// import poster from '../../../../src/assets/images/avatar.png';
 
 //https://youtube.googleapis.com/youtube/v3/playlists?part=contentDetails%2Csnippet&id=PLr6-GrHUlVf_ZNmuQSXdS197Oyr1L9sPB&maxResults=40&key=AIzaSyBwGVGXLo-toCzGy930cRDWKBcYoIcMeZo
 
@@ -13,7 +13,7 @@ const SingleCourse = (props) => {
 
     const [singleCourse,setSingleCourse] = useState([]);
     const [vid,setVid] = useState("");
-    const [title,setTitle] = useState("");
+    // const [title,setTitle] = useState("");
     const [counter,setCounter] = useState(0)
     
     useEffect(()=>{
@@ -27,7 +27,7 @@ const SingleCourse = (props) => {
             })
             setSingleCourse(result);
             setVid(result.vid);
-            setTitle(result.title)
+            // setTitle(result.title)
         })
 
     },[])
@@ -35,7 +35,7 @@ const SingleCourse = (props) => {
     const renderVideo= () =>{
         return(
             <div className="video-container">
-                <iframe width="1050" height="450" src={"//www.youtube.com/embed/"+vid+"?rel=0"} frameBorder="0" allowFullScreen></iframe>
+                <iframe width="1050" title="myFrame" height="450" src={"//www.youtube.com/embed/"+vid+"?rel=0"} frameBorder="0" allowFullScreen></iframe>
             </div>
         )
     }
@@ -54,7 +54,7 @@ const SingleCourse = (props) => {
                     singleCourse.map((item,index)=>{
                         return <li key={item.vid} className={counter===index? "video-collection myItem" : "myItem"} onClick={()=>{
                             setVid(item.vid);
-                            setTitle(item.title);
+                            // setTitle(item.title);
                             setCounter(index);
                         }}>{item.title}</li>
                     })

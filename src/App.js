@@ -4,10 +4,9 @@ import Header from './components/Header/Header';
 import HomePage from './components/HomePage/HomePage';
 import {Route,Switch} from 'react-router-dom';
 import Login from './components/Login/Login';
-import Register from './components/Register/Register'
 import Footer from './components/Footer/Footer';
 import Courses from './components/Courses/Courses';
-import Web_dev from './components/Courses/Web_dev/Web_dev'
+import WebDev from './components/Courses/Web_dev/Web_dev'
 import Register2 from './components/Register2/Register2';
 import UploadCourse from './components/UploadCourse/UploadCourse';
 import CourseEnroll from './components/Courses/CourseEnroll/CourseEnroll';
@@ -36,7 +35,7 @@ function App() {
          <Courses/>
      </Route>
      <Route path='/courses/web_dev' >
-         <Web_dev/>
+         <WebDev/>
      </Route>
      <Route path='/courseenroll'>
         <CourseEnroll/>

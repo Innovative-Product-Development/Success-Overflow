@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import '../Web_dev/Web_dev.css'
 import logo from '../../Images/web_dev.svg'
 import '../../../../node_modules/font-awesome/css/font-awesome.min.css'
@@ -181,7 +181,7 @@ const Web_dev = () => {
                     <button className="actionbtn">Get Started</button>
                 </div>
                 <div className="course-image">
-                    <img src={logo}></img>
+                    <img alt="logo" src={logo}></img>
                 </div>
             </div>
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { useHistory, useParams } from 'react-router-dom';
+
 import './CourseEnroll.css';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import logo2 from '../../Images/HTML_Flatline.svg'
@@ -39,7 +39,7 @@ const CourseEnroll = () => {
                                 </div>
                                 <div className="teacher-img">
                                     <div style={{ display: 'flex', alignItems: 'center' }}>
-                                        <img src="https://yt3.ggpht.com/ytc/AKedOLT3EnMXtIOvDT4CL7obl0-acSZCBhMuapXBQFksVQ=s176-c-k-c0x00ffffff-no-rj-mo"></img>
+                                        <img alt="thumbnail" src="https://yt3.ggpht.com/ytc/AKedOLT3EnMXtIOvDT4CL7obl0-acSZCBhMuapXBQFksVQ=s176-c-k-c0x00ffffff-no-rj-mo"></img>
                                         <p style={{ fontSize: '20px', paddingLeft: '1rem', paddingTop: '1rem', fontWeight: '600' }}>Harry Bhai</p>
                                     </div>
                                 </div>
@@ -57,7 +57,7 @@ const CourseEnroll = () => {
                             </div>
                             <div className="content-right">
                                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingLeft: '10rem', paddingTop: '3rem' }}>
-                                    <img src={logo2} style={{ height: '400px', width: '500px' }}></img>
+                                    <img alt="thumbnail" src={logo2} style={{ height: '400px', width: '500px' }}></img>
                                 </div>
                             </div>
                         </div>
@@ -101,28 +101,28 @@ const CourseEnroll = () => {
                     <div className="about-right">
                         <div className="about-right-content">
                             <div className="course-perks">
-                                <img src="https://cdn.iconscout.com/icon/free/png-64/certificate-548-861750.png"></img>
+                                <img alt="thumbnail" src="https://cdn.iconscout.com/icon/free/png-64/certificate-548-861750.png"></img>
                                 <div className="perk">
                                     <h5>Shareable Certificate</h5>
                                     <p>Earn a Certificate upon completion</p>
                                 </div>
                             </div>
                             <div className="course-perks">
-                                <img src="https://cdn.iconscout.com/icon/free/png-64/deadline-paper-3570296-3006226.png"></img>
+                                <img alt="thumbnail" src="https://cdn.iconscout.com/icon/free/png-64/deadline-paper-3570296-3006226.png"></img>
                                 <div className="perk">
                                     <h5>Flexible Deadlines</h5>
                                     <p>Reset deadlines in accordance to your schedule.</p>
                                 </div>
                             </div>
                             <div className="course-perks">
-                                <img src="https://cdn.iconscout.com/icon/free/png-64/globe-globel-world-international-logistic-transport-travel-3-20457.png"></img>
+                                <img alt="thumbnail" src="https://cdn.iconscout.com/icon/free/png-64/globe-globel-world-international-logistic-transport-travel-3-20457.png"></img>
                                 <div className="perk">
                                     <h5>100% Online</h5>
                                     <p>Start instantly and learn at your own schedule.</p>
                                 </div>
                             </div>
                             <div className="course-perks">
-                                <img src="https://cdn.iconscout.com/icon/free/png-64/notepad-2646573-2201003.png"></img>
+                                <img alt="thumbnail" src="https://cdn.iconscout.com/icon/free/png-64/notepad-2646573-2201003.png"></img>
                                 <div className="perk">
                                     <h5>English</h5>
                                     <p>Subtitles: Arabic, French, German, Russian, English, Spanish</p>
@@ -136,20 +136,20 @@ const CourseEnroll = () => {
                     <div className="instructor-part">
                         <div className="instructor-content">
                             <h4>Instructors</h4>
-                            <p>Instructor rating <img src="https://cdn.iconscout.com/icon/free/png-64/teacher-1812069-1537600.png"></img>&nbsp;4.8/5 (5200 ratings)</p>
+                            <p>Instructor rating <img alt="thumbnail" src="https://cdn.iconscout.com/icon/free/png-64/teacher-1812069-1537600.png"></img>&nbsp;4.8/5 (5200 ratings)</p>
                         </div>
                         <div className="instructor-info">
-                            <img src="https://yt3.ggpht.com/ytc/AKedOLT3EnMXtIOvDT4CL7obl0-acSZCBhMuapXBQFksVQ=s176-c-k-c0x00ffffff-no-rj-mo"></img>
+                            <img alt="thumbnail" src="https://yt3.ggpht.com/ytc/AKedOLT3EnMXtIOvDT4CL7obl0-acSZCBhMuapXBQFksVQ=s176-c-k-c0x00ffffff-no-rj-mo"></img>
                             <div style={{ paddingLeft: '3rem' }}>
                                 <h4>Harry Bhai</h4>
                                 <p>Lecturer | YouTuber</p>
                                 <div className="more-info">
                                     <div className="side-info">
-                                        <img src="https://cdn.iconscout.com/icon/free/png-64/users-144-457814.png"></img>
+                                        <img alt="thumbnail" src="https://cdn.iconscout.com/icon/free/png-64/users-144-457814.png"></img>
                                         <p><b>46,578</b> learners</p>
                                     </div>
                                     <div className="side-info">
-                                        <img src="https://cdn.iconscout.com/icon/free/png-64/book-1169-433812.png"></img>
+                                        <img alt="thumbnail" src="https://cdn.iconscout.com/icon/free/png-64/book-1169-433812.png"></img>
                                         <p><b>8</b> courses</p>
                                     </div>
                                 </div>

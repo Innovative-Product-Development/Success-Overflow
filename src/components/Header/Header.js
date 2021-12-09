@@ -9,7 +9,7 @@ const Header = () => {
 
   const history = useHistory();
   const dispatch = useDispatch()
-  const { isAuth, user, isStudent } = useSelector((state)=>state.auth)
+  const { isAuth, isStudent } = useSelector((state)=>state.auth)
 
   function logout() {
     dispatch(setToken({token:''}))

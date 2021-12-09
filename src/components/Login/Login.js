@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 
 import '../../../node_modules/font-awesome/css/font-awesome.min.css';
 import '../Login/Login.css'
@@ -22,11 +22,11 @@ function Login(){
 
     async function submitLogin(){
         console.log(email,password)
-         if(email == ""){
+         if(email === ""){
               alert("Please fill name")
               return
           }
-          else if(password == ""){
+          else if(password === ""){
               alert("Please fill name")
               return
           }
@@ -70,15 +70,15 @@ function Login(){
     
 async function submitRegister(){
       console.log(name,email,password, isStudent)
-        if(name == ""){
+        if(name === ""){
             alert("Please fill name")
             return
         }
-        else if(email == ""){
+        else if(email === ""){
             alert("Please fill name")
             return
         }
-        else if(password == ""){
+        else if(password === ""){
             alert("Please fill name")
             return
         }

@@ -1,18 +1,18 @@
-import React, { Component,  } from 'react';
-import { useHistory } from "react-router-dom";
+import React from 'react';
+// import { useHistory } from "react-router-dom";
 import "./HomePage.css"
-import {Helmet} from "react-helmet";
+// import {Helmet} from "react-helmet";
 import OwlCarousel from 'react-owl-carousel';  
 import 'owl.carousel/dist/assets/owl.carousel.css';  
 import 'owl.carousel/dist/assets/owl.theme.default.css';  
 import {AiFillStar,AiOutlineStar} from 'react-icons/ai';
 import { Card } from 'react-bootstrap';
 import {FaMapMarkerAlt} from 'react-icons/fa';
-import dm from "../../assets/img/path-img1.jpg"
-import ui from "../../assets/img/path-img2.jpg"
-import it from "../../assets/img/path-img3.jpg"
-import fd from "../../assets/img/path-img4.jpg"
-import LineTo from 'react-lineto';
+// import dm from "../../assets/img/path-img1.jpg"
+// import ui from "../../assets/img/path-img2.jpg"
+// import it from "../../assets/img/path-img3.jpg"
+// import fd from "../../assets/img/path-img4.jpg"
+// import LineTo from 'react-lineto';
 
 import course from "../../assets/img/courses.svg"
 import studentsInteraction from "../../assets/img/studentsInteraction.svg"
@@ -22,11 +22,11 @@ import teacher from "../../assets/img/teacher.svg"
 import profile from "../../assets/img/profile.svg"
 import success from "../../assets/img/success.svg"
 
-import wd  from "../../assets/img/path-img5.jpg"
-import ad  from "../../assets/img/path-img6.jpg"
-import pm  from "../../assets/img/path-img7.jpg"
-import pd  from "../../assets/img/path-img8.jpg"
-import LOGO from "../../assets/img/logo.png"
+// import wd  from "../../assets/img/path-img5.jpg"
+// import ad  from "../../assets/img/path-img6.jpg"
+// import pm  from "../../assets/img/path-img7.jpg"
+// import pd  from "../../assets/img/path-img8.jpg"
+// import LOGO from "../../assets/img/logo.png"
 import u0 from "../../assets/img/user/user.jpg"
 import u1 from "../../assets/img/user/user1.jpg"
 import u2 from "../../assets/img/user/user2.jpg"
@@ -35,13 +35,13 @@ import u4 from "../../assets/img/user/user4.jpg"
 // import u5 from "../../assets/img/user/user5.jpg"
 import u6 from "../../assets/img/user/user6.jpg"
 import u7 from "../../assets/img/user/user7.jpg"
-import u8 from "../../assets/img/user/user8.jpg"
+// import u8 from "../../assets/img/user/user8.jpg"
 import u9 from "../../assets/img/user/user9.jpg"
-import u10 from "../../assets/img/user/user10.jpg"
+// import u10 from "../../assets/img/user/user10.jpg"
 import u11 from "../../assets/img/user/user11.jpg"
 import u12 from "../../assets/img/user/user12.jpg"
 import u13 from "../../assets/img/user/user13.jpg"
-import u14 from "../../assets/img/user/user14.jpg"
+// import u14 from "../../assets/img/user/user14.jpg"
 import u15 from "../../assets/img/user/user15.jpg"
 import LeaderLine from "leader-line-new"
 
@@ -73,10 +73,10 @@ class HomePage extends React.Component {
                 path: "straight",
                 dash: {animation: true},
                 color: '#a662ff',
-                size:25,
+                size:3,
                 startSocket: 'auto', endSocket: 'auto',
                 endPlug:"arrow1",
-                size: 2
+                
             }
           );
 
@@ -90,7 +90,7 @@ class HomePage extends React.Component {
                 color: '#a662ff',
                 startSocket: 'auto', endSocket: 'auto',
                 endPlug:"arrow1",
-                size: 2
+                size: 3
             }
           );
 
@@ -104,7 +104,7 @@ class HomePage extends React.Component {
             color: '#a662ff',
             startSocket: 'auto', endSocket: 'auto',
             endPlug:"arrow1",
-            size: 2
+            size: 3
         }
       );
 
@@ -117,7 +117,7 @@ class HomePage extends React.Component {
         color: '#a662ff',
         startSocket: 'auto', endSocket: 'auto',
         endPlug:"arrow1",
-        size: 2
+        size: 3
     }
     );
 
@@ -130,7 +130,7 @@ class HomePage extends React.Component {
         color: '#a662ff',
         startSocket: 'auto', endSocket: 'auto',
         endPlug:"arrow1",
-        size: 2
+        size: 3
     }
     );
 
@@ -143,7 +143,7 @@ class HomePage extends React.Component {
         color: '#a662ff',
         startSocket: 'auto', endSocket: 'auto',
         endPlug:"arrow1",
-        size: 2
+        size: 3
     }
     );
 

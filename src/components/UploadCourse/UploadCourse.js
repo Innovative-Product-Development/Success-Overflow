@@ -1,26 +1,26 @@
 import React,{useEffect, useState, useRef} from 'react';
 import { useHistory } from 'react-router';
 import { postEndPoint } from "../../request/request"
-import { Col, Row, Button, Form, Container, Spinner, Toast, OverlayTrigger, Tooltip, ButtonGroup } from "react-bootstrap";
+import { Col, Row, Button, Form, Container, OverlayTrigger, Tooltip } from "react-bootstrap";
 import { MultiSelect } from "react-multi-select-component";
 import "../UploadCourse/UploadCourse.css"
 import uuid from 'react-uuid'
-import { AiFillDelete, BsEye, GrAddCircle } from 'react-icons/all';
-import { useSelector, useDispatch } from "react-redux"
+import { GrAddCircle } from 'react-icons/all';
+import { useSelector } from "react-redux"
 
 
 function UploadCourse(props) {
 
     const history = useHistory();
 
-    const dispatch = useDispatch()
+    
 
     const { isAuth, isStudent } = useSelector((state)=>state.auth)
 
     const [course_name,setCourseName] = useState("")
     const [course_description,setCourseDescription]  = useState("")
     const [course_domain, setCourseDomain] = useState("")
-    const [course_subdomain, setCourseSubDomain] = useState("")
+    
     const [selected, setSelected] = useState([]);
     const [options,setOptions] = useState([]);
     const [course_thumbnail, setCourseThumbNail] = useState("")
@@ -38,7 +38,7 @@ function UploadCourse(props) {
         else if(isStudent){
             history.push('/');
         }
-    },[])
+    },[isAuth, isStudent, history])
    
 
 
@@ -143,6 +143,8 @@ function ValidationOnChange(event) {
             }
             setVideo(temp4);
             break;
+        default:
+            break;
     }
 }
 
@@ -158,7 +160,7 @@ function DeleteDetails(type, index) {
     }
 }
 function checkBeforeUpload(type, id, index) {
-    if(type == 1){
+    if(type === 1){
         if(course_thumbnail.length > 0){
             alert("Delete The document first!");
             return false;
@@ -204,7 +206,7 @@ function uploadFiles(type, id, index) {
             (error, result) => {
                 if (!error && result.event === "success") {
                     const url = result.info.secure_url;
-                    if(type == 1){
+                    if(type === 1){
                         setCourseThumbNail(url)
                     }
                     if (type === 2 && id && index >= 0) {

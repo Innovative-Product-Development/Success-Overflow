@@ -6,6 +6,10 @@
   margin: 10px 0;
   position: relative;
 }
+.profilePicDiv{
+  text-align: center;
+  margin: auto;
+}
 .input-box input{
     height: 100%;
     width: 100%;

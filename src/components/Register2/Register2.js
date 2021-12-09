@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { postEndPoint } from "../../request/request"
 import '../../../node_modules/font-awesome/css/font-awesome.min.css';
 import './Register2.css';
-import { Col, Row, Button, Form, Container, Spinner, Toast, OverlayTrigger, Tooltip, ButtonGroup } from "react-bootstrap";
+import { Form, Container } from "react-bootstrap";
 import { MultiSelect } from "react-multi-select-component";
 import { useDispatch, useSelector } from 'react-redux';
-import { setAuth, setToken } from "../../store/authSlice"
+import { setAuth } from "../../store/authSlice"
 import { useHistory } from 'react-router';
+import uuid from 'react-uuid'
 
 function Register2(props) {
 
@@ -19,14 +20,14 @@ function Register2(props) {
     const [description, setDescription] = useState("")
     const [city, setCity] = useState("")
     const [state, setState] = useState("")
-    const [profilePic, setProfilePic] = useState("")
+    const [profilePic, setProfilePic] = useState("https://res.cloudinary.com/chiragjain55551/image/upload/v1639042828/success-overflow/profile2_hmbvcc.jpg")
     const [selected, setSelected] = useState([]);
     const [selectedDomains, setSelectedDomains] = useState([]);
     const [options,setOptions] = useState([]);
 
     //student
     const [domain, setDomain] = useState([])   //web development dance music 
-    const [sub_domain, setSub_domain] = useState([])  // () 
+
 
     //teacher
     const [experience, setExperience] = useState("")
@@ -37,9 +38,40 @@ function Register2(props) {
         if (!isAuth){
             history.push('/login');
         }
-    }, [])
+    }, [history, isAuth])
 
    
+    function uploadFiles() {
+
+            
+    
+            let uploadPreset = "ky39gx2y";
+            let folder = "success-overflow";
+            let index = 5
+            let fileName = index.toString() + "_ProfilePic_" + uuid().toString()
+    
+                
+            
+    
+            window.cloudinary.openUploadWidget({
+                cloudName: "chiragjain55551", uploadPreset: uploadPreset, sources: ["local"], showAdvancedOptions: false, cropping: false, multiple: false, defaultSource: "local", folder: folder, public_id: fileName,
+                styles: {
+                    palette: { window: "#FFFFFF", windowBorder: "#90A0B3", tabIcon: "#0078FF", menuIcons: "#5A616A", textDark: "#000000", textLight: "#FFFFFF", link: "#0078FF", action: "#FF620C", inactiveTabIcon: "#0E2F5A", error: "#F44235", inProgress: "#0078FF", complete: "#20B832", sourceBg: "#E4EBF1" },
+                    fonts: { default: { active: true } }
+                }
+            },
+                (error, result) => {
+                    if (!error && result.event === "success") {
+                        const url = result.info.secure_url;
+                        setProfilePic(url)                   
+                    }
+                    else if (error) {
+                        alert("OOOPS WE RAN INTO ERROR!")
+                    }
+                }
+            );
+        
+    }
 
 
     const submit = async () => {
@@ -50,7 +82,7 @@ function Register2(props) {
             
             console.log(isStudent, domain, selected , description, city, state, experience )
 
-            const response2 = await postEndPoint('/user/details', { email:user.email,isStudent, domain, sub_domain:selected, description, city, state, experience }, null);
+            const response2 = await postEndPoint('/user/details', { email:user.email,isStudent, domain, sub_domain:selected, description, city, state, experience, profilePic }, null);
             if (response2) {
                 if (response2.status === 200) {
                     if(response2.data.message === 'nice work'){
@@ -112,6 +144,8 @@ function Register2(props) {
                 })
     }
 
+    return []
+
 
         })
         setDomain(d)
@@ -122,35 +156,7 @@ function Register2(props) {
 
 
     },[selectedDomains])
-    function dropdownChange(){
-        
-        setSelected([])
-        console.log(domain)
 
-        // if(domain.){
-        //     setOptions(
-        //         [  
-        //             { label: "React", value: "React" },
-        //             { label: "Node JS", value: "Node JS" },
-        //             { label: "PHP", value: "PHP"},
-        //             { label: "Angular", value: "Angular" },
-        //             { label: "Vue JS", value: "Vue JS" },
-        //             { label: "Spring", value: "Spring" },
-        //             { label: "Flask", value: "Flask" },
-        //             { label: "Laravel", value: "Laravel" },
-        //             { label: "Express JS", value: "Express JS" }
-        //         ]
-        //     )
-        // }else if(event.target.value === "Dance"){
-        //     setOptions(
-        //         [  
-        //             { label: "Hip Hop", value: "Hip Hop" },
-        //             { label: "Jazz", value: "Jazz" },
-        //             { label: "Folk Dance", value: "Folk Dance"}
-        //         ]
-        //     )
-        // }
-    }
 
 
     return (
@@ -186,6 +192,13 @@ function Register2(props) {
                 <div style={{width:"90%",margin:"auto",textAlign:"center"}}>
                   
                     <h3 style={{ margin: "30px auto", marginBottom: "0px", paddingTop:"16px",paddingBottom:"20px",textAlign: "center", fontSize: "36px", lineHeight: "54px", fontWeight: "600", fontFamily: "Poppins", color: "rgb(107 27 212)", marginTop: "0px" }}>User Details</h3>
+                    <div className="profilePicDiv">
+                        <img alt="profileImage" width="180px" height="180px" style={{borderRadius:"50%"}} src={profilePic}/>
+                        <div style={{ display: "flex", justifyContent: 'center' }}>
+                        
+                            <button onClick={()=>{uploadFiles()}} style={{ marginTop: "3%", border: "none", outline: "none", borderRadius: "5px", fontWeight: "bolder", backgroundColor: "rgb(166, 98, 255)", fontFamily: "Poppins", padding: "5px 45px", color: "#FFFFFF" }} >Upload Pic</button>
+                        </div>
+                    </div>
                     <Form >
                         <Form.Group className="inputDiv" style={{textAlign:"start"}}>
                             <Form.Label className="customBoldFont inputLabel">Description</Form.Label>
