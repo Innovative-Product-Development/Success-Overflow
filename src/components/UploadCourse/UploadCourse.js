@@ -5,7 +5,7 @@ import { Col, Row, Button, Form, Container, OverlayTrigger, Tooltip } from "reac
 import { MultiSelect } from "react-multi-select-component";
 import "../UploadCourse/UploadCourse.css"
 import uuid from 'react-uuid'
-import { GrAddCircle } from 'react-icons/all';
+import { GrAddCircle, BsEye, AiFillDelete } from 'react-icons/all';
 import { useSelector } from "react-redux"
 
 
@@ -112,6 +112,32 @@ function UploadCourse(props) {
             
         }
 }
+
+function deleteUploadedDoc(type, id, index) {
+    /*FUNCTION TO DELETE DOCS*/
+    // if (type === 1) {
+    //     setProfile("https://res.cloudinary.com/chiragjain55551/image/upload/v1627317877/StudentProject/vdjmvqojsnx3hckyuwm6.jpg");
+    // }
+    if(type == 1){
+        setCourseThumbNail("");
+    }
+    else if (type === 2 && id && index >= 0) {
+        let temp3 = Array.from(video);
+        temp3[index].video_link = "";
+        setVideo(temp3);
+
+    }
+    // else if (type === 3 && id && index >= 0) {
+    //     let temp3 = Array.from(achievements);
+    //     temp3[index].proof_link = "";
+    //     setAchievements(temp3);
+
+    // }
+    // else if (type === 4) {
+    //     setResume("");
+    // }
+
+}
        
 function ValidationOnChange(event) {
 
@@ -175,7 +201,7 @@ function DeleteDetails(type, index) {
 function checkBeforeUpload(type, id, index) {
     if(type === 1){
         if(course_thumbnail.length > 0){
-            alert("Delete The document first!");
+            alert("Delete the uploaded Thumbnail first!!");
             return false;
         }
         else {
@@ -186,7 +212,9 @@ function checkBeforeUpload(type, id, index) {
 
         let temp3 = Array.from(video);
         if (temp3[index].video_link.length > 0) {
-            alert("Delete The document first!");
+            console.log(temp3)
+            alert("Delete The document first!!");
+            
             return false;
         }
         else {
@@ -315,12 +343,31 @@ function uploadFiles(type, id, index) {
                         <br></br>
                         <div className="documentDivThumbnail">
                                 <Row>
-                                    <Col sm={4} md={5} lg={4}>
-                                        <Form.Label className=" inputLabel" style={{ marginRight: "2%" }}>Video Thumbnail</Form.Label>
+                                    <Col sm={4} md={5} lg={5}>
+                                        <Form.Label className=" inputLabel" style={{ marginRight: "2%" }}>Course Thumbnail</Form.Label>
                                     </Col>
                                     <br></br>
-                                    <Col className="thumbnailButton" sm={4} md={5} lg={4}>
-                                        <Button onClick={() => { uploadFiles(1, 4, 4); }} style={{ border: "none", outline: "none", background: "rgb(166, 98, 255)", fontWeight: "500", paddingLeft: "20px", paddingRight: "20px", marginTop: "0.5%" }} >Upload Video Thumbnail</Button>
+                                    <Col style={{display:"flex",alignItems:"center",justifyContent:"space-between"}}  className="thumbnailButton" sm={8} md={7} lg={7}>
+                                        <Button onClick={() => { uploadFiles(1, 4, 4); }} style={{ border: "none", outline: "none", background: "rgb(166, 98, 255)", fontWeight: "500", paddingLeft: "20px", paddingRight: "20px", marginTop: "0.5%" }} >Upload Course Thumbnail</Button>
+                                        {
+                                            course_thumbnail && course_thumbnail.length > 1 ?
+                                            <div className="documentIconsDiv">
+                                                {/* <OverlayTrigger
+                                                    placement={"top"}
+                                                    overlay={<Tooltip>View uploaded document</Tooltip>}>
+                                                    <a href={value.proof_link} rel="noreferrer" target="_blank"><BsEye className="eyeIcon" /></a>
+                                                </OverlayTrigger> */}
+                                                <OverlayTrigger
+                                                    placement={"top"}
+                                                    overlay={<Tooltip>Delete Course Thumbnail</Tooltip>}
+                                                >
+                                                    <label style={{ color: "red", cursor: "pointer" }} onClick={() => { deleteUploadedDoc(1, 0,0); }}>
+                                                        <AiFillDelete style={{ fontSize: "28px", marginRight: "12px", marginLeft: "10px" }} />
+                                                    </label>
+                                                </OverlayTrigger>
+                                            </div>
+                                            : null
+                                        }
                                     </Col>
                                 </Row>
                                                               
@@ -365,31 +412,32 @@ function uploadFiles(type, id, index) {
                                                             <Col sm={4} md={5} lg={4}>
                                                                 <Form.Label className="BoldTextHeading" >Video Link</Form.Label>
                                                                 </Col>
-                                                                <Col sm={6} md={6} lg={6} >
-                                                                <Form.Control name="videoLink" className="customInputField" id={"videolink," + value.key} type="text" rows={5} defaultValue={value.video_link && value.video_link.length > 0 ? value.video_link : ""} onInput={(event) => { ValidationOnChange(event); }} />
+                                                                <Col style={{display:"flex",alignItems:"center",justifyContent:"space-between"}} sm={8} md={7} lg={8} >
+                                                                {/* <Form.Control name="videoLink" className="customInputField" id={"videolink," + value.key} type="text" rows={5} defaultValue={value.video_link && value.video_link.length > 0 ? value.video_link : ""} onInput={(event) => { ValidationOnChange(event); }} /> */}
                                                             
-                                                                {/* <Button onClick={() => { uploadFiles(2, value.key, index); }} style={{ border: "none", outline: "none", background: "rgb(166, 98, 255)", fontWeight: "500", paddingLeft: "20px", paddingRight: "20px", marginTop: "0.5%" }} >Upload Video Lecture</Button> */}
-                                                                </Col>
-                                                                </Row>
-                                                                {/* onClick={() => { uploadFiles(2, value.key, index); }} */}
-                                                            </div>
-                                                            {/* {value.video_link && value.video_link.length > 1 ?
-                                                                <div className="documentIconsDiv" style={{ display: "flex", justifyContent: "flex-start" }}>
-                                                                    <OverlayTrigger
+                                                                <Button onClick={() => { uploadFiles(2, value.key, index); }} style={{ border: "none", outline: "none", background: "rgb(166, 98, 255)", fontWeight: "500", paddingLeft: "20px", paddingRight: "20px", marginTop: "0.5%" }} >Upload Video Lecture</Button>
+                                                                {value.video_link && value.video_link.length > 1 ?
+                                                                <div className="documentIconsDiv">
+                                                                    {/* <OverlayTrigger
                                                                         placement={"top"}
                                                                         overlay={<Tooltip>View uploaded document</Tooltip>}>
                                                                         <a href={value.proof_link} rel="noreferrer" target="_blank"><BsEye className="eyeIcon" /></a>
-                                                                    </OverlayTrigger>
+                                                                    </OverlayTrigger> */}
                                                                     <OverlayTrigger
                                                                         placement={"top"}
-                                                                        overlay={<Tooltip>Delete uploaded document</Tooltip>}
+                                                                        overlay={<Tooltip>Delete uploaded Video</Tooltip>}
                                                                     >
                                                                         <label style={{ color: "red", cursor: "pointer" }} onClick={() => { deleteUploadedDoc(2, value.key, index); }}>
                                                                             <AiFillDelete style={{ fontSize: "28px", marginRight: "12px", marginLeft: "10px" }} />
                                                                         </label>
                                                                     </OverlayTrigger>
                                                                 </div>
-                                                                : null} */}
+                                                                : null}
+                                                                </Col>
+                                                                </Row>
+                                                                {/* onClick={() => { uploadFiles(2, value.key, index); }} */}
+                                                            </div>
+
                                                         </div>
                                                         {index !== 0 ?
                                                            
@@ -420,7 +468,7 @@ function uploadFiles(type, id, index) {
                         
                         
                     </Form>
-                    <div style={{ display: "flex", justifyContent: 'center' }}>
+                    <div style={{ display: "flex", justifyContent: 'center', marginBottom:"20px" }}>
                         <button onClick={()=>{submit()}} style={{ marginTop: "6%", border: "none", outline: "none", borderRadius: "5px", fontWeight: "bolder", backgroundColor: "rgb(107 27 212)", fontFamily: "Poppins", padding: "5px 45px", color: "#FFFFFF" }} >Submit</button>
                     </div>
                 </div>

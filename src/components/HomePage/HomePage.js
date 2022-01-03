@@ -44,6 +44,8 @@ import u13 from "../../assets/img/user/user13.jpg"
 // import u14 from "../../assets/img/user/user14.jpg"
 import u15 from "../../assets/img/user/user15.jpg"
 import LeaderLine from "leader-line-new"
+import { useHistory } from 'react-router';
+import {Link} from 'react-router-dom';
 
 
 
@@ -52,6 +54,7 @@ class HomePage extends React.Component {
     constructor(props) {
         super(props);
         this.listRef = React.createRef();
+        // this.history = useHistory();
         this.state = { coursesLine: {}, profilesline:{}, mentorsline:{}, studentsline:{}, yogasline:{}, motivationsline:{} };
 
        
@@ -59,7 +62,7 @@ class HomePage extends React.Component {
 
       coursesPage = () => {
         // const history = useHistory();
-        window.location.href="/courses"
+        this.props.history.push("/courses")
       }
 
 
@@ -195,7 +198,7 @@ class HomePage extends React.Component {
                          <Card id="start" style={{ width: '22rem', left:"110px", borderRadius:"50%", height:"15rem",margin:"auto",boxShadow:"1px 1px 8px 0px rgb(0 0 0 / 20%), 0px 0px 0px 0 rgb(0 0 0 / 19%)", display:"flex",alignItems:"center",justifyContent:"center"}}>
                              
                              <Card.Img class="image" variant="top" style={{background:"transparent",marginTop:"10px"}} src={course} />
-                             <a href="#courses">
+                             <a href="#cour">
                                 <div class="overlay">
                                     <div class="text1">Learn New Skills.?</div>
                                 </div>
@@ -221,9 +224,13 @@ class HomePage extends React.Component {
                  <div className="col-4 D">
                          <Card id="teachers" style={{ width: '22rem', borderRadius:"50%", height:"15rem",margin:"auto",boxShadow:"1px 1px 8px 0px rgb(0 0 0 / 20%), 0px 0px 0px 0 rgb(0 0 0 / 19%)", display:"flex",alignItems:"center",justifyContent:"center"}}>
                              <Card.Img class="image" variant="top" style={{background:"transparent",marginTop:"10px"}} src={teacher} />
-                             <div class="overlay">
-                                 <div class="text1">Need Advice from Mentors.?</div>
-                             </div>
+                             
+                                <a href="#mentors">
+                                    <div class="overlay">
+                                        <div class="text1">Need Advice from Mentors.?</div>
+                                    </div>
+                                </a>
+                             
                          </Card>
                      </div>
                      <div   className="col-4 B J ">
@@ -287,13 +294,21 @@ class HomePage extends React.Component {
                          <p className="sub-title">Are you looking for an overall development? Now it's very simple, Sign up with successoverflow</p>
                      </div>
                  </div>
-                 <div id="courses" className="maincontainer container" style={{padding:"30px 110px",display:"block",backgroundColor:"floralwhite",marginTop:"0px",textAlign:"center"}}>
+                 <div id="cour" className="maincontainer2" style={{padding:"30px 110px",display:"block",backgroundColor:"floralwhite",marginTop:"0px",textAlign:"center"}}>
                      <h2 style={{fontWeight:"700"}}>Want to learn something new.?</h2>
                      <br></br>
                      <h3 style={{color:"#a662ff"}}>Upgrade your skills with our new and exciting courses</h3>
                      
                      <h5 style={{marginTop:"25px",color:"#691ac0"}}>SuccessOverFLOW provides number of courses for wide range of domains like Web Development, Artificial Intelligence, Music, Journalism, Blockchain, etc.</h5>
-                     <button className="startButton" onClick={()=>this.coursesPage()}>Lets Get Started.!!</button>
+                     <Link to="/courses"><button className="startButton">Lets Get Started.!!</button></Link>
+                 </div>
+                 <div id="mentors" className="maincontainer2" style={{padding:"30px 110px",display:"block",backgroundColor:"floralwhite",marginTop:"60px",textAlign:"center"}}>
+                     <h2 style={{fontWeight:"700"}}>Need Advice from Mentors.?</h2>
+                     <br></br>
+                     <h3 style={{color:"#a662ff"}}>Choose your most popular leaning mentors</h3>
+                     
+                     <h5 style={{marginTop:"25px",color:"#691ac0"}}>Connect with numerous speacialized mentors of various domains through SuccessOverFLOW, it will help you to achieve your professional goals.</h5>
+                     <Link to="/domains"><button className="startButton">Lets Get Started.!!</button></Link>
                  </div>
                </section>
  

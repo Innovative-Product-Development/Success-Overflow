@@ -526,12 +526,14 @@ a{
 	text-align: center;
   }
 
-  .maincontainer{
+  .maincontainer2{
 	background: #ECE9E6 !important;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6) !important;  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #FFFFFF, #ECE9E6) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 max-width:95% !important;
 width:100% !important;
+box-shadow: 0 5px 10px rgb(0 0 0 / 20%);
+margin: auto;
   }
 
   .startButton{

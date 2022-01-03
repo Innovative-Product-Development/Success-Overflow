@@ -11,6 +11,8 @@ import Register2 from './components/Register2/Register2';
 import UploadCourse from './components/UploadCourse/UploadCourse';
 import CourseEnroll from './components/Courses/CourseEnroll/CourseEnroll';
 import SingleCourse from './components/Courses/SingleCourse/SingleCourse';
+import Domains from "./components/Domains/Domain"
+import SingleDomain from "./components/Domains/SingleDomain/SingleDomain"
 
 function App() {
   return (
@@ -19,7 +21,7 @@ function App() {
      <Header/>
      <Switch>
      <Route path='/' exact>
-        <HomePage  />
+        <HomePage />
      </Route>
      <Route path='/login' exact >
         <Login />
@@ -34,14 +36,19 @@ function App() {
      <Route path='/courses' exact >
          <Courses/>
      </Route>
+     
      <Route path='/courses/web_dev' >
          <WebDev/>
      </Route>
-     <Route path='/courseenroll'>
-        <CourseEnroll/>
+     {/* <Route exact path='/details/:sapId' render={(props) => <Details {...props} />}></Route> */}
+     <Route path='/courseenroll/:courseId' render={(props) => <CourseEnroll {...props} />}>
      </Route>
-     <Route path='/singlecourse'>
-        <SingleCourse/>
+     <Route path='/singlecourse/:courseId' render={(props) => <SingleCourse {...props} />}>
+     </Route>
+     <Route path="/domains">
+       <Domains/>
+     </Route>
+     <Route path="/domain/:domain" render={(props) => <SingleDomain {...props} />}>
      </Route>
 
      </Switch>
