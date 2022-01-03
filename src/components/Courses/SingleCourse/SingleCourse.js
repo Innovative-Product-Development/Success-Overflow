@@ -4,8 +4,7 @@ import './SingleCourse.css';
 import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../../../../node_modules/font-awesome/css/font-awesome.min.css';
 import "../../../../node_modules/video-react/dist/video-react.css";
-import ReactPlayer from 'react-player'
-import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
+import { getEndPoint } from '../../../request/request'
 // import { Player } from 'video-react';
 // import poster from '../../../../src/assets/images/avatar.png';
 
@@ -13,8 +12,64 @@ import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
 const SingleCourse = (props) => {
 
+    const [name,setName] = useState("")
+    const [description,setDescription] = useState("")
+    const [id, setId] = useState("")
+    const [link, setLink] = useState("")
+    const [course, setCourse] = useState({})
+    const [allVideos, setAllVideos] = useState([]);
+    const [selectedVideo, setSelectedVideo] = useState([]);
+
+    const setVid = (videoId) => {
+        const video = allVideos.filter((video)=> video._id == videoId)
+        setSelectedVideo(video)
+        setName(video[0].video_name)
+        setDescription(video[0].video_description)
+        setId(video[0]._id)
+        setLink(video[0].video_link)
+    }
+
+
+
+    useEffect( async ()=>{
+        console.log("hwhhwhw",props.match.params.courseId)
+        try {
+            const response2 = await getEndPoint(`/course/${props.match.params.courseId}`,null);
+            if (response2) {
+                if (response2.status === 200) {
+                    console.log(response2.data)
+                    setCourse(response2.data)    
+                    setAllVideos(response2.data.videos)
+                    setSelectedVideo(response2.data.videos[0])
+                    setName(response2.data.videos[0].video_name)
+                    setDescription(response2.data.videos[0].video_description)
+                    setId(response2.data.videos[0]._id)
+                    setLink(response2.data.videos[0].video_link)
+                }
+            }
+            else {
+                
+                // setIsLoading(false);
+                // setErrMsg("OOPS AN ERROR OCCURED TRY AGAIN LATER!!");
+                // setShowError(true);
+            }
+        }
+        catch (err) {
+            // alert(err.response)
+            // setIsLoading(false);
+            // if (typeof (err.response) !== 'undefined' && typeof (err.response.data) !== 'undefined' && typeof (err.response.data.msg) !== 'undefined') {
+            //     setErrMsg(err.response.data.msg);
+            //     setShowError(true);
+            // }
+            // else {
+            //     setErrMsg("OOPS AN ERROR OCCURED TRY AGAIN LATER!!");
+            //     setShowError(true);
+            // }
+        }      
+    },[])
+
     const [singleCourse,setSingleCourse] = useState([]);
-    const [vid,setVid] = useState("");
+    // const [vid,setVid] = useState("");
     // const [title,setTitle] = useState("");
     const [counter,setCounter] = useState(0)
 
@@ -27,107 +82,77 @@ const SingleCourse = (props) => {
         return false
     }
     
-    useEffect(()=>{
-        fetch('https://youtube.googleapis.com/youtube/v3/playlistItems?part=contentDetails%2Csnippet&maxResults=40&playlistId=PLr6-GrHUlVf_ZNmuQSXdS197Oyr1L9sPB&key=AIzaSyBwGVGXLo-toCzGy930cRDWKBcYoIcMeZo')
-        .then(res=>res.json())
-        .then(data=>{
-            console.log(data);
-            const result = data.items.map(item=>{
-               return {title:item.snippet.title,vid:item.contentDetails.videoId}
+    // useEffect(()=>{
+    //     fetch('https://youtube.googleapis.com/youtube/v3/playlists?part=contentDetails%2Csnippet&id=PLr6-GrHUlVf_ZNmuQSXdS197Oyr1L9sPB&key=AIzaSyBwGVGXLo-toCzGy930cRDWKBcYoIcMeZo')
+    //     .then(res=>res.json())
+    //     .then(data=>{
+    //         console.log(data);
+    //         const result = data.items.map(item=>{
+    //            return {title:item.snippet.title,vid:item.contentDetails.videoId}
 
-            })
-            setSingleCourse(result);
-            setVid(result.vid);
-            // setTitle(result.title)
-        })
+    //         })
+    //         setSingleCourse(result);
+    //         setVid(result.vid);
+    //         // setTitle(result.title)
+    //     })
 
-    },[])
+    // },[])
 
-    const renderVideo= () =>{
-        return(
-            <div className="video-container">
-                {/* <iframe width="1050" title="myFrame" height="450" src={"//www.youtube.com/embed/"+vid+"?rel=0"}  frameBorder="0" allowFullScreen></iframe> */}
-                <ReactPlayer
-                    className='react-player'
-                    url={`https://www.youtube.com/watch?v=${vid}`}
-                    width='1050px'
-                    height='450px'
-                    controls = {true}
-                    playing={true}
-                    onEnded={()=>{
-                        if(localStorage.getItem("video_id")){
-                            let data = JSON.parse(localStorage.getItem("video_id"))
-                            localStorage.setItem("video_id",JSON.stringify([...data,vid]))
-                        }else{
-                            localStorage.setItem("video_id",JSON.stringify([vid]))
-                        }
-                    }}
-        />
-            </div>
-        )
-    }
+
 
 
     return (
         <>
-        
+        <div className='courseHeading'>
+            <h3>{course.course_name}</h3>
+            <p style={{marginBottom:"2px",fontWeight:"600"}}>Domain: <span>{course.course_domain}</span></p>
+            <p  style={{fontWeight:"600"}}>Sub Domain: <span>{course.course_subdomain && course.course_subdomain.length>0 && course.course_subdomain.join(", ")}</span></p>
+            
+        </div>
         <div style={{display:'grid',gridTemplateColumns:'3fr 1fr'}}>
             <div className="main-screen">
-            {renderVideo()}
+            <iframe style={{width:"100%",height:"550px"}} src={link} ></iframe>
+                <div className='title1'>
+
+                    <h4 style={{color:"#7d2ae8"}}>{name}</h4>
+                    <p>{description}</p>
+                </div>
             </div>
             <div className="video-sidebar">
-                <ul className="sidebar-ul" style={{listStyle:'none'}}>
+                
+                <ul className="sidebar-ul">
+                <h5 style={{marginLeft:"10px"}}>Other Videos</h5>
                 {
-                    singleCourse.map((item,index)=>{
-                        return <li key={item.vid} className={counter===index? "video-collection myItem" : "video-collection"} onClick={()=>{
-                            setVid(item.vid);
+                    allVideos.map((item,index)=>{
+                          return id !== item._id && <li key={index} className="othervideos" >{item.video_name}
+                        <br></br>
+                        <p onClick={()=>{
+                            setVid(item._id);
                             // setTitle(item.title);
-                            setCounter(index);
-                        }}>
-                        
-                        {
-                            watched(item.vid) && <i className="fa fa-check checked" ></i>
-                        }
-                        {item.title}
-                        
-                        
+                            // setCounter(index);
+                        }} className='watchvideo'>Watch this video</p>
                         </li>
                     })
                 }
                 </ul>
             </div>
         </div>
-
-        <div className="nav-section">
-                    <ul className="nav">
-                        <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="#about">About</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#instructors">Instructors</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#review">Reviews</a>
-                        </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#faq">FAQs</a>
-                        </li>
-
-
-                    </ul>
-                </div>
-
-                <div className="about-section" id="about">
+        <div className="about-section" id="about">
                     <div className="about-content">
                         <h2 className="about-title">About This Course</h2>
-                        <p className="about-para">This course will appeal to a wide variety of people, but specifically those who would like a step-by-step description of the basics. There are no prerequisites for this course and it is assumed that students have no prior programming skills or IT experience. The course will culminate in a small final project that will require the completion of a very simple page with links and images. The focus of this course is on the basics, not appearance. You can see a sample final page at <a href="http://intro-webdesign.com/html5-plain.html">http://intro-webdesign.com/html5-plain.html</a>.<br /><br /> This is the first course in the Web Design For Everybody specialization. Subsequent courses focus on the marketable skills of styling the page with CSS3, adding interactivity with JavaScript and enhancing the styling with responsive design. You can see a sample site for the capstone course at <a href="http://intro-webdesign.com/">http://intro-webdesign.com/</a></p>
+                        <p className="about-para">{course.course_description}</p>
                         <div className="skillset">
                             <h5>Skills You Will Gain</h5>
                             <div style={{ paddingTop: '1rem', paddingLeft: '1rem' }}>
-                                <span className="badge rounded-pill bg-light text-dark">Web Design</span>
+                                {
+                                    course.course_subdomain && course.course_subdomain.length>0 && course.course_subdomain.map((skill,index)=>{
+                                        return <span key={index} className="badge rounded-pill bg-light text-dark">{skill}</span>
+                                    })
+                                }
+                                {/* <span className="badge rounded-pill bg-light text-dark">Web Design</span>
                                 <span className="badge rounded-pill bg-light text-dark">Web Accessibilty</span>
                                 <span className="badge rounded-pill bg-light text-dark">HTML</span>
-                                <span className="badge rounded-pill bg-light text-dark">HTML5</span>
+                                <span className="badge rounded-pill bg-light text-dark">HTML5</span> */}
                             </div>
                         </div>
                     </div>
@@ -164,113 +189,32 @@ const SingleCourse = (props) => {
                         </div>
                     </div>
                 </div>
-
-                <div className="instructor-section" id="instructors">
+        <div className="instructor-section" id="instructors">
                     <div className="instructor-part">
                         <div className="instructor-content">
                             <h4>Instructors</h4>
                             <p>Instructor rating <img alt="thumbnail" src="https://cdn.iconscout.com/icon/free/png-64/teacher-1812069-1537600.png"></img>&nbsp;4.8/5 (5200 ratings)</p>
                         </div>
-                        <div className="instructor-info">
-                            <img alt="thumbnail" src="https://yt3.ggpht.com/ytc/AKedOLT3EnMXtIOvDT4CL7obl0-acSZCBhMuapXBQFksVQ=s176-c-k-c0x00ffffff-no-rj-mo"></img>
+                        {
+                            course && course.courseCreator!=null && <div className="instructor-info">
+                            <img alt="thumbnail" src={course.courseCreator.profilePic}></img>
                             <div style={{ paddingLeft: '3rem' }}>
-                                <h4>Harry Bhai</h4>
-                                <p>Lecturer | YouTuber</p>
+                                <h4>{course.courseCreator.name}</h4>
+                                <p>{course.courseCreator.description}</p>
                                 <div className="more-info">
-                                    <div className="side-info">
+                                    {/* <div className="side-info">
                                         <img alt="thumbnail" src="https://cdn.iconscout.com/icon/free/png-64/users-144-457814.png"></img>
                                         <p><b>46,578</b> learners</p>
-                                    </div>
+                                    </div> */}
                                     <div className="side-info">
                                         <img alt="thumbnail" src="https://cdn.iconscout.com/icon/free/png-64/book-1169-433812.png"></img>
-                                        <p><b>8</b> courses</p>
+                                        <p>Experience<b> {course.courseCreator.experience} years</b></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div className="review-section" id="review">
-                    <div className="review-part">
-                        <div className="review-content">
-                            <h3>Reviews</h3>
-                            <div className="review-part1">
-                                <h1>4.8</h1>
-                                <div className="review-part1-content">
-                                    <i className="fas fa-star filled"><AiFillStar /></i>
-                                    <i className="fas fa-star filled"><AiFillStar /></i>
-                                    <i className="fas fa-star filled"><AiFillStar /></i>
-                                    <i className="fas fa-star filled"><AiFillStar /></i>
-                                    <i className="fas fa-star"><AiOutlineStar /></i>
-                                    <p>4220 reviews</p>
-                                </div>
-
-                            </div>
-
-                            <div className="review-progress">
-                                <div className="progress-content">
-                                    <p>5 stars</p>
-                                    <div className="progress">
-                                        <div className="inner-progress"></div>
-                                    </div>
-                                    <p>83.8%</p>
-                                </div>
-                                <div className="progress-content">
-                                    <p>4 stars</p>
-                                    <div className="progress">
-                                        <div className="inner-progress-1"></div>
-                                    </div>
-                                    <p>13.4%</p>
-                                </div>
-                                <div className="progress-content">
-                                    <p>3 stars</p>
-                                    <div className="progress">
-                                        <div className="inner-progress-2"></div>
-                                    </div>
-                                    <p>02.1%</p>
-                                </div>
-                                <div className="progress-content">
-                                    <p>2 stars</p>
-                                    <div className="progress">
-                                        <div className="inner-progress-3"></div>
-                                    </div>
-                                    <p>0.05%</p>
-                                </div>
-                                <div className="progress-content">
-                                    <p>1 star</p>
-                                    <div className="progress" style={{ marginLeft: '1.8rem' }}>
-                                        <div className="inner-progress-4"></div>
-                                    </div>
-                                    <p>0.02%</p>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div className="review-right-part">
-                            <div className="review-right-content">
-                                <h6>Top reviews from other learners</h6>
-                                <div className="review-1">
-                                    <i className="fas fa-star filled"><AiFillStar /></i>
-                                    <i className="fas fa-star filled"><AiFillStar /></i>
-                                    <i className="fas fa-star filled"><AiFillStar /></i>
-                                    <i className="fas fa-star filled"><AiFillStar /></i>
-                                    <i className="fas fa-star filled"><AiFillStar /></i>
-                                    <p>by Sam Walt &nbsp; 12 sep,2019</p>
-                                    <p>I really enjoyed everything about this course. I thought the exercises/quizzes were fair and the instructor showed me many things that will serve me well going forward. Great course, great instructor!</p>
-                                </div>
-                                <div className="review-1">
-                                    <i className="fas fa-star filled"><AiFillStar /></i>
-                                    <i className="fas fa-star filled"><AiFillStar /></i>
-                                    <i className="fas fa-star filled"><AiFillStar /></i>
-                                    <i className="fas fa-star filled"><AiFillStar /></i>
-                                    <i className="fas fa-star filled"><AiFillStar /></i>
-                                    <p>by Tom Hanks &nbsp; 25 Nov,2020</p>
-                                    <p>Superb teaching and very easy to learn. I thought the exercises/quizzes were fair and the instructor showed me many things that will serve me well going forward.</p>
-                                </div>
-                            </div>
-                        </div>
+                        }
+                        
                     </div>
                 </div>
         
