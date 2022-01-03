@@ -1,13 +1,15 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { getEndPoint } from "../../../request/request"
+import { Link } from 'react-router-dom'
+import './SingleDomain.css'
 
 function SingleDomain(props) {
 
     const [teachers, setTeachers] = useState([]);
 
-    useEffect( async()=>{
+    useEffect(async () => {
         try {
-            const response2 = await getEndPoint(`/user/allTeachers/${props.match.params.domain}`,null);
+            const response2 = await getEndPoint(`/user/allTeachers/${props.match.params.domain}`, null);
             if (response2) {
                 if (response2.status === 200) {
                     console.log(response2.data.data)
@@ -15,15 +17,15 @@ function SingleDomain(props) {
                     // const courses = response2.data.data
                     // courses.sort((a,b) => (a.isRecommended > b.isRecommended ) ? -1 : ((b.isRecommended > a.isRecommended ) ? 1 : 0))
                     // setCourseDetails(response2.data.data)
-                    
-                    
-                
+
+
+
                 }
 
-                
+
             }
             else {
-                
+
                 // setIsLoading(false);
                 // setErrMsg("OOPS AN ERROR OCCURED TRY AGAIN LATER!!");
                 // setShowError(true);
@@ -41,16 +43,59 @@ function SingleDomain(props) {
             //     setShowError(true);
             // }
         }
-      
-    },[])
+
+    }, [])
     return (
-        <div>
-            {
-                teachers.map((teacher)=>{
+        <>
+            <div className='mentors-section'>
+                {
+                    teachers && teachers.length > 0 && teachers.map((teacher) => {
+                        return (
+                            <div id="mentors" className="mentors-part" style={{ padding: "30px 60px", display: "block", backgroundColor: "floralwhite", marginTop: "60px" }}>
+                                <div className='mentors-data'>
+                                    <div className='mentor-img'>
+                                        <img src={teacher.profilePic} className='mentor-pic'></img>
+                                    </div>
+                                    <div className='mentors-information'>
+                                    <div className='mentors-info'>
+                                        <div className='mentors-info-1'>
+                                            <h5 className='mentor-name' style={{ paddingBottom: '10px' }}>Name : {teacher.name}</h5>
+                                            <p className='mentor-desc'>Description : {teacher.description}</p>
+                                            <p className='mentor-email'>Email : {teacher.email}</p>
+
+                                        </div>
+                                        <div className='mentors-info-2'>
+                                            <p className='mentor-tech' style={{color:'purple',fontWeight:'600'}}>Domain : {teacher.tech}</p>
+                                            <p className='mentor-sub-tech'>SubDomain : {teacher.sub_tech.label}</p>
+                                            <p className='mentor-exp'>Experience : {teacher.experience} years</p>
+                                        </div>
+                                        <div className='mentors-info-3'>
+                                            <p className='mentor-course'>Course Created : {teacher.my_courses.length} courses</p>
+                                            <p className='mentor-city'>City : {teacher.city}</p>
+                                            <p className='mentor-state'>State : {teacher.state}</p>
+                                        </div>
+                                    </div>
+                                    <div className='requestbtn'>
+                                          <Link to="#"><button className="requestButton">Send Request</button></Link> 
+                                    </div>
+                                    </div>
+
+                                </div>
+
+
+                                {/* <Link to="#"><button className="requestButton">Send Request</button></Link> */}
+                            </div>
+                        )
+                    })
+                }
+
+            </div>
+            {/* {
+                teachers && teachers.length>0 && teachers.map((teacher)=>{
                     return <h1>{teacher.name}</h1>
                 })
-            }
-        </div>
+            } */}
+        </>
     );
 }
 

@@ -1,0 +1,36 @@
+.mentors-part{
+    background: #ECE9E6 !important;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6) !important;  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFFFFF, #ECE9E6) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    max-width:95% !important;
+    width:100% !important;
+    box-shadow: 0 5px 10px rgb(0 0 0 / 20%);
+    margin: auto;
+  }
+  .mentors-data{
+      display: flex;
+  }
+  .mentor-img{
+      margin-right: 5rem;
+  }
+  .mentor-pic{
+      width:150px;
+      height: 150px;
+  }
+  .mentors-info{
+      display: flex;
+  }
+  .mentors-info-1,.mentors-info-2{
+      padding-right: 5rem;
+  }
+  .requestButton{
+	border: none;
+	outline: none;
+    background-color: rgb(166, 98, 255);
+	padding: 10px;
+	color: white;
+	margin-top: 15px;
+	font-size: 18px;
+	font-weight: 500;
+	border-radius: 15px;
+  }
