@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import '../Courses/Courses.css';
+import {Link} from 'react-router-dom';
 
 
 
@@ -102,13 +103,16 @@ export default class CustomArrows extends Component {
                            <div className="container-fluid">
                                <div className="row">
                                <div className="col-3 mb-5">
-                                    <div onClick={()=>this.web_dev()} class="card card123" style={{ width: "20rem" }}>
-                                        <img src="https://cdn.pixabay.com/photo/2015/04/20/13/17/work-731198__340.jpg" className="image1 card-img-top" alt="..." />
+                               <Link to="/courses/web_dev">
+                                    <div  class="card card123" style={{ width: "20rem" }}>
+                                        <img src="https://www.syncfusion.com/blogs/wp-content/uploads/2020/07/Top-6-Front-End-Web-Development-Tools-to-Increase-Your-Productivity-in-2020-1.jpg" className="image1 card-img-top" alt="..." />
                                         <div class="overlay12">
                                             <div class="text123">Web Development</div>
                                         </div>
                                     </div>
+                                    </Link>
                                 </div>
+                                
                                 <div className="col-3 mb-5">
                                     <div class="card card123" style={{ width: "20rem" }}>
                                         <img  src="https://cdn.pixabay.com/photo/2018/05/08/08/44/artificial-intelligence-3382507__480.jpg" className=" image1 card-img-top" alt="..." />
@@ -139,7 +143,7 @@ export default class CustomArrows extends Component {
                                     </div>
                                 </div> <div className="col-3 mb-5">
                                     <div class="card card123" style={{ width: "20rem" }}>
-                                        <img  src="https://cdn.pixabay.com/photo/2015/06/08/15/11/typewriter-801921__480.jpg" className="image1 card-img-top" alt="..." />
+                                        <img  src="https://rss.org.uk/RSS/media/News-and-publications/News/2021/journalism-composition900.jpg?ext=.jpg" className="image1 card-img-top" alt="..." />
                                         <div class="overlay12">
                                             <div class="text123">Jounalism</div>
                                         </div>

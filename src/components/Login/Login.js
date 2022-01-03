@@ -54,7 +54,7 @@ function Login(){
           }
       }
       catch (err) {
-          alert(err.response)
+          alert(err.response.data.message)
           // setIsLoading(false);
           // if (typeof (err.response) !== 'undefined' && typeof (err.response.data) !== 'undefined' && typeof (err.response.data.msg) !== 'undefined') {
           //     setErrMsg(err.response.data.msg);
@@ -105,7 +105,7 @@ async function submitRegister(){
         }
     }
     catch (err) {
-        alert(err.response)
+        alert(err.response.data.message)
         // setIsLoading(false);
         // if (typeof (err.response) !== 'undefined' && typeof (err.response.data) !== 'undefined' && typeof (err.response.data.msg) !== 'undefined') {
         //     setErrMsg(err.response.data.msg);

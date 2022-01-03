@@ -36,11 +36,14 @@ const Header = () => {
               <li className="nav-item">
                 <NavLink className="nav-link" to="/courses">Courses</NavLink>
               </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/domain/Web Development">Web dev teachers</NavLink>
+              </li>
               {/* <li className="nav-item">
                 <NavLink className="nav-link" to="/contact">Contact</NavLink>
               </li> */}
               {
-                !isStudent && 
+                isAuth && !isStudent && 
                 <li className="nav-item">
                 <NavLink className="nav-link" to="/uploadcourse">Upload Course</NavLink>
               </li>

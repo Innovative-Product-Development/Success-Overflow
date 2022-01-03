@@ -1,15 +1,113 @@
-import React from 'react'
-
+import React, { useEffect, useState } from 'react'
+import { useHistory } from 'react-router';
 import './CourseEnroll.css';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import logo2 from '../../Images/HTML_Flatline.svg'
 import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import { getEndPoint, postEndPoint } from '../../../request/request'
+import { useSelector, useDispatch } from "react-redux"
+import {  setAuth } from '../../../store/authSlice'
 
 
 
-const CourseEnroll = () => {
+
+
+const CourseEnroll = (props) => {
+
+    const [course, setCourse] = useState({})
+    const [isEnrolled, setIsEnrolled] = useState(false)
+
+    const { isAuth, token, user, isStudent } = useSelector((state)=>state.auth)
+    const history = useHistory();
+    const dispatch = useDispatch();
+
+    const gotocourse = async () => {
+        history.push(`/singlecourse/${course._id}`)
+    }
+
+    const enrollCourse = async () => {
+        if(!isAuth || token == ''){
+            history.push('/login')
+        }
+        try {
+            const response2 = await postEndPoint(`/course/enrollCourse/${course._id}`,null);
+            if (response2) {
+                if (response2.status === 200) {
+                    console.log(response2.data.data)
+                    dispatch(setAuth({ user: response2.data.data}))
+                    setIsEnrolled(true)
+                }
+            }
+            else {
+                
+                // setIsLoading(false);
+                // setErrMsg("OOPS AN ERROR OCCURED TRY AGAIN LATER!!");
+                // setShowError(true);
+            }
+        }
+        catch (err) {
+            // alert(err.response)
+            // setIsLoading(false);
+            // if (typeof (err.response) !== 'undefined' && typeof (err.response.data) !== 'undefined' && typeof (err.response.data.msg) !== 'undefined') {
+            //     setErrMsg(err.response.data.msg);
+            //     setShowError(true);
+            // }
+            // else {
+            //     setErrMsg("OOPS AN ERROR OCCURED TRY AGAIN LATER!!");
+            //     setShowError(true);
+            // }
+        }
+      
+        // const allenrolledCourses = user.courses_enrolled
+        // if(allenrolledCourses.includes(course._id)){
+        //     alert("already enrolled")
+        // }
+        // else{
+        //     alert("not enrolled")
+        // }
+    }
+
+    useEffect(()=>{
+        if(isAuth && token != ''){
+            if(user.courses_enrolled.includes(props.match.params.courseId)){
+                setIsEnrolled(true)
+            }else{
+                setIsEnrolled(false)
+            }
+        }
+    },[])
 
     // const {course_name} = useParams();
+    useEffect( async ()=>{
+        console.log("hwhhwhw",props.match.params.courseId)
+        try {
+            const response2 = await getEndPoint(`/course/${props.match.params.courseId}`,null);
+            if (response2) {
+                if (response2.status === 200) {
+                    console.log(response2.data)
+                    setCourse(response2.data)    
+                }
+            }
+            else {
+                
+                // setIsLoading(false);
+                // setErrMsg("OOPS AN ERROR OCCURED TRY AGAIN LATER!!");
+                // setShowError(true);
+            }
+        }
+        catch (err) {
+            // alert(err.response)
+            // setIsLoading(false);
+            // if (typeof (err.response) !== 'undefined' && typeof (err.response.data) !== 'undefined' && typeof (err.response.data.msg) !== 'undefined') {
+            //     setErrMsg(err.response.data.msg);
+            //     setShowError(true);
+            // }
+            // else {
+            //     setErrMsg("OOPS AN ERROR OCCURED TRY AGAIN LATER!!");
+            //     setShowError(true);
+            // }
+        }      
+    },[])
 
     const date = new Date();
     
@@ -19,14 +117,15 @@ const CourseEnroll = () => {
 
     return (
         <>
-            <div className="singleCourse">
+            {
+                course && course.courseCreator && <div className="singleCourse">
                 <div className="upper-banner">
                     <div className="inner-banner">
                         <div className="inner-content">
                             <div className="content-left">
                                 <p className="content-left-para">This course is a part of Front-End Developement</p>
                                 <div className="content-left-title">
-                                    <h1>HTML Tutorial For Beginners In Hindi </h1>
+                                    <h1>{course.course_name}</h1>
                                 </div>
                                 <div className="content-left-rating" >
 
@@ -39,17 +138,32 @@ const CourseEnroll = () => {
                                 </div>
                                 <div className="teacher-img">
                                     <div style={{ display: 'flex', alignItems: 'center' }}>
-                                        <img alt="thumbnail" src="https://yt3.ggpht.com/ytc/AKedOLT3EnMXtIOvDT4CL7obl0-acSZCBhMuapXBQFksVQ=s176-c-k-c0x00ffffff-no-rj-mo"></img>
-                                        <p style={{ fontSize: '20px', paddingLeft: '1rem', paddingTop: '1rem', fontWeight: '600' }}>Harry Bhai</p>
+                                        <img alt="thumbnail" src={course.courseCreator.profilePic}></img>
+                                        <p style={{ fontSize: '20px', paddingLeft: '1rem', paddingTop: '1rem', fontWeight: '600' }}>{course.courseCreator.name}</p>
                                     </div>
                                 </div>
                                 <div className="enrollbutton" style={{ paddingBottom: '1rem' }}>
-                                    <button target="_blank" type="submit" className="enrollbtn" onClick={()=>getEnrolled()}>
+                                    {
+                                        isEnrolled ?
+                                        <button target="_blank" type="submit" className="enrollbtn" onClick={()=>gotocourse()}>
+                                            <div style={{ padding: '0.2rem' }}>
+                                                <div style={{ paddingBottom: '0.2rem', fontWeight: '600', color: 'white' }}>Go to course</div>
+                                                {/* <div style={{ color: 'white' }}>Starts <span style={{ fontWeight: '800', color: 'white' }}>{date.toDateString()}</span></div> */}
+                                            </div>
+                                        </button> :
+                                         <button target="_blank" type="submit" className="enrollbtn" onClick={()=>enrollCourse()}>
+                                            <div style={{ padding: '0.2rem' }}>
+                                                <div style={{ paddingBottom: '0.2rem', fontWeight: '600', color: 'white' }}>Enroll For Free</div>
+                                                {/* <div style={{ color: 'white' }}>Starts <span style={{ fontWeight: '800', color: 'white' }}>{date.toDateString()}</span></div> */}
+                                            </div>
+                                        </button>
+                                    }
+                                    {/* <button target="_blank" type="submit" className="enrollbtn" onClick={()=>enrollCourse()}>
                                         <div style={{ padding: '0.2rem' }}>
                                             <div style={{ paddingBottom: '0.2rem', fontWeight: '600', color: 'white' }}>Enroll For Free</div>
                                             <div style={{ color: 'white' }}>Starts <span style={{ fontWeight: '800', color: 'white' }}>{date.toDateString()}</span></div>
                                         </div>
-                                    </button>
+                                    </button> */}
                                 </div>
                                 <div>
                                     <p style={{ color: 'black', fontSize: '18px' }}><span style={{ color: 'black', fontWeight: '800' }}>60,000 </span>&nbsp;already Enrolled</p>
@@ -57,7 +171,7 @@ const CourseEnroll = () => {
                             </div>
                             <div className="content-right">
                                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', paddingLeft: '10rem', paddingTop: '3rem' }}>
-                                    <img alt="thumbnail" src={logo2} style={{ height: '400px', width: '500px' }}></img>
+                                    <img alt="thumbnail" src={course.course_thumbnail[0]} style={{ height: '300px', width: '500px' }}></img>
                                 </div>
                             </div>
                         </div>
@@ -87,14 +201,19 @@ const CourseEnroll = () => {
                 <div className="about-section" id="about">
                     <div className="about-content">
                         <h2 className="about-title">About This Course</h2>
-                        <p className="about-para">This course will appeal to a wide variety of people, but specifically those who would like a step-by-step description of the basics. There are no prerequisites for this course and it is assumed that students have no prior programming skills or IT experience. The course will culminate in a small final project that will require the completion of a very simple page with links and images. The focus of this course is on the basics, not appearance. You can see a sample final page at <a href="http://intro-webdesign.com/html5-plain.html">http://intro-webdesign.com/html5-plain.html</a>.<br /><br /> This is the first course in the Web Design For Everybody specialization. Subsequent courses focus on the marketable skills of styling the page with CSS3, adding interactivity with JavaScript and enhancing the styling with responsive design. You can see a sample site for the capstone course at <a href="http://intro-webdesign.com/">http://intro-webdesign.com/</a></p>
+                        <p className="about-para">{course.course_description}</p>
                         <div className="skillset">
                             <h5>Skills You Will Gain</h5>
                             <div style={{ paddingTop: '1rem', paddingLeft: '1rem' }}>
-                                <span className="badge rounded-pill bg-light text-dark">Web Design</span>
+                                {
+                                    course.course_subdomain.map((skill,index)=>{
+                                        return <span key={index} className="badge rounded-pill bg-light text-dark">{skill}</span>
+                                    })
+                                }
+                                {/* <span className="badge rounded-pill bg-light text-dark">Web Design</span>
                                 <span className="badge rounded-pill bg-light text-dark">Web Accessibilty</span>
                                 <span className="badge rounded-pill bg-light text-dark">HTML</span>
-                                <span className="badge rounded-pill bg-light text-dark">HTML5</span>
+                                <span className="badge rounded-pill bg-light text-dark">HTML5</span> */}
                             </div>
                         </div>
                     </div>
@@ -139,18 +258,18 @@ const CourseEnroll = () => {
                             <p>Instructor rating <img alt="thumbnail" src="https://cdn.iconscout.com/icon/free/png-64/teacher-1812069-1537600.png"></img>&nbsp;4.8/5 (5200 ratings)</p>
                         </div>
                         <div className="instructor-info">
-                            <img alt="thumbnail" src="https://yt3.ggpht.com/ytc/AKedOLT3EnMXtIOvDT4CL7obl0-acSZCBhMuapXBQFksVQ=s176-c-k-c0x00ffffff-no-rj-mo"></img>
+                            <img alt="thumbnail" src={course.courseCreator.profilePic}></img>
                             <div style={{ paddingLeft: '3rem' }}>
-                                <h4>Harry Bhai</h4>
-                                <p>Lecturer | YouTuber</p>
+                                <h4>{course.courseCreator.name}</h4>
+                                <p>{course.courseCreator.description}</p>
                                 <div className="more-info">
-                                    <div className="side-info">
+                                    {/* <div className="side-info">
                                         <img alt="thumbnail" src="https://cdn.iconscout.com/icon/free/png-64/users-144-457814.png"></img>
                                         <p><b>46,578</b> learners</p>
-                                    </div>
+                                    </div> */}
                                     <div className="side-info">
                                         <img alt="thumbnail" src="https://cdn.iconscout.com/icon/free/png-64/book-1169-433812.png"></img>
-                                        <p><b>8</b> courses</p>
+                                        <p>Experience<b> {course.courseCreator.experience} years</b></p>
                                     </div>
                                 </div>
                             </div>
@@ -288,6 +407,7 @@ const CourseEnroll = () => {
                 </div>
 
             </div>
+            }
         </>
     )
 }
