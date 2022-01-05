@@ -13,6 +13,7 @@ import CourseEnroll from './components/Courses/CourseEnroll/CourseEnroll';
 import SingleCourse from './components/Courses/SingleCourse/SingleCourse';
 import Domains from "./components/Domains/Domain"
 import SingleDomain from "./components/Domains/SingleDomain/SingleDomain"
+import Notification from './components/Notification/Notification';
 
 function App() {
   return (
@@ -45,11 +46,15 @@ function App() {
      </Route>
      <Route path='/singlecourse/:courseId' render={(props) => <SingleCourse {...props} />}>
      </Route>
-     <Route path="/domains">
+     <Route path="/notifications" exact>
+       <Notification/>
+     </Route>
+     <Route path="/domains" exact>
        <Domains/>
      </Route>
-     <Route path="/domain/:domain" render={(props) => <SingleDomain {...props} />}>
+     <Route path="/domain/:domain" exact render={(props) => <SingleDomain {...props} />}>
      </Route>
+    
 
      </Switch>
      <Footer/>

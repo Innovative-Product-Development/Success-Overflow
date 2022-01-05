@@ -60,7 +60,7 @@ span{
     
 }
 .card12 {
-    width:400px !important;
+    width:85% !important;
     margin-bottom: 5rem;
 }
 .part-1{
@@ -72,8 +72,10 @@ span{
     font-size: 20px;
 }
 .courselink{
-    text-align: center;
-    padding-left: 8rem;
+
+    display: flex;
+    justify-content: center;
+    /* padding-left: 8rem; */
     color:#a662ff;
     font-weight: 600;
 }

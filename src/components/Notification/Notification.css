@@ -1,0 +1,82 @@
+.NotificationContainer{
+    width: 70%;
+    background-color: #e8dff3;
+    margin: auto;
+    margin-top: 40px;
+    border-radius: 15px;
+    border: 2px solid #8024f8;
+    margin-bottom: 50px;
+    box-shadow: 0 5px 10px rgb(0 0 0 / 20%);
+}
+
+.NotificationHeading{
+    margin-top: 30px !important;
+    margin: auto;
+    text-align: center;
+    color: #8024f8;
+}
+
+
+.NotificationLi{
+    list-style-type: none;
+    color: #8024f8;
+    font-size: 21px;
+    font-weight: 400;
+    margin-top: 30px;
+    margin-left: 50px;
+    margin-right: 50px;
+    padding-bottom: 5px;
+    padding-right: 15px;
+    padding-left: 15px;
+    border-bottom: 1px solid #8024f8;
+    margin-bottom: 30px;
+    
+}
+.NotificationHr{
+    color: #8024f8;
+}
+
+.acceptButton{
+    border: none;
+    outline: none;
+    padding: 15px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: 17px;
+    margin-right: 20px;
+    background-color: #c6ecc1;
+    border-radius: 5px;
+    border: 1px solid green;
+    font-weight: 500;
+    color: green;
+}
+
+.rejectButton{
+    border: none;
+    outline: none;
+    padding: 15px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: 17px;
+    margin-right: 20px;
+    background-color: #f0c0c0;
+    border-radius: 5px;
+    border: 1px solid red;
+    color: #840c0c;
+    font-weight: 500;
+}
+
+.NotificationDate{
+    font-size: 14px;
+    color: grey;
+    margin-bottom: 0px !important;
+    font-weight: 500;
+    width: 30%;
+    text-align: end;
+}
+
+.NotificationDiv{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

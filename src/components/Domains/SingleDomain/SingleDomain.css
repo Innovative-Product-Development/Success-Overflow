@@ -10,6 +10,10 @@
   .mentors-data{
       display: flex;
   }
+  .mentors-info-3{
+    display: block;
+}
+
   .mentor-img{
       margin-right: 5rem;
   }
@@ -27,10 +31,56 @@
 	border: none;
 	outline: none;
     background-color: rgb(166, 98, 255);
-	padding: 10px;
+	padding: 10px 20px;
 	color: white;
 	margin-top: 15px;
 	font-size: 18px;
 	font-weight: 500;
 	border-radius: 15px;
+    text-transform: uppercase;
+  }
+  .mentors-info-32{
+    display: none;
+}
+.Labels{
+    font-weight: 600;
+    color: #8024f8;
+}
+.mentors-part{
+    padding: 30px 60px;
+}
+.mentor-img img{
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}
+
+  @media screen and (max-width: 850px) {
+    .mentors-data{
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .mentors-info{
+        display: block;
+    }
+    .mentors-info-3{
+        display: none;
+    }
+    .mentors-info-32{
+        display: block;
+    }
+    .mentors-info-1,.mentors-info-2{
+        padding-right: 1rem;
+    }
+    .mentors-part{
+        padding: 20px 20px;
+    }
+    .mentor-img{
+        margin-right: 1rem;
+    }
+    .mentors-information{
+        width: 400px;
+    }
+
   }

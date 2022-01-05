@@ -122,7 +122,7 @@ async function submitRegister(){
     return (
         <>
        
-            <div className="container" style={{marginBottom:"140px",maxWidth: "850px"}}>
+            <div className="container" style={{marginBottom:"140px"}}>
                 <input type="checkbox" id="flip" />
                 <div className="cover">
                     <div className="front">
