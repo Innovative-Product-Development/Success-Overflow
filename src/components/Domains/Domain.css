@@ -1,0 +1,40 @@
+.middle{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+.domain-cards{
+    cursor: pointer;
+    width:340px;
+    height:200px;
+}
+.front-part,.back-part{
+    width:10%;
+    height:10%;
+    overflow: hidden;
+    backface-visibility: hidden;
+    position: absolute;
+    transition: transform .6s linear;
+}
+.front-part img{
+    height: 100%;
+}
+.front-part{
+    transform: perspective(600px) rotateY(0deg);
+}
+.back-part{
+    background-color: white;
+    color:black;
+    transform: perspective(600px) rotateY(180deg);
+}
+.back-content{
+    width:100%;
+    text-align: center;
+}
+.domain-cards:hover > .front-part{
+    transform: perspective(600px) rotateY(-180deg);
+}
+.domain-cards:hover > .back-part{
+    transform: perspective(600px) rotateY(0deg);
+}
