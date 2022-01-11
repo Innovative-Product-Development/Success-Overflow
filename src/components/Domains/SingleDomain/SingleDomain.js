@@ -1,18 +1,55 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { getEndPoint, postEndPoint } from "../../../request/request"
 import { Link } from 'react-router-dom'
 import './SingleDomain.css'
+import {io} from "socket.io-client"
+import { useSelector } from "react-redux"
 
 function SingleDomain(props) {
 
     const [teachers, setTeachers] = useState([]);
+    const socket = useRef();
+    const { isAuth, token, user, isStudent } = useSelector((state)=>state.auth)
+
+
+
+    useEffect(()=>{
+            socket.current = io("https://success-overflow-socket.herokuapp.com/");
+            socket.current.emit("addUser",user._id);
+            socket.current.on("allusers",users=>console.log(users));
+
+
+            return () => {
+                disconnectSocket();
+              }
+           
+    },[])
+
+    const disconnectSocket = () => {
+        console.log('Disconnecting socket...');
+        if(socket) socket.current.emit('forceDisconnect');
+      }
+
 
     const sendNotification = async (receiverId) => {
+
+        
+
+
         try {
             const response2 = await postEndPoint(`/user/sendNotification`, { receiverId }, null);
             if (response2) {
                 if (response2.status === 200) {
                     console.log(response2.data)
+
+
+                    socket.current.emit("sendNotification",{
+                        senderId:user._id, 
+                        receiverId,
+                        notificaion: response2.data.notification
+                    })
+
+
                     alert(response2.data.data)
                     // setTeachers(response2.data.data)
                     // const courses = response2.data.data
