@@ -1,0 +1,37 @@
+.message {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  .mtop {
+    display: flex;
+  }
+  
+  .Mimg {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+  .Mtext {
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #a662ff;
+    color: white;
+    max-width: 400px;
+  }
+  .mbottom {
+    font-size: 12px;
+    margin-top: 10px;
+  }
+  
+  .message.own {
+    align-items: flex-end;
+  }
+  
+  .message.own .Mtext {
+    background-color: #fff;
+    color: #6b1bd4;
+  }
+  

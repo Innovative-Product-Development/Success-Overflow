@@ -14,6 +14,8 @@ import SingleCourse from './components/Courses/SingleCourse/SingleCourse';
 import Domains from "./components/Domains/Domain"
 import SingleDomain from "./components/Domains/SingleDomain/SingleDomain"
 import Notification from './components/Notification/Notification';
+import Messenger from './components/Chat/Messenger/Messenger';
+import Profile from './components/Profile/Profile';
 
 function App() {
   return (
@@ -26,6 +28,9 @@ function App() {
      </Route>
      <Route path='/login' exact >
         <Login />
+     </Route>
+     <Route path='/chat' exact >
+       <Messenger/>
      </Route>
      <Route path='/details' exact >
         <Register2 />
@@ -42,10 +47,14 @@ function App() {
          <WebDev/>
      </Route>
      {/* <Route exact path='/details/:sapId' render={(props) => <Details {...props} />}></Route> */}
-     <Route path='/courseenroll/:courseId' render={(props) => <CourseEnroll {...props} />}>
+     <Route path='/courseenroll/:courseId' exact render={(props) => <CourseEnroll {...props} />}>
      </Route>
-     <Route path='/singlecourse/:courseId' render={(props) => <SingleCourse {...props} />}>
+     <Route path='/singlecourse/:courseId' exact render={(props) => <SingleCourse {...props} />}>
      </Route>
+
+     <Route path='/profile/:userId' exact render={(props) => <Profile {...props} />}>
+     </Route>
+
      <Route path="/notifications" exact>
        <Notification/>
      </Route>

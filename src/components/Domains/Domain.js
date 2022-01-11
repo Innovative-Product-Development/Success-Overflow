@@ -111,6 +111,7 @@ const Domain = () => {
                     </div>
                     
 
+<<<<<<< HEAD
 
                   
                 </div>
@@ -120,3 +121,12 @@ const Domain = () => {
             export default Domain
 
 
+=======
+
+                  
+                </div>
+
+    )
+}
+            export default Domain
+>>>>>>> 8b0a3e9e623e30df37830978b86f6e1ed628f61b

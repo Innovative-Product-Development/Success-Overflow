@@ -9,7 +9,7 @@ const Header = () => {
 
   const history = useHistory();
   const dispatch = useDispatch()
-  const { isAuth, isStudent } = useSelector((state)=>state.auth)
+  const { isAuth, isStudent, user } = useSelector((state)=>state.auth)
 
   function logout() {
     dispatch(setToken({token:''}))
@@ -37,6 +37,9 @@ const Header = () => {
                 <NavLink className="nav-link" to="/courses">Courses</NavLink>
               </li>
               <li className="nav-item">
+                <NavLink className="nav-link" to="/chat">Chat</NavLink>
+              </li>
+              <li className="nav-item">
                 <NavLink className="nav-link" to="/domain/Web Development">Web dev teachers</NavLink>
               </li>
               <li className="nav-item">
@@ -52,6 +55,15 @@ const Header = () => {
                 <NavLink className="nav-link" to="/uploadcourse">Upload Course</NavLink>
               </li>
               }
+
+              {
+                isAuth && 
+                <li className="nav-item">
+                <NavLink className="nav-link" to={`/profile/${user._id}`}>Profile</NavLink>
+              </li>
+              }
+
+              
 
               {
                   ( isAuth ) ? 

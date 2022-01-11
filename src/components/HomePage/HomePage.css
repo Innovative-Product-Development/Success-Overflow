@@ -28,11 +28,13 @@
 .banner-wrapper .banner-header {
 	margin-bottom: 30px;
 }
+
 .banner-wrapper .banner-header h1 {
     margin-bottom: 15px;
 	font-size: 50px;
 	font-weight: bold;
 	color: #ffffff;
+	
 }
 .banner-wrapper .banner-header h1 span {
 	color: #a662ff;
