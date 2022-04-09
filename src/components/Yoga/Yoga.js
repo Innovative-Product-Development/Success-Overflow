@@ -27,7 +27,7 @@ const Yoga = () => {
               <div className='row'>
                   <div className='col-3 mb-3'>
                     <Link>
-                      <button className='yoga-names'>Pain in Knees</button>
+                      <button className='yoga-names'>Knee Pain</button>
                     </Link>
                   </div>
                   <div className='col-3 mb-3'>
