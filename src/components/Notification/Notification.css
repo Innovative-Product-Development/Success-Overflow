@@ -66,6 +66,26 @@
     font-weight: 500;
 }
 
+.viewButton{
+    border: none;
+    outline: none;
+    padding: 15px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    font-size: 17px;
+    margin-right: 20px;
+    background-color: #c6f0f3;
+    border-radius: 5px;
+    border: 1px solid rgb(68, 111, 250);
+    color: rgb(68, 111, 250);
+    font-weight: 500;
+}
+.chatLink{
+    cursor: pointer;
+    margin-left: 6px;
+    font-size: 17px;
+}
+
 .NotificationDate{
     font-size: 14px;
     color: grey;

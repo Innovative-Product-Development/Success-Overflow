@@ -3,6 +3,8 @@ import { getEndPoint, postEndPoint } from "../../request/request"
 import './Notification.css'
 import {io} from "socket.io-client"
 import { useSelector, useDispatch } from "react-redux"
+import { Button, Container, Spinner, Toast, Row, Col } from "react-bootstrap";
+import { NavLink } from 'react-router-dom'
 import { setAuth } from '../../store/authSlice'
 
 function Notification(props) {
@@ -13,6 +15,7 @@ function Notification(props) {
     const socket = useRef();
     const { isAuth, token, user } = useSelector((state)=>state.auth)
     const [arrivalNotification, setArrivalNotification] = useState(null)
+    const [isLoading, setIsLoading] = useState(true);
 
  
 
@@ -92,7 +95,7 @@ function Notification(props) {
                     })
                    
                     requestNotifications();
-                    alert(response2.data.message)
+                    alert("Request Accepted!! The student will ask queries in chat section.")
                     
 
 
@@ -189,6 +192,7 @@ function Notification(props) {
                     console.log("bahibhai",response2.data.data)
                     setNotifications(response2.data.data)
                     setIsStudent(response2.data.isStudent);
+                    setIsLoading(false)
                     // const courses = response2.data.data
                     // courses.sort((a,b) => (a.isRecommended > b.isRecommended ) ? -1 : ((b.isRecommended > a.isRecommended ) ? 1 : 0))
                     // setCourseDetails(response2.data.data)
@@ -222,8 +226,32 @@ function Notification(props) {
 
     return (
         <>
-            <h1 className='NotificationHeading'>NOTIFICATIONS</h1>
+         <div>
+         {isLoading ?
+                (<center style={{ marginTop: "20%" }}>
+                    <Button variant="primary" disabled>
+                        <Spinner
+                            as="span"
+                            animation="grow"
+                            size="sm"
+                            role="status"
+                            aria-hidden="true"
+                        />
+                        Loading...
+                    </Button>
+                </center>) : (
+             <div>
+             <h1 className='NotificationHeading'>NOTIFICATIONS</h1>
             <div className='NotificationContainer'>
+                {
+                    notifications.length == 0 &&   
+                    <li className='NotificationLi'>
+                    <div className='NotificationDiv'>
+                         No New Notifications
+                    
+                    </div>
+                    </li>  
+                }
                 
             {
                 isStudent && notifications.map((notification)=>{
@@ -240,7 +268,7 @@ function Notification(props) {
                     }else if(notification.status == "accepted"){
                         return <li className='NotificationLi'>
                             <div className='NotificationDiv'>
-                            {notification.receiver.name} has accepted your request
+                            <div>{notification.receiver.name} has accepted your request. <NavLink className="chatLink"  to={`/chat`}>Chat</NavLink></div>
                             <p  className='NotificationDate'>{ String(new Date(notification.updatedAt).toDateString()) }</p>
                             </div>
                             </li>
@@ -269,6 +297,7 @@ function Notification(props) {
                         <div style={{marginTop:"5px", marginBottom:"5px"}}>
                             <button onClick={()=>{acceptRequest(notification._id, notification.sender._id)}} className='acceptButton'>Accept</button>
                             <button onClick={()=>{rejectRequest(notification._id, notification.sender._id)}} className='rejectButton'>Reject</button>
+                            <button className='viewButton'><NavLink  to={`/profile/${notification.sender._id}`}>View Profile</NavLink></button>
                             
                         </div>
                         </li>  
@@ -294,6 +323,9 @@ function Notification(props) {
             }
             
             </div>
+             </div>
+                )}
+         </div>
         </>
     );
 }

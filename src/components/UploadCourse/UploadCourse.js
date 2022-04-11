@@ -43,7 +43,7 @@ function UploadCourse(props) {
 
 
     async function submit(){
-        // console.log(course_name, course_description, course_domain, selected)
+       
         console.log(video, course_thumbnail)
         console.log({ course_name, course_description, course_domain, selected, course_videos:video, course_thumbnail })
 
@@ -58,24 +58,9 @@ function UploadCourse(props) {
                     
                 }
             }
-            else {
-                
-                // setIsLoading(false);
-                // setErrMsg("OOPS AN ERROR OCCURED TRY AGAIN LATER!!");
-                // setShowError(true);
-            }
         }
         catch (err) {
             alert(err.response.data.message)
-            // setIsLoading(false);
-            // if (typeof (err.response) !== 'undefined' && typeof (err.response.data) !== 'undefined' && typeof (err.response.data.msg) !== 'undefined') {
-            //     setErrMsg(err.response.data.msg);
-            //     setShowError(true);
-            // }
-            // else {
-            //     setErrMsg("OOPS AN ERROR OCCURED TRY AGAIN LATER!!");
-            //     setShowError(true);
-            // }
         }
       
     }
@@ -114,10 +99,7 @@ function UploadCourse(props) {
 }
 
 function deleteUploadedDoc(type, id, index) {
-    /*FUNCTION TO DELETE DOCS*/
-    // if (type === 1) {
-    //     setProfile("https://res.cloudinary.com/chiragjain55551/image/upload/v1627317877/StudentProject/vdjmvqojsnx3hckyuwm6.jpg");
-    // }
+
     if(type == 1){
         setCourseThumbNail("");
     }
@@ -127,15 +109,7 @@ function deleteUploadedDoc(type, id, index) {
         setVideo(temp3);
 
     }
-    // else if (type === 3 && id && index >= 0) {
-    //     let temp3 = Array.from(achievements);
-    //     temp3[index].proof_link = "";
-    //     setAchievements(temp3);
 
-    // }
-    // else if (type === 4) {
-    //     setResume("");
-    // }
 
 }
        
@@ -352,11 +326,7 @@ function uploadFiles(type, id, index) {
                                         {
                                             course_thumbnail && course_thumbnail.length > 1 ?
                                             <div className="documentIconsDiv">
-                                                {/* <OverlayTrigger
-                                                    placement={"top"}
-                                                    overlay={<Tooltip>View uploaded document</Tooltip>}>
-                                                    <a href={value.proof_link} rel="noreferrer" target="_blank"><BsEye className="eyeIcon" /></a>
-                                                </OverlayTrigger> */}
+                                               
                                                 <OverlayTrigger
                                                     placement={"top"}
                                                     overlay={<Tooltip>Delete Course Thumbnail</Tooltip>}
@@ -376,7 +346,7 @@ function uploadFiles(type, id, index) {
                         <div className="mainBox" style={{ marginTop: "3%" }} id="video" ref={videoDiv}>
     
                                     <h4 className="headings inputLabel">Video Lectures</h4>
-                                    {/* <label className="subHeadings">Please enter internship details (Note: Proof of internship should contain evalutation report filled by company and your certificate/LOR given by the company)</label> */}
+                                    
                                     <hr />
                                     {
                                         video.map((value, index) => {
@@ -391,7 +361,7 @@ function uploadFiles(type, id, index) {
                                                             </Col>
                                                             <Col sm={6} md={6} lg={8} >
                                                                 <Form.Control name="videoName" className="customInputField" id={"videoname," + value.key} type="text" rows={5} defaultValue={value.video_name && value.video_name.length > 0 ? value.video_name : ""} onInput={(event) => { ValidationOnChange(event); }} />
-                                                                {/* onInput={(event) => { ValidationOnChange(event); }} */}
+                                                                
                                                             </Col>
                                                         </Row>
                                                         <br />
@@ -413,16 +383,12 @@ function uploadFiles(type, id, index) {
                                                                 <Form.Label className="BoldTextHeading" >Video Link</Form.Label>
                                                                 </Col>
                                                                 <Col style={{display:"flex",alignItems:"center",justifyContent:"space-between"}} sm={8} md={7} lg={8} >
-                                                                {/* <Form.Control name="videoLink" className="customInputField" id={"videolink," + value.key} type="text" rows={5} defaultValue={value.video_link && value.video_link.length > 0 ? value.video_link : ""} onInput={(event) => { ValidationOnChange(event); }} /> */}
+                                                               
                                                             
                                                                 <Button onClick={() => { uploadFiles(2, value.key, index); }} style={{ border: "none", outline: "none", background: "rgb(166, 98, 255)", fontWeight: "500", paddingLeft: "20px", paddingRight: "20px", marginTop: "0.5%" }} >Upload Video Lecture</Button>
                                                                 {value.video_link && value.video_link.length > 1 ?
                                                                 <div className="documentIconsDiv">
-                                                                    {/* <OverlayTrigger
-                                                                        placement={"top"}
-                                                                        overlay={<Tooltip>View uploaded document</Tooltip>}>
-                                                                        <a href={value.proof_link} rel="noreferrer" target="_blank"><BsEye className="eyeIcon" /></a>
-                                                                    </OverlayTrigger> */}
+                                                                   
                                                                     <OverlayTrigger
                                                                         placement={"top"}
                                                                         overlay={<Tooltip>Delete uploaded Video</Tooltip>}
@@ -435,7 +401,7 @@ function uploadFiles(type, id, index) {
                                                                 : null}
                                                                 </Col>
                                                                 </Row>
-                                                                {/* onClick={() => { uploadFiles(2, value.key, index); }} */}
+                                                               
                                                             </div>
 
                                                         </div>
