@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { Button, Container, Spinner, Toast, Row, Col } from "react-bootstrap";
 import { NavLink } from 'react-router-dom'
 import { setAuth } from '../../store/authSlice'
+import ReasonModal from './ReasonModal';
 
 function Notification(props) {
 
@@ -16,6 +17,9 @@ function Notification(props) {
     const { isAuth, token, user } = useSelector((state)=>state.auth)
     const [arrivalNotification, setArrivalNotification] = useState(null)
     const [isLoading, setIsLoading] = useState(true);
+    const [showModal, setShowModal] = useState(false);
+    const [sender, setSender] = useState("");
+    const [notificaionId, setNotificationId] = useState("");
 
  
 
@@ -60,6 +64,23 @@ function Notification(props) {
         if(socket) socket.current.emit('forceDisconnect');
       }
 
+    const showReasonModal = (notificationid, senderId) => {
+        console.log(typeof(senderId))
+        setNotificationId(notificationid)
+        setSender(senderId)
+        setShowModal(true);
+    }
+
+    const closeReasonModal = () => {
+        setShowModal(false);
+    }
+
+    const handleReject = (reason) => {
+        console.log(reason)
+        setShowModal(false);
+        rejectRequest(reason)
+    }
+ 
 
 
     useEffect(()=>{
@@ -84,7 +105,7 @@ function Notification(props) {
     const acceptRequest = async (notificationid, senderId) => {
         
         try {
-            const response2 = await postEndPoint(`/user/changeNotificationStatus/${notificationid}`, {status: "accepted"},null);
+            const response2 = await postEndPoint(`/user/changeNotificationStatus/${notificationid}`, {status: "accepted", reason:""},null);
             if (response2) {
                 if (response2.status === 200) {
                     console.log(response2.data)
@@ -131,17 +152,20 @@ function Notification(props) {
     }
 
 
-    const rejectRequest = async (notificationid, senderId) => {
+    const rejectRequest = async (reason) => {
+        // showReasonModal();
 
-
+        console.log(sender, notificaionId, reason)
         try {
-            const response2 = await postEndPoint(`/user/changeNotificationStatus/${notificationid}`, {status: "rejected"},null);
+            
+            const response2 = await postEndPoint(`/user/changeNotificationStatus/${notificaionId}`, {status: "rejected", reason: reason},null);
             if (response2) {
                 if (response2.status === 200) {
                     console.log(response2.data)
                     socket.current.emit("changeStatus",{
-                        senderId,
-                        notification:response2.data.notification
+                        senderId: sender,
+                        notification:response2.data.notification,
+                        user: response2.data.sender
                     })
                    
                     requestNotifications();
@@ -164,6 +188,7 @@ function Notification(props) {
                 // setErrMsg("OOPS AN ERROR OCCURED TRY AGAIN LATER!!");
                 // setShowError(true);
             }
+            
         }
         catch (err) {
             // alert(err.response)
@@ -240,7 +265,9 @@ function Notification(props) {
                         Loading...
                     </Button>
                 </center>) : (
+                    
              <div>
+                 <ReasonModal show={showModal} title={"Please Enter the Reason"} handleReject={handleReject} closeReasonModal={closeReasonModal}></ReasonModal>
              <h1 className='NotificationHeading'>NOTIFICATIONS</h1>
             <div className='NotificationContainer'>
                 {
@@ -278,6 +305,10 @@ function Notification(props) {
                             {notification.receiver.name} has rejected your request
                             <p  className='NotificationDate'>{ String(new Date(notification.updatedAt).toDateString()) }</p>
                             </div>
+                            <div>
+                                <p style={{fontSize:"17px", marginTop:"5px", color:"deeppink"}}>Reason: <span style={{color:"black"}}>{notification.reason}</span></p>
+                            </div>
+                            
                             </li>
                     }
                 })
@@ -296,7 +327,7 @@ function Notification(props) {
                         
                         <div style={{marginTop:"5px", marginBottom:"5px"}}>
                             <button onClick={()=>{acceptRequest(notification._id, notification.sender._id)}} className='acceptButton'>Accept</button>
-                            <button onClick={()=>{rejectRequest(notification._id, notification.sender._id)}} className='rejectButton'>Reject</button>
+                            <button onClick={()=>{showReasonModal(notification._id, notification.sender._id)}} className='rejectButton'>Reject</button>
                             <button className='viewButton'><NavLink  to={`/profile/${notification.sender._id}`}>View Profile</NavLink></button>
                             
                         </div>

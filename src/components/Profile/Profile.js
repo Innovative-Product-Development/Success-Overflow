@@ -82,10 +82,10 @@ function Profile(props) {
                             
                         </div>
                     </div>
-                    <h4 style={{padding:'2rem 0 1rem 0'}}><span>Courses Enrolled</span></h4>
+                    {user.isStudent && <h4 style={{padding:'2rem 0 1rem 0'}}><span>Courses Enrolled</span></h4>}
                     <div className="course-section1" style={{paddingLeft:'3rem'}}>
                     
-                    {user && user.courses_enrolled && user.courses_enrolled.length>0 && user.courses_enrolled.map(course => {
+                    {user && user.isStudent && user.courses_enrolled && user.courses_enrolled.length>0 && user.courses_enrolled.map(course => {
                         return (
                             <div className="card card12">
                                 <img style={{border:"1px solid #8e51de",borderRadius:"2px"}} src={course.course_thumbnail} className="card-img-top" alt="..." />
@@ -119,10 +119,10 @@ function Profile(props) {
                     }, [])
                     }
                 </div>
-                <h4><span>My Mentors</span></h4>
+                {user.isStudent && <h4><span>My Mentors</span></h4>}
                     <div className='mentors-section'>
                 {
-                    user && user.connected_teachers && user.connected_teachers.length > 0 && user.connected_teachers.map((teacher) => {
+                    user && user.isStudent && user.connected_teachers && user.connected_teachers.length > 0 && user.connected_teachers.map((teacher) => {
                         return (
                             <div id="mentors" className="mentors-part" style={{ display: "block", backgroundColor: "floralwhite", marginTop: "60px" }}>
                                 <div className='mentors-data'>

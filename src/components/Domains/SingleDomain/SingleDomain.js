@@ -143,7 +143,9 @@ function SingleDomain(props) {
                                         </div>
                                         <div className='mentors-info-2'>
                                             <p className='mentor-tech' ><span className='Labels'>Domain</span>: {teacher.tech}</p>
-                                            <p className='mentor-sub-tech' ><span className='Labels'>SubDomain</span>: {teacher.sub_tech.label}</p>
+                                            <p className='mentor-sub-tech' ><span className='Labels'>SubDomain</span>: 
+                                            {teacher.sub_tech.map(e => e.label).join(", ")
+                                            }</p>
                                             <p className='mentor-exp' ><span className='Labels'>Experience</span>: {teacher.experience} years</p>
                                         </div>
                                         <div className='mentors-info-3'>

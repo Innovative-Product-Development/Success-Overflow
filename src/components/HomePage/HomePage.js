@@ -86,18 +86,18 @@ class HomePage extends React.Component {
         this.setState({ coursesLine: courseline })
 
 
-        var mentorline = new LeaderLine({
-            start: document.getElementById('end'), end: document.getElementById('teachers'),
-            path: 'straight',
-            dash: { animation: true },
-            color: '#a662ff',
-            startSocket: 'auto', endSocket: 'auto',
-            endPlug: "arrow1",
-            size: 3
-        }
-        );
+        // var mentorline = new LeaderLine({
+        //     start: document.getElementById('end'), end: document.getElementById('teachers'),
+        //     path: 'straight',
+        //     dash: { animation: true },
+        //     color: '#a662ff',
+        //     startSocket: 'auto', endSocket: 'auto',
+        //     endPlug: "arrow1",
+        //     size: 3
+        // }
+        // );
 
-        this.setState({ mentorsline: mentorline })
+        // this.setState({ mentorsline: mentorline })
 
 
         var yogaline = new LeaderLine({
@@ -139,18 +139,18 @@ class HomePage extends React.Component {
 
         this.setState({ studentsline: studentline })
 
-        var motivationline = new LeaderLine({
-            start: document.getElementById('end'), end: document.getElementById('motivation'),
-            path: 'straight',
-            dash: { animation: true },
-            color: '#a662ff',
-            startSocket: 'auto', endSocket: 'auto',
-            endPlug: "arrow1",
-            size: 3
-        }
-        );
+        // var motivationline = new LeaderLine({
+        //     start: document.getElementById('end'), end: document.getElementById('motivation'),
+        //     path: 'straight',
+        //     dash: { animation: true },
+        //     color: '#a662ff',
+        //     startSocket: 'auto', endSocket: 'auto',
+        //     endPlug: "arrow1",
+        //     size: 3
+        // }
+        // );
 
-        this.setState({ motivationsline: motivationline })
+        // this.setState({ motivationsline: motivationline })
         // this.setState({history:useHistory()})
 
         // history = useHistory();
@@ -161,9 +161,9 @@ class HomePage extends React.Component {
 
     componentWillUnmount() {
         this.state.coursesLine.remove();
-        this.state.mentorsline.remove();
+        // this.state.mentorsline.remove();
         this.state.yogasline.remove();
-        this.state.motivationsline.remove();
+        // this.state.motivationsline.remove();
         this.state.studentsline.remove();
         this.state.profilesline.remove();
 
@@ -195,7 +195,7 @@ class HomePage extends React.Component {
 
                     <div className="row text-center">
                         <div className="col-6 A ">
-                            <Card id="start" style={{ width: '22rem', left: "110px", borderRadius: "50%", height: "15rem", margin: "auto", boxShadow: "1px 1px 8px 0px rgb(0 0 0 / 20%), 0px 0px 0px 0 rgb(0 0 0 / 19%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                            <Card id="start" style={{ width: '22rem', left: "10px", borderRadius: "50%", height: "15rem", margin: "auto", boxShadow: "1px 1px 8px 0px rgb(0 0 0 / 20%), 0px 0px 0px 0 rgb(0 0 0 / 19%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
 
                                 <Card.Img class="image" variant="top" style={{ background: "transparent", marginTop: "10px" }} src={course} />
                                 <a href="#cour">
@@ -211,18 +211,16 @@ class HomePage extends React.Component {
                         </div>
 
                         <div className="col-6 C">
-                            <Card id="students" style={{ width: '22rem', right: "110px", borderRadius: "50%", height: "15rem", margin: "auto", boxShadow: "1px 1px 8px 0px rgb(0 0 0 / 20%), 0px 0px 0px 0 rgb(0 0 0 / 19%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                                <Card.Img class="image" variant="top" style={{ background: "transparent", marginTop: "10px" }} src={studentsInteraction} />
-                                <div class="overlay">
-                                    <div class="text1">Get connected with student community.?</div>
-                                </div>
+                            <Card id="students" style={{ width: '22rem', right: "10px", borderRadius: "50%", height: "15rem", margin: "auto", boxShadow: "1px 1px 8px 0px rgb(0 0 0 / 20%), 0px 0px 0px 0 rgb(0 0 0 / 19%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                                <Card.Img class="image" variant="top" style={{ background: "transparent", marginTop: "10px" }} src={teacher} />
+                                <a href="#mentors">
+                                    <div class="overlay">
+                                        <div class="text1">Need Advice from Mentors.?</div>
+                                    </div>
+                                </a>
                             </Card>
 
-                        </div>
-                    </div>
-                    <div className="row text-center">
-                        <div className="col-4 D">
-                            <Card id="teachers" style={{ width: '22rem', borderRadius: "50%", height: "15rem", margin: "auto", boxShadow: "1px 1px 8px 0px rgb(0 0 0 / 20%), 0px 0px 0px 0 rgb(0 0 0 / 19%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                            {/* <Card id="students" style={{ width: '22rem', borderRadius: "50%", height: "15rem", margin: "auto", boxShadow: "1px 1px 8px 0px rgb(0 0 0 / 20%), 0px 0px 0px 0 rgb(0 0 0 / 19%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                                 <Card.Img class="image" variant="top" style={{ background: "transparent", marginTop: "10px" }} src={teacher} />
 
                                 <a href="#mentors">
@@ -231,7 +229,22 @@ class HomePage extends React.Component {
                                     </div>
                                 </a>
 
-                            </Card>
+                            </Card> */}
+
+                        </div>
+                    </div>
+                    <div className="row text-center">
+                        <div className="col-4 D">
+                            {/* <Card id="teachers" style={{ width: '22rem', borderRadius: "50%", height: "15rem", margin: "auto", boxShadow: "1px 1px 8px 0px rgb(0 0 0 / 20%), 0px 0px 0px 0 rgb(0 0 0 / 19%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                                <Card.Img class="image" variant="top" style={{ background: "transparent", marginTop: "10px" }} src={teacher} />
+
+                                <a href="#mentors">
+                                    <div class="overlay">
+                                        <div class="text1">Need Advice from Mentors.?</div>
+                                    </div>
+                                </a>
+
+                            </Card> */}
                         </div>
                         <div className="col-4 B J ">
                             <Card style={{ width: '22rem', borderRadius: "50%", height: "15rem", margin: "auto", boxShadow: "1px 1px 8px 0px rgb(0 0 0 / 20%), 0px 0px 0px 0 rgb(0 0 0 / 19%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -243,17 +256,17 @@ class HomePage extends React.Component {
 
                         </div>
                         <div className="col-4 E">
-                            <Card id="motivation" style={{ width: '22rem', borderRadius: "50%", height: "15rem", margin: "auto", boxShadow: "1px 1px 8px 0px rgb(0 0 0 / 20%), 0px 0px 0px 0 rgb(0 0 0 / 19%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                            {/* <Card id="motivation" style={{ width: '22rem', borderRadius: "50%", height: "15rem", margin: "auto", boxShadow: "1px 1px 8px 0px rgb(0 0 0 / 20%), 0px 0px 0px 0 rgb(0 0 0 / 19%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                                 <Card.Img class="image" variant="top" style={{ background: "transparent", marginTop: "10px" }} src={meditation} />
                                 <div class="overlay">
                                     <div class="text1">Need Motivation.?</div>
                                 </div>
-                            </Card>
+                            </Card> */}
                         </div>
                     </div>
                     <div className="row text-center">
                         <div className="col-6 F">
-                            <Card id="yoga" style={{ width: '22rem', left: "110px", borderRadius: "50%", height: "15rem", margin: "auto", boxShadow: "1px 1px 8px 0px rgb(0 0 0 / 20%), 0px 0px 0px 0 rgb(0 0 0 / 19%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                            <Card id="yoga" style={{ width: '22rem', left: "10px", borderRadius: "50%", height: "15rem", margin: "auto", boxShadow: "1px 1px 8px 0px rgb(0 0 0 / 20%), 0px 0px 0px 0 rgb(0 0 0 / 19%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                                 <Card.Img class="image" variant="top" style={{ background: "transparent", marginTop: "10px" }} src={yoga} />
                                 <div class="overlay">
                                     <div class="text1">Health Issues.?</div>
@@ -261,7 +274,7 @@ class HomePage extends React.Component {
                             </Card>
                         </div>
                         <div className="col-6 G">
-                            <Card id="profile" style={{ width: '22rem', right: "110px", borderRadius: "50%", height: "15rem", margin: "auto", boxShadow: "1px 1px 8px 0px rgb(0 0 0 / 20%), 0px 0px 0px 0 rgb(0 0 0 / 19%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                            <Card id="profile" style={{ width: '22rem', right: "10px", borderRadius: "50%", height: "15rem", margin: "auto", boxShadow: "1px 1px 8px 0px rgb(0 0 0 / 20%), 0px 0px 0px 0 rgb(0 0 0 / 19%)", display: "flex", alignItems: "center", justifyContent: "center" }}>
                                 <Card.Img class="image" variant="top" style={{ background: "transparent", marginTop: "10px" }} src={profile} />
                                 <div class="overlay">
                                     <div class="text1">Update Profile to showcase your skills.?</div>

@@ -67,9 +67,6 @@ const CourseEnroll = (props) => {
                     setCourse(response2.data)    
                 }
             }
-            else {
-                console.log(err)         
-            }
         }
         catch (err) {
             console.log(err)         

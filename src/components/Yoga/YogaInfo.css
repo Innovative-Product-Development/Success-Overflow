@@ -1,0 +1,21 @@
+.title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    font-size: 30px;
+    color: #460897;
+    font-weight: 600;
+}
+.yogaBox{
+    border: 1px solid #a662ff;
+    /* background-color: skyblue; */
+    margin: 30px 30px;
+    padding: 15px 25px;
+    box-shadow: 0 0 13px rgba(0,0,0,0.10);
+    border-radius: 10px;
+}
+
+.yogaBox h3{
+    color: #a662ff;
+}
