@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { postEndPoint } from "../../request/request"
+import { CountryDropdown, RegionDropdown } from 'react-indian-state-region-selector';
 import '../../../node_modules/font-awesome/css/font-awesome.min.css';
 import './Register2.css';
 import { Form, Container } from "react-bootstrap";
@@ -80,8 +81,8 @@ function Register2(props) {
             // const response2 = await postEndPoint('/user/details', { isStudent, domain, sub_domain, description, city, state, experience, profilePic }, null);
 
             
-            console.log(isStudent, domain, selected , description, city, state, experience )
-
+            // console.log(isStudent, domain, selected , description, city, state, experience )
+            
             const response2 = await postEndPoint('/user/details', { email:user.email,isStudent, domain, sub_domain:selected, description, city, state, experience, profilePic }, null);
             if (response2) {
                 if (response2.status === 200) {
@@ -98,6 +99,7 @@ function Register2(props) {
                 // setErrMsg("OOPS AN ERROR OCCURED TRY AGAIN LATER!!");
                 // setShowError(true);
             }
+            
         }
         catch (err) {
             alert(err.response.data.message)
@@ -202,17 +204,27 @@ function Register2(props) {
                     <Form >
                         <Form.Group className="inputDiv" style={{textAlign:"start"}}>
                             <Form.Label className="customBoldFont inputLabel">Description</Form.Label>
-                            <Form.Control className="inputField" name="SapId" id="SapId" type="text" rows={5} value={description} onInput={(event)=>{setDescription(event.target.value)}} />
+                            <Form.Control autoComplete='off' className="inputField" name="SapId" id="SapId" type="text" rows={5} value={description} onInput={(event)=>{setDescription(event.target.value)}} />
+                        </Form.Group>
+                        <br></br>
+                        
+                        <Form.Group className="inputDiv" style={{textAlign:"start"}}>
+                            <Form.Label className="customBoldFont inputLabel">State</Form.Label>
+                            {/* <Form.Control> */}
+                            <CountryDropdown classes="inputField form-control" rows={5}
+                            value={state}
+                            onChange={(val) => setState(val)} />
+                            {/* </Form.Control> */}
+                            {/* <Form.Control autoComplete='off' className="inputField" name="SapId" id="SapId" type="text" rows={5} value={city} onInput={(event)=>{setCity(event.target.value)}} /> */}
                         </Form.Group>
                         <br></br>
                         <Form.Group className="inputDiv" style={{textAlign:"start"}}>
                             <Form.Label className="customBoldFont inputLabel">City</Form.Label>
-                            <Form.Control className="inputField" name="SapId" id="SapId" type="text" rows={5} value={city} onInput={(event)=>{setCity(event.target.value)}} />
-                        </Form.Group>
-                        <br></br>
-                        <Form.Group className="inputDiv" style={{textAlign:"start"}}>
-                            <Form.Label className="customBoldFont inputLabel">state</Form.Label>
-                            <Form.Control className="inputField" name="SapId" id="SapId" type="text" rows={5} value={state} onInput={(event)=>{setState(event.target.value)}} />
+                            <RegionDropdown classes="inputField form-control" rows={5}
+                            country={state}
+                            value={city}
+                            onChange={(val) => setCity(val)} />
+                            {/* <Form.Control autoComplete='off' className="inputField" name="SapId" id="SapId" type="text" rows={5} value={state} onInput={(event)=>{setState(event.target.value)}} /> */}
                         </Form.Group>
                         <br></br>
                         

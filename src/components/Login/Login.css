@@ -63,7 +63,7 @@ body{
   height: 100%;
   width: 100%;
   background: #b591e4;
-  opacity: 0.5;
+  opacity: 0.2;
   z-index: 12;
 }
 .container .cover::after{
@@ -76,11 +76,11 @@ body{
   height: 100%;
   width: 100%;
   object-fit: cover;
-  z-index: 10;
+  /* z-index: 10; */
 }
 .container .cover .text{
   position: absolute;
-  z-index: 130;
+  /* z-index: 130; */
   height: 100%;
   width: 100%;
   display: flex;

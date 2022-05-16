@@ -5,6 +5,7 @@ import '../../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../../../../node_modules/font-awesome/css/font-awesome.min.css';
 import "../../../../node_modules/video-react/dist/video-react.css";
 import { getEndPoint } from '../../../request/request'
+import { Button, Container, Spinner, Toast, Row, Col } from "react-bootstrap";
 // import { Player } from 'video-react';
 // import poster from '../../../../src/assets/images/avatar.png';
 
@@ -19,6 +20,7 @@ const SingleCourse = (props) => {
     const [course, setCourse] = useState({})
     const [allVideos, setAllVideos] = useState([]);
     const [selectedVideo, setSelectedVideo] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     const setVid = (videoId) => {
         const video = allVideos.filter((video)=> video._id == videoId)
@@ -45,32 +47,17 @@ const SingleCourse = (props) => {
                     setDescription(response2.data.videos[0].video_description)
                     setId(response2.data.videos[0]._id)
                     setLink(response2.data.videos[0].video_link)
+                    setIsLoading(false)
                 }
-            }
-            else {
-                
-                // setIsLoading(false);
-                // setErrMsg("OOPS AN ERROR OCCURED TRY AGAIN LATER!!");
-                // setShowError(true);
             }
         }
         catch (err) {
-            // alert(err.response)
-            // setIsLoading(false);
-            // if (typeof (err.response) !== 'undefined' && typeof (err.response.data) !== 'undefined' && typeof (err.response.data.msg) !== 'undefined') {
-            //     setErrMsg(err.response.data.msg);
-            //     setShowError(true);
-            // }
-            // else {
-            //     setErrMsg("OOPS AN ERROR OCCURED TRY AGAIN LATER!!");
-            //     setShowError(true);
-            // }
+            console.log(err)         
         }      
     },[])
 
     const [singleCourse,setSingleCourse] = useState([]);
-    // const [vid,setVid] = useState("");
-    // const [title,setTitle] = useState("");
+
     const [counter,setCounter] = useState(0)
 
     const watched = (vid) =>{
@@ -81,35 +68,31 @@ const SingleCourse = (props) => {
         }
         return false
     }
-    
-    // useEffect(()=>{
-    //     fetch('https://youtube.googleapis.com/youtube/v3/playlists?part=contentDetails%2Csnippet&id=PLr6-GrHUlVf_ZNmuQSXdS197Oyr1L9sPB&key=AIzaSyBwGVGXLo-toCzGy930cRDWKBcYoIcMeZo')
-    //     .then(res=>res.json())
-    //     .then(data=>{
-    //         console.log(data);
-    //         const result = data.items.map(item=>{
-    //            return {title:item.snippet.title,vid:item.contentDetails.videoId}
-
-    //         })
-    //         setSingleCourse(result);
-    //         setVid(result.vid);
-    //         // setTitle(result.title)
-    //     })
-
-    // },[])
-
-
-
-
     return (
         <>
-        <div className='courseHeading'>
+        <div>
+        {isLoading ?
+                (<center style={{ marginTop: "20%" }}>
+                    <Button variant="primary" disabled>
+                        <Spinner
+                            as="span"
+                            animation="grow"
+                            size="sm"
+                            role="status"
+                            aria-hidden="true"
+                        />
+                        Loading...
+                    </Button>
+                </center>) : (
+            <div>
+            <div className='courseHeading'>
             <h3>{course.course_name}</h3>
             <p style={{marginBottom:"2px",fontWeight:"600"}}>Domain: <span>{course.course_domain}</span></p>
             <p  style={{fontWeight:"600"}}>Sub Domain: <span>{course.course_subdomain && course.course_subdomain.length>0 && course.course_subdomain.join(", ")}</span></p>
             
         </div>
-        <div style={{display:'grid',gridTemplateColumns:'3fr 1fr'}}>
+        <div style={{display:"block"}}>
+        <div style={{display:'grid',gridTemplateColumns:'3fr 1fr',height:"700px"}}>
             <div className="main-screen">
             <iframe style={{width:"100%",height:"550px"}} src={link} ></iframe>
                 <div className='title1'>
@@ -137,6 +120,7 @@ const SingleCourse = (props) => {
                 </ul>
             </div>
         </div>
+        </div>
         <div className="about-section" id="about">
                     <div className="about-content">
                         <h2 className="about-title">About This Course</h2>
@@ -149,10 +133,7 @@ const SingleCourse = (props) => {
                                         return <span key={index} className="badge rounded-pill bg-light text-dark">{skill}</span>
                                     })
                                 }
-                                {/* <span className="badge rounded-pill bg-light text-dark">Web Design</span>
-                                <span className="badge rounded-pill bg-light text-dark">Web Accessibilty</span>
-                                <span className="badge rounded-pill bg-light text-dark">HTML</span>
-                                <span className="badge rounded-pill bg-light text-dark">HTML5</span> */}
+                               
                             </div>
                         </div>
                     </div>
@@ -202,10 +183,7 @@ const SingleCourse = (props) => {
                                 <h4>{course.courseCreator.name}</h4>
                                 <p>{course.courseCreator.description}</p>
                                 <div className="more-info">
-                                    {/* <div className="side-info">
-                                        <img alt="thumbnail" src="https://cdn.iconscout.com/icon/free/png-64/users-144-457814.png"></img>
-                                        <p><b>46,578</b> learners</p>
-                                    </div> */}
+                                   
                                     <div className="side-info">
                                         <img alt="thumbnail" src="https://cdn.iconscout.com/icon/free/png-64/book-1169-433812.png"></img>
                                         <p>Experience<b> {course.courseCreator.experience} years</b></p>
@@ -218,6 +196,9 @@ const SingleCourse = (props) => {
                     </div>
                 </div>
         
+            </div>
+            )}
+        </div>
         
         </>
     )

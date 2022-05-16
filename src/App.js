@@ -16,6 +16,8 @@ import SingleDomain from "./components/Domains/SingleDomain/SingleDomain"
 import Notification from './components/Notification/Notification';
 import Messenger from './components/Chat/Messenger/Messenger';
 import Profile from './components/Profile/Profile';
+import Yoga from './components/Yoga/Yoga';
+import YogaInfo from './components/Yoga/YogaInfo';
 
 function App() {
   return (
@@ -41,6 +43,13 @@ function App() {
      
      <Route path='/courses' exact >
          <Courses/>
+     </Route>
+     <Route path='/yoga' exact >
+         <Yoga/>
+     </Route>
+
+     <Route path='/recommendYoga/:text' exact >
+         <YogaInfo/>
      </Route>
      
      <Route path='/courses/web_dev' >

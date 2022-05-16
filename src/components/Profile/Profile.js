@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { getEndPoint } from "../../request/request"
+import { Button, Container, Spinner, Toast, Row, Col } from "react-bootstrap";
 import {NavLink, Link } from 'react-router-dom'
 import './Profile.css'
 
 function Profile(props) {
     const [user, setUser] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     useEffect(async () => {
 
         try {
@@ -13,6 +15,7 @@ function Profile(props) {
                 if (response2.status === 200) {
                     console.log(response2.data.data)
                     setUser(response2.data.data)
+                    setIsLoading(false)
                 }
             }
             else {
@@ -36,8 +39,22 @@ function Profile(props) {
         }
     }, [])
     return (
-        <div>
-            Profile of {props.match.params.userId}
+       <div>
+            {isLoading ?
+                (<center style={{ marginTop: "20%" }}>
+                    <Button variant="primary" disabled>
+                        <Spinner
+                            as="span"
+                            animation="grow"
+                            size="sm"
+                            role="status"
+                            aria-hidden="true"
+                        />
+                        Loading...
+                    </Button>
+                </center>) : (
+            <div>
+            {/* Profile of {props.match.params.userId} */}
             {
                 user && <div className='profile-part'>
                     <div className='profile-img'>
@@ -49,32 +66,36 @@ function Profile(props) {
                             <p className='user-desc' style={{ textAlign: 'center' }}>{user.description}</p>
                         </div>
                         <div className='details-part-2' style={{textAlign:'center'}}>
-                            <h5><span>Tech: </span>{user.tech}</h5>
-                            <h5><span>SubTech: </span>{user.sub_tech && user.sub_tech.length>0 && user.sub_tech.join(', ')}</h5>
+                            <h5><span>Email:  </span>{user.email}</h5>
+                            <h5><span>Tech:  </span>{user.tech}</h5>
+                            <h5><span>SubTech:  </span>{user.sub_tech && user.sub_tech.length>0 && 
+                            user.sub_tech.map(e => e.label).join(", ")
+                            
+                            }</h5>
                             
                             
                         </div>
                         <div className='details-part-3' style={{textAlign:'center'}}>
-                            <h5><span>City: </span>{user.city}</h5>
-                            <h5><span>State: </span>{user.state}</h5>
+                            <h5><span>City:  </span>{user.city}</h5>
+                            <h5><span>State:  </span>{user.state}</h5>
                             
                             
                         </div>
                     </div>
-                    <h4 style={{padding:'2rem 0 1rem 0'}}><span>My Learning</span></h4>
+                    {user.isStudent && <h4 style={{padding:'2rem 0 1rem 0'}}><span>Courses Enrolled</span></h4>}
                     <div className="course-section1" style={{paddingLeft:'3rem'}}>
                     
-                    {user && user.courses_enrolled.length>0 && user.courses_enrolled.map(course => {
+                    {user && user.isStudent && user.courses_enrolled && user.courses_enrolled.length>0 && user.courses_enrolled.map(course => {
                         return (
                             <div className="card card12">
                                 <img style={{border:"1px solid #8e51de",borderRadius:"2px"}} src={course.course_thumbnail} className="card-img-top" alt="..." />
                                 <div className="card-body">
                                     <h5 className="card-title">{course.course_name}</h5>
-                                    { (course.isRecommended && course.isRecommended === true) && 
+                                    {/* { (course.isRecommended && course.isRecommended === true) && 
                                     <div className="recommendDiv">
                                         <button className="recommend">Recommended</button>
                                     </div>
-                                    }
+                                    } */}
                                     { (course.istoprating && course.istoprating === true) && 
                                     <div className="recommendDiv">
                                         <button className="recommend">Best Seller</button>
@@ -98,10 +119,10 @@ function Profile(props) {
                     }, [])
                     }
                 </div>
-                <h4><span>My Mentors</span></h4>
+                {user.isStudent && <h4><span>My Mentors</span></h4>}
                     <div className='mentors-section'>
                 {
-                    user && user.connected_teachers.length > 0 && user.connected_teachers.map((teacher) => {
+                    user && user.isStudent && user.connected_teachers && user.connected_teachers.length > 0 && user.connected_teachers.map((teacher) => {
                         return (
                             <div id="mentors" className="mentors-part" style={{ display: "block", backgroundColor: "floralwhite", marginTop: "60px" }}>
                                 <div className='mentors-data'>
@@ -118,7 +139,9 @@ function Profile(props) {
                                         </div>
                                         <div className='mentors-info-2'>
                                             <p className='mentor-tech' ><span className='Labels'>Domain</span>: {teacher.tech}</p>
-                                            <p className='mentor-sub-tech' ><span className='Labels'>SubDomain</span>: {teacher.sub_tech.label}</p>
+                                            <p className='mentor-sub-tech' ><span className='Labels'>SubDomain</span>: 
+                                            {teacher.sub_tech.map(e => e.label).join(", ")
+                                            }</p>
                                             <p className='mentor-exp' ><span className='Labels'>Experience</span>: {teacher.experience} years</p>
                                         </div>
                                         <div className='mentors-info-3'>
@@ -151,6 +174,8 @@ function Profile(props) {
                 </div>
             }
         </div>
+        )}
+       </div>
     );
 }
 

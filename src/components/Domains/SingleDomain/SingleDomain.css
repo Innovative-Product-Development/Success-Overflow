@@ -23,9 +23,11 @@
   }
   .mentors-info{
       display: flex;
+      justify-content: space-between;
+      align-items: center;
   }
   .mentors-info-1,.mentors-info-2{
-      padding-right: 5rem;
+      width: 33.33%;
   }
   .requestButton{
 	border: none;
@@ -48,6 +50,9 @@
 }
 .mentors-part{
     padding: 30px 60px;
+}
+.mentors-information{
+    width: 100%;
 }
 .mentor-img img{
     border-radius: 50%;

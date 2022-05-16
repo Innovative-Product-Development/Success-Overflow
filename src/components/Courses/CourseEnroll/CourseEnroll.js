@@ -38,33 +38,12 @@ const CourseEnroll = (props) => {
                     setIsEnrolled(true)
                 }
             }
-            else {
-                
-                // setIsLoading(false);
-                // setErrMsg("OOPS AN ERROR OCCURED TRY AGAIN LATER!!");
-                // setShowError(true);
-            }
         }
         catch (err) {
-            // alert(err.response)
-            // setIsLoading(false);
-            // if (typeof (err.response) !== 'undefined' && typeof (err.response.data) !== 'undefined' && typeof (err.response.data.msg) !== 'undefined') {
-            //     setErrMsg(err.response.data.msg);
-            //     setShowError(true);
-            // }
-            // else {
-            //     setErrMsg("OOPS AN ERROR OCCURED TRY AGAIN LATER!!");
-            //     setShowError(true);
-            // }
+            console.log(err)         
         }
       
-        // const allenrolledCourses = user.courses_enrolled
-        // if(allenrolledCourses.includes(course._id)){
-        //     alert("already enrolled")
-        // }
-        // else{
-        //     alert("not enrolled")
-        // }
+
     }
 
     useEffect(()=>{
@@ -77,7 +56,7 @@ const CourseEnroll = (props) => {
         }
     },[])
 
-    // const {course_name} = useParams();
+   
     useEffect( async ()=>{
         console.log("hwhhwhw",props.match.params.courseId)
         try {
@@ -88,24 +67,9 @@ const CourseEnroll = (props) => {
                     setCourse(response2.data)    
                 }
             }
-            else {
-                
-                // setIsLoading(false);
-                // setErrMsg("OOPS AN ERROR OCCURED TRY AGAIN LATER!!");
-                // setShowError(true);
-            }
         }
         catch (err) {
-            // alert(err.response)
-            // setIsLoading(false);
-            // if (typeof (err.response) !== 'undefined' && typeof (err.response.data) !== 'undefined' && typeof (err.response.data.msg) !== 'undefined') {
-            //     setErrMsg(err.response.data.msg);
-            //     setShowError(true);
-            // }
-            // else {
-            //     setErrMsg("OOPS AN ERROR OCCURED TRY AGAIN LATER!!");
-            //     setShowError(true);
-            // }
+            console.log(err)         
         }      
     },[])
 
@@ -148,22 +112,17 @@ const CourseEnroll = (props) => {
                                         <button target="_blank" type="submit" className="enrollbtn" onClick={()=>gotocourse()}>
                                             <div style={{ padding: '0.2rem' }}>
                                                 <div style={{ paddingBottom: '0.2rem', fontWeight: '600', color: 'white' }}>Go to course</div>
-                                                {/* <div style={{ color: 'white' }}>Starts <span style={{ fontWeight: '800', color: 'white' }}>{date.toDateString()}</span></div> */}
+                                               
                                             </div>
                                         </button> :
                                          <button target="_blank" type="submit" className="enrollbtn" onClick={()=>enrollCourse()}>
                                             <div style={{ padding: '0.2rem' }}>
                                                 <div style={{ paddingBottom: '0.2rem', fontWeight: '600', color: 'white' }}>Enroll For Free</div>
-                                                {/* <div style={{ color: 'white' }}>Starts <span style={{ fontWeight: '800', color: 'white' }}>{date.toDateString()}</span></div> */}
+                                                
                                             </div>
                                         </button>
                                     }
-                                    {/* <button target="_blank" type="submit" className="enrollbtn" onClick={()=>enrollCourse()}>
-                                        <div style={{ padding: '0.2rem' }}>
-                                            <div style={{ paddingBottom: '0.2rem', fontWeight: '600', color: 'white' }}>Enroll For Free</div>
-                                            <div style={{ color: 'white' }}>Starts <span style={{ fontWeight: '800', color: 'white' }}>{date.toDateString()}</span></div>
-                                        </div>
-                                    </button> */}
+                                   
                                 </div>
                                 <div>
                                     <p style={{ color: 'black', fontSize: '18px' }}><span style={{ color: 'black', fontWeight: '800' }}>60,000 </span>&nbsp;already Enrolled</p>
@@ -210,10 +169,7 @@ const CourseEnroll = (props) => {
                                         return <span key={index} className="badge rounded-pill bg-light text-dark">{skill}</span>
                                     })
                                 }
-                                {/* <span className="badge rounded-pill bg-light text-dark">Web Design</span>
-                                <span className="badge rounded-pill bg-light text-dark">Web Accessibilty</span>
-                                <span className="badge rounded-pill bg-light text-dark">HTML</span>
-                                <span className="badge rounded-pill bg-light text-dark">HTML5</span> */}
+                               
                             </div>
                         </div>
                     </div>
@@ -263,10 +219,7 @@ const CourseEnroll = (props) => {
                                 <h4>{course.courseCreator.name}</h4>
                                 <p>{course.courseCreator.description}</p>
                                 <div className="more-info">
-                                    {/* <div className="side-info">
-                                        <img alt="thumbnail" src="https://cdn.iconscout.com/icon/free/png-64/users-144-457814.png"></img>
-                                        <p><b>46,578</b> learners</p>
-                                    </div> */}
+                                   
                                     <div className="side-info">
                                         <img alt="thumbnail" src="https://cdn.iconscout.com/icon/free/png-64/book-1169-433812.png"></img>
                                         <p>Experience<b> {course.courseCreator.experience} years</b></p>
