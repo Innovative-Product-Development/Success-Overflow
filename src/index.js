@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import {BrowserRouter} from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import axios from 'axios';
 import { Provider } from 'react-redux'
 import { store } from '../src/store/store'
 
 // http://localhost:8800/
 // https://successoverflow.herokuapp.com/
-axios.defaults.baseURL = 'http://localhost:8800/';
+axios.defaults.baseURL = 'https://success-overflow.herokuapp.com/';
 
 // Add a request interceptor
 axios.interceptors.request.use(
@@ -31,11 +31,11 @@ axios.interceptors.request.use(
 
 ReactDOM.render(
   <React.StrictMode>
-  <BrowserRouter>
-  <Provider store={store}>
-    <App />
-    </Provider>
-  </BrowserRouter>
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
